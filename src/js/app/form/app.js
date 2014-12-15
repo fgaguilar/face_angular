@@ -1,4 +1,4 @@
-angular.module('app2', ['ngRoute', 'planillaServices'])
+angular.module('app', ['ngRoute', 'planillaServices'])
 
 .config(function($routeProvider) {
   $routeProvider

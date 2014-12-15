@@ -198,6 +198,17 @@ angular.module('app')
                       }]
                   }
               })
+              .state('app.export.planillaPlomo', {
+                  url: '/planillaZinc',
+                  templateUrl: 'tpl/form_listado.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/app/form/services.js',
+                                               'js/app/form/app.js'] );
+                      }]
+                  }
+              }) 
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc',
                   templateUrl: 'tpl/form_planillaZinc.html',
