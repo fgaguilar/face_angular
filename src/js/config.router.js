@@ -204,8 +204,7 @@ angular.module('app')
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
-                          return uiLoad.load( ['js/app/form/services.js',
-                                               'js/app/form/app.js'] );
+                          return uiLoad.load( ['js/app/form/services.js','js/app/form/app.js'] );
                       }]
                   }
               }) 

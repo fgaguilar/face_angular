@@ -1,34 +1,34 @@
-angular.module('app', ['ngRoute', 'planillaServices'])
+angular.module('app', ['planillaServices'])
 
-.config(function($routeProvider) {
-  $routeProvider
-    .when('/', {
-      controller:'ListCtrl',
-      templateUrl:'list.html'
-    })
-    .when('/edit/:Id', {
-      controller:'EditCtrl',
-      templateUrl:'detail.html'
-    })
-    .when('/new', {
-      controller:'CreateCtrl',
-      templateUrl:'detail.html'
-    })
-    .when('/new/:parentId', {
-      controller:'CreateCtrl',
-      templateUrl:'detail.html'
-    })
-    .otherwise({
-      redirectTo:'/'
-    });
+// .config(function($routeProvider) {
+//   $routeProvider
+//     .when('/', {
+//       controller:'ListCtrl',
+//       templateUrl:'list.html'
+//     })
+//     .when('/edit/:Id', {
+//       controller:'EditCtrl',
+//       templateUrl:'detail.html'
+//     })
+//     .when('/new', {
+//       controller:'CreateCtrl',
+//       templateUrl:'detail.html'
+//     })
+//     .when('/new/:parentId', {
+//       controller:'CreateCtrl',
+//       templateUrl:'detail.html'
+//     })
+//     .otherwise({
+//       redirectTo:'/'
+//     });  
+// })
+
+app.controller('ListCtrl', function($scope, Planilla) {
+  // $scope.planillass = Planilla.query();
+  // $scope.orderProp = 'id';
 })
 
-.controller('ListCtrl', function($scope, Planilla) {
-  $scope.planillass = Planilla.query();
-  $scope.orderProp = 'id';
-})
-
-.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams, Planilla) {
+/*.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams, Planilla) {
   $scope.parentId = $routeParams.parentId;
 
   $scope.save = function() {
@@ -60,4 +60,4 @@ angular.module('app', ['ngRoute', 'planillaServices'])
         });
       });
     };
-});
+});*/
