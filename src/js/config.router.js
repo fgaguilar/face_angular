@@ -187,6 +187,28 @@ angular.module('app')
                       }]
                   }
               })
+              // export
+              .state('app.export', {
+                  url: '/export',
+                  template: '<div ui-view class="fade-in"></div>',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad){
+                          return uiLoad.load('js/controllers/form.js');
+                      }]
+                  }
+              })
+              .state('app.export.planillaZinc', {
+                  url: '/planillaZinc',
+                  templateUrl: 'tpl/form_planillaZinc.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/app/form/services.js',
+                                               'js/app/form/app.js'] );
+                      }]
+                  }
+              })              
               // form
               .state('app.form', {
                   url: '/form',
@@ -200,7 +222,14 @@ angular.module('app')
               })
               .state('app.form.elements', {
                   url: '/elements',
-                  templateUrl: 'tpl/form_elements.html'
+                  templateUrl: 'tpl/form_elements.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/app/form/services.js',
+                                               'js/app/form/app.js'] );
+                      }]
+                  }
               })
               .state('app.form.validation', {
                   url: '/validation',
