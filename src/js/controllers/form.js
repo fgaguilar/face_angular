@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 app.factory('Planilla', ['$resource',
   function($resource){
     return $resource('http://localhost/face_laravel/public/api/planillas', {}, {
@@ -53,6 +54,10 @@ app.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams,
 });
   // Form controller
 app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout, $routeParams, Planilla) {
+=======
+  // Form controller
+app.controller('FormDemoCtrl', ['$scope', function ($scope) {
+>>>>>>> b3e52d3bf97e89043b6448dd0a58414de9c3f2fd
     $scope.pesoMermaPesos=1.00;
     $scope.pesoKilosNetosHumedosFactores=2.2046223;
     $scope.pesoHumedadFactores=32.15073;
@@ -89,6 +94,7 @@ app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout,
       $scope.impuestoZnValorConcentradoFactores=$scope.baseTotalSus/$scope.pesoKilosNetosHumedosPeso;
       return "";
     }
+<<<<<<< HEAD
     $scope.save = function() {
     Planilla.save($scope.planilla, function() {
       $timeout(function() {
@@ -96,5 +102,7 @@ app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout,
       });
     });
   };
+=======
+>>>>>>> b3e52d3bf97e89043b6448dd0a58414de9c3f2fd
 
   }]);
