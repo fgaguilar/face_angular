@@ -39,17 +39,17 @@ app.controller('EditCtrl',
     };
 });
 
-app.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams, Planilla) {
-  $scope.parentId = $routeParams.parentId;
+// app.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams, Planilla) {
+//   $scope.parentId = $routeParams.parentId;
 
-  $scope.save = function() {
-    Planilla.save($scope.node, function() {
-      $timeout(function() {
-        $location.path('/');
-      });
-    });
-  };
-});
+//   $scope.save = function() {
+//     Planilla.save($scope.node, function() {
+//       $timeout(function() {
+//         $location.path('/');
+//       });
+//     });
+//   };
+// });
   // Form controller
 app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout, $routeParams, Planilla) {
     $scope.pesoMermaPesos=1.00;
@@ -89,11 +89,12 @@ app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout,
       return "";
     }
     $scope.save = function() {
-    Planilla.save($scope.planilla, function() {
-      $timeout(function() {
-        $location.path('/');
+      console.log("Ingreso a FormDemoCtrl");
+      Planilla.save($scope.planilla, function() {
+        $timeout(function() {
+          $location.path('/');
+        });
       });
-    });
-  };
+    };
 
   }]);
