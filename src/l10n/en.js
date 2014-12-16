@@ -15,12 +15,12 @@
 },
 "aside" : {
   "nav" : {
-    "HEADER" : "Navigación",
+    "HEADER" : "Navigacion",
     "DASHBOARD" : "Panel de Control",
-    "EXPORT" : "Exportación",
+    "EXPORT" : "Exportacion",
     "TAXATION" : "Impuestos",
-    "BILLING" : "Facturación",
-    "ADMINISTRATION" : "Administración",
+    "BILLING" : "Facturacion",
+    "ADMINISTRATION" : "Administracion",
     "CALENDAR" : "Calendario",
     "EMAIL" : "Email",
     "WIDGETS" : "Widgets",

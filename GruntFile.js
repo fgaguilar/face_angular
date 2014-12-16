@@ -19,8 +19,4 @@ module.exports = function(grunt) {
     gtx.alias('prerelease', ['bump-only:prerelease', 'release']);
 
     gtx.finalise();
-    grunt.loadNpmTasks('grunt-connect-proxy');
-
-    grunt.loadNpmTasks('grunt-wiredep');
-
 }

@@ -44,16 +44,6 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.opcion1', {
-                  url: '/dashboard-v1',
-                  templateUrl: 'tpl/app_dashboard_v1.html',
-                  resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js']);
-                    }]
-                  }
-              })
               .state('app.ui', {
                   url: '/ui',
                   template: '<div ui-view class="fade-in-up"></div>'
@@ -199,26 +189,12 @@ angular.module('app')
                   }
               })
               .state('app.export.planillaPlomo', {
-                  url: '/planillaZinc',
-                  templateUrl: 'tpl/form_listado.html',
-                  resolve: {
-                      deps: ['uiLoad',
-                        function( uiLoad ){
-                          return uiLoad.load( ['js/app/form/services.js',
-                                               'js/app/form/app.js'] );
-                      }]
-                  }
+                  url: '/planillaPlomo',
+                  templateUrl: 'tpl/form_listado.html'
               }) 
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc',
-                  templateUrl: 'tpl/form_planillaZinc.html',
-                  resolve: {
-                      deps: ['uiLoad',
-                        function( uiLoad ){
-                          return uiLoad.load( ['js/app/form/services.js',
-                                               'js/app/form/app.js'] );
-                      }]
-                  }
+                  templateUrl: 'tpl/form_planillaZinc.html'
               })              
               // form
               .state('app.form', {
@@ -233,14 +209,7 @@ angular.module('app')
               })
               .state('app.form.elements', {
                   url: '/elements',
-                  templateUrl: 'tpl/form_elements.html',
-                  resolve: {
-                      deps: ['uiLoad',
-                        function( uiLoad ){
-                          return uiLoad.load( ['js/app/form/services.js',
-                                               'js/app/form/app.js'] );
-                      }]
-                  }
+                  templateUrl: 'tpl/form_elements.html'
               })
               .state('app.form.validation', {
                   url: '/validation',

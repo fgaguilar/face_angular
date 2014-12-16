@@ -407,7 +407,7 @@
             <label class="col-sm-2 control-label">Valor Concentrado x kg</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="82" ng-model="impuestoZnValorConcentradoFactores" required>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="82" ng-model="impuestoZnValorConcentradoFactores" required>
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
@@ -471,7 +471,7 @@
         <div class="form-group">
           <div class="col-sm-4 col-sm-offset-4">
             <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary" ng-disabled="forma.$invalid">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled="forma.$invalid">Guardar Cambios</button>
           </div>
         </div>        
       </form>

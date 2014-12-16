@@ -1,9 +1,58 @@
 'use strict';
 
-/* Controllers */
+app.factory('Planilla', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/planillas', {}, {
+      'get': {method:'GET', params:{nodeId:'@planillaId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
 
+app.controller('ListCtrl', function($scope, Planilla) {
+   $scope.planillas = Planilla.query();
+  // $scope.orderProp = 'id';
+  $scope.p=1;
+});
+
+app.controller('EditCtrl',
+  function($scope, $location, $timeout, $routeParams, Planilla) {
+    var planillaId = $routeParams.planillaId;
+    $scope.planilla = Planilla.get({'planillaId': planillaId});
+
+    $scope.destroy = function() {
+      Planilla.remove({planillaId: $scope.planilla.id}, $scope.planilla, function() {
+        $timeout(function() {
+          $location.path('/');
+        });
+      });
+    };
+
+    $scope.save = function() {
+      Planilla.update({planillaId: $scope.planilla.id}, $scope.planilla, function() {
+        $timeout(function() {
+          $location.path('/');
+        });
+      });
+    };
+});
+
+app.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams, Planilla) {
+  $scope.parentId = $routeParams.parentId;
+
+  $scope.save = function() {
+    Planilla.save($scope.node, function() {
+      $timeout(function() {
+        $location.path('/');
+      });
+    });
+  };
+});
   // Form controller
-app.controller('FormDemoCtrl', ['$scope', function($scope) {
+app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout, $routeParams, Planilla) {
     $scope.pesoMermaPesos=1.00;
     $scope.pesoKilosNetosHumedosFactores=2.2046223;
     $scope.pesoHumedadFactores=32.15073;
@@ -40,38 +89,12 @@ app.controller('FormDemoCtrl', ['$scope', function($scope) {
       $scope.impuestoZnValorConcentradoFactores=$scope.baseTotalSus/$scope.pesoKilosNetosHumedosPeso;
       return "";
     }
-
-    $scope.notBlackListed = function(value) {
-      var blacklist = ['bad@domain.com','verybad@domain.com'];
-      return blacklist.indexOf(value) === -1;
-    }
-
-    $scope.val = 15;
-    var updateModel = function(val){
-      $scope.$apply(function(){
-        $scope.val = val;
+    $scope.save = function() {
+    Planilla.save($scope.planilla, function() {
+      $timeout(function() {
+        $location.path('/');
       });
-    };
-    angular.element("#slider").on('slideStop', function(data){
-      updateModel(data.value);
     });
+  };
 
-    $scope.select2Number = [
-      {text:'First',  value:'One'},
-      {text:'Second', value:'Two'},
-      {text:'Third',  value:'Three'}
-    ];
-
-    $scope.list_of_string = ['tag1', 'tag2']
-    $scope.select2Options = {
-        'multiple': true,
-        'simple_tags': true,
-        'tags': ['tag1', 'tag2', 'tag3', 'tag4']  // Can be empty list.
-    };
-
-    angular.element("#LinkInput").bind('click', function (event) {
-      event.stopPropagation();
-    });
-
-  }])
- ;
+  }]);
