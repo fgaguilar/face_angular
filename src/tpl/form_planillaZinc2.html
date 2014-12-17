@@ -1,0 +1,37 @@
+<div class="wrapper-md" ng-controller="CreateCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading font-bold">Planilla de Calculo de la RM de Zinc</div>
+    <div class="panel-body">
+      <form action="" name="forma">
+        <div class="row">
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Usuario</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="plane.usuario">
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">Correo</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="plane.email">
+              </div>
+            </div>
+            <label class="col-sm-2 control-label">Clave</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="plane.password">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4 col-sm-offset-4">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled="forma.$invalid">Guardar Cambios</button>
+          </div>
+        </div>        
+      </form>
+    </div>
+  </div>
+</div>

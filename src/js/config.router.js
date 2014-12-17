@@ -194,7 +194,7 @@ angular.module('app')
               }) 
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc',
-                  templateUrl: 'tpl/form_planillaZinc.html'
+                  templateUrl: 'tpl/form_planillaZinc2.html'
               })              
               // form
               .state('app.form', {

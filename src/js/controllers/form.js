@@ -11,10 +11,32 @@ app.factory('Planilla', ['$resource',
     });
   }]);
 
-app.controller('ListCtrl', function($scope, Planilla) {
-   $scope.planillas = Planilla.query();
+app.factory('Plane', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/planes/:planeId', {}, {
+      'get': {method:'GET', params:{planeId:'@planeId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+app.controller('ListCtrl', function($scope, Plane) {
+	console.log("Ingreso a ListCtrl!!!!!!");
+   $scope.planes = Plane.query();
   // $scope.orderProp = 'id';
-  $scope.p=1;
+});
+app.controller('CreateCtrl', function($scope, $location, $timeout, Plane) {
+	console.log("Ingreso a CreateCtrl!!!!!!");
+  $scope.save = function() {
+  	console.log("Ingreso a Fuction save()!!!!!!");
+    Plane.save($scope.plane, function() {
+      $timeout(function() {
+        $location.path('/');
+      });
+    });
+  };
 });
 
 app.controller('EditCtrl',
@@ -39,17 +61,7 @@ app.controller('EditCtrl',
     };
 });
 
-// app.controller('CreateCtrl', function($scope, $location, $timeout, $routeParams, Planilla) {
-//   $scope.parentId = $routeParams.parentId;
 
-//   $scope.save = function() {
-//     Planilla.save($scope.node, function() {
-//       $timeout(function() {
-//         $location.path('/');
-//       });
-//     });
-//   };
-// });
   // Form controller
 app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout, $routeParams, Planilla) {
     $scope.pesoMermaPesos=1.00;
@@ -89,12 +101,11 @@ app.controller('FormDemoCtrl', ['$scope', function ($scope, $location, $timeout,
       return "";
     }
     $scope.save = function() {
-      console.log("Ingreso a FormDemoCtrl");
-      Planilla.save($scope.planilla, function() {
-        $timeout(function() {
-          $location.path('/');
-        });
+    Planilla.save($scope.planilla, function() {
+      $timeout(function() {
+        $location.path('/');
       });
-    };
+    });
+  };
 
   }]);
