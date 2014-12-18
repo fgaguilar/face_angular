@@ -8,27 +8,27 @@
             <label class="col-sm-1 control-label">Usuario</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="plane.usuario">
+                <input type="text" class="form-control text-right input-sm" ng-model="plans.usuario">
               </div>
             </div>
             <label class="col-sm-1 control-label">Correo</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="plane.email">
+                <input type="text" class="form-control text-right input-sm" ng-model="plans.email">
               </div>
             </div>
-            <label class="col-sm-2 control-label">Clave</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="plane.password">
+              <label class="col-sm-1 control-label">Password</label>
+              <div class="col-sm-2">
+                  <div class="input-group m-b">
+                      <input type="text" class="form-control text-right input-sm" ng-model="plans.password">
+                  </div>
               </div>
-            </div>
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-4 col-sm-offset-4">
             <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled="forma.$invalid">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" ng-click="grabar()" ng-disabled="forma.$invalid">Guardar Cambios</button>
           </div>
         </div>        
       </form>

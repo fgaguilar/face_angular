@@ -3,17 +3,17 @@
   <table class="table">
     <thead>
     <tr>
-      <th>Usuario</th>
-      <th>Correo</th>
-      <th>Password</th>
+      <th>pesoHumedadPeso</th>
+      <th>pesoMermaPeso</th>
+      <th>pesoKilosNetosSecosPeso</th>
       <th><a href="#/new"><i class="fa fa-plus-square-o"></i></a></th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="plane in planes | filter:search ">
-      <td>{{plane.usuario}}</td>
-      <td>{{plane.email}}</td>
-      <td>{{plane.paswword}}</td>
+    <tr ng-repeat="plane in planilla | filter:search ">
+      <td>{{plane.pesoHumedadPeso}}</td>
+      <td>{{plane.pesoMermaPeso}}</td>
+      <td>{{plane.pesoKilosNetosSecosPeso}}</td>
       <td>
         <a href="#/new/{{plane.id}}"><i class="fa fa-plus-square-o"></i></a>
         <a href="#/edit/{{plane.id}}"><i class="fa fa-pencil-square-o"></i></a>
