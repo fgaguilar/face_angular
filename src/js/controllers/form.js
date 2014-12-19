@@ -22,7 +22,46 @@ app.factory('Plan', ['$resource',
       'delete': {method:'DELETE'}
     });
   }]);*/
+/************************************/
+app.run(function($locale){
+    $locale.NUMBER_FORMATS.GROUP_SEP = ",";
+});
 
+app.directive('numericInput', function($filter, $browser, $locale) {
+    return {
+        require: 'ngModel',
+        link: function($scope, $element, $attrs, ngModelCtrl) {
+            var replaceRegex = new RegExp($locale.NUMBER_FORMATS.GROUP_SEP, 'g');
+            var fraction = $attrs.fraction || $locale.NUMBER_FORMATS.PATTERNS[0].maxFrac;
+            var listener = function() {
+                var value = $element.val().replace(replaceRegex, '')
+                $element.val($filter('number')(value, fraction))
+            }
+            ngModelCtrl.$parsers.push(function(viewValue) {
+                var newVal = viewValue.replace(replaceRegex, '');
+                var newValAsNumber = newVal * 1;
+                if (isNaN(newValAsNumber)){
+                    ngModelCtrl.$setValidity(ngModelCtrl.$name+'Numeric', false);
+                }
+                else{
+                    newVal = newValAsNumber.toFixed(fraction);
+                    ngModelCtrl.$setValidity(ngModelCtrl.$name+'Numeric', true);
+                }
+                return newVal;
+            })
+            ngModelCtrl.$render = function() {
+                $element.val($filter('number')(ngModelCtrl.$viewValue, fraction))
+            }         
+            $element.bind('change', listener);
+            $element.bind('keydown', function(event) {
+                var key = event.keyCode
+                if (key == 91 || (15 < key && key < 19) || (35 <= key && key <= 40)) 
+                    return 
+            })
+        }        
+    }
+})
+/***********************************/
 app.controller('ListCtrl', function($scope, Plan) {
    $scope.planilla = Plan.query();
   // $scope.orderProp = 'id';
@@ -50,7 +89,6 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
 
     $scope.grabar = function() {
       console.log("INGRESO A FormDemoCtrl funcion grabar");
-      debugger;
       Plan.save($scope.planilla, function() {
         $timeout(function() {
           $location.path('/');
@@ -65,10 +103,6 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
     $scope.planilla.pesoMermaFactores=6.96;
     $scope.planilla.contenidoZnTipoDeCambioFactores=6.96;
     $scope.calcular = function(){
-      $scope.planilla.pesoHumedadPesos=9.18;
-      $scope.planilla.pesoKilosNetosHumedosPeso=1445000.00;
-
-
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
       $scope.planilla.pesoMermaPeso=(($scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso)*$scope.planilla.pesoMermaPesos)/100;
       $scope.planilla.pesoKilosNetosSecosPeso=$scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso-$scope.planilla.pesoMermaPeso;

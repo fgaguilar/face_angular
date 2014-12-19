@@ -270,8 +270,8 @@
     };
 
     $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'dd/MM/yyyy'];
+    $scope.format = $scope.formats[4];
   }])
   ; 
   app.controller('TimepickerDemoCtrl', ['$scope', function($scope) {

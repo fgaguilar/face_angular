@@ -5,13 +5,13 @@
       <form action="" name="forma">
       <!-- 0a -->
         <div class="row">
-          <div class="col-sm-3 panel-heading text-left bg-success no-border">
+          <div class="col-sm-3 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Pesos</span>         
           </div>
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Peso</span>          
           </div>
-          <div class="col-sm-4 panel-heading text-left bg-danger no-border">
+          <div class="col-sm-4 panel-heading text-left bg-danger2 no-border">
             <span class="text-u-c m-b-none font-bold">Factores</span>          
           </div>
         </div>
@@ -21,7 +21,7 @@
             <label class="col-sm-3 control-label">Kilos Netos Húmedos</label>
             <div class="col-sm-2">
               <div class="input-group m-b" ng-class="{'has-error':forma.pesoKilosNetosHumedosPeso.$invalid && forna.pesoKilosNetosHumedosPeso.$dirty}" >
-                <input type="text" class="form-control text-right input-sm" name="pesoKilosNetosHumedosPeso" ng-model="planilla.pesoKilosNetosHumedosPeso" 
+                <input type="text" class="form-control text-right input-sm" name="pesoKilosNetosHumedosPeso" fraction="2" numeric-input ng-model="planilla.pesoKilosNetosHumedosPeso" 
                  required>
                 <span class="input-group-addon">kg</span>
               </div>
@@ -29,8 +29,14 @@
             <label class="col-sm-2 control-label">1 kg</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="2.2046223" ng-model="planilla.pesoKilosNetosHumedosFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="7" numeric-input ng-model="planilla.pesoKilosNetosHumedosFactores">
                 <span class="input-group-addon">lf</span>
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">PUERTO DESTINO</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino">
               </div>
             </div>
           </div>
@@ -41,22 +47,28 @@
             <label class="col-sm-1 control-label">Humedad</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="9.18" ng-model="planilla.pesoHumedadPesos" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.pesoHumedadPesos" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" 
-                ng-value="calcular()" ng-model="planilla.pesoHumedadPeso">
+                ng-value="calcular()" fraction="2" numeric-input ng-model="planilla.pesoHumedadPeso">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">1 kg</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="32.15073" ng-model="planilla.pesoHumedadFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="5" numeric-input ng-model="planilla.pesoHumedadFactores">
                 <span class="input-group-addon">ot</span>
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">PAIS DESTINO</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino">
               </div>
             </div>
           </div>
@@ -67,20 +79,20 @@
             <label class="col-sm-1 control-label">Merma</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="1.00" ng-model="planilla.pesoMermaPesos">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.pesoMermaPesos">
                 <span class="input-group-addon">%</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.pesoMermaPeso">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.pesoMermaPeso">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">1 $us</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="6.96" ng-model="planilla.pesoMermaFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.pesoMermaFactores">
                 <span class="input-group-addon">ANB</span>
               </div>
             </div>
@@ -92,7 +104,7 @@
             <label class="col-sm-3 control-label">Kilos Netos Secos</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.pesoKilosNetosSecosPeso">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.pesoKilosNetosSecosPeso">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
@@ -115,7 +127,7 @@
             <label class="col-sm-2 control-label">Lote</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="EXMSC-Z-2259-2007" ng-model="planilla.pesoLoteFactores" required>
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.pesoLoteFactores" required>
                 <span class="input-group-addon">No</span>
               </div>
             </div>
@@ -123,20 +135,20 @@
         </div>
       <!-- 0b -->
         <div class="row">
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Contenidos</span>          
           </div>
-          <div class="col-sm-1 panel-heading text-left bg-success no-border">
+          <div class="col-sm-1 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Leyes</span>          
           </div>
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Peso</span>          
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">&nbsp;&nbsp;Lista Empaque</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="2791" ng-model="planilla.contenidoListaEmpaqueFactores" required>
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.contenidoListaEmpaqueFactores" required>
                 <span class="input-group-addon">No</span>
               </div>
             </div>
@@ -148,13 +160,13 @@
             <label class="col-sm-1 control-label">Zn</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="52.55" ng-model="planilla.contenidoZnLeyes" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.contenidoZnLeyes" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.contenidoZnPesokg">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.contenidoZnPesokg">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
@@ -163,7 +175,7 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="6.96" ng-model="planilla.contenidoZnTipoDeCambioFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.contenidoZnTipoDeCambioFactores">
                 <span class="input-group-addon">Oficial</span>
               </div>
             </div>
@@ -192,20 +204,20 @@
             <label class="col-sm-1 control-label">Ag</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="466.00" ng-model="planilla.contenidoAgLeyes" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.contenidoAgLeyes" required>
                 <span class="input-group-addon">gr/ton</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.contenidoAgPesokg">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.contenidoAgPesokg">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">Flete Total</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="43.34" ng-model="planilla.contenidoAgFleteTotalFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.contenidoAgFleteTotalFactores">
                 <span class="input-group-addon">$us/ton</span>
               </div>
             </div>
@@ -218,14 +230,14 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.contenidoAgPesoot">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.contenidoAgPesoot">
                 <span class="input-group-addon">ot</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">Interno (MSC-AV)</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="11.34" ng-model="planilla.contenidoAgInternoFactores" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.contenidoAgInternoFactores" required>
                 <span class="input-group-addon">$us/ton</span>
               </div>
             </div>
@@ -241,7 +253,7 @@
             <label class="col-sm-2 control-label">Externo (AV-MEJ)</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="32.00" ng-model="planilla.contenidoAgExternoFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.contenidoAgExternoFactores">
                 <span class="input-group-addon">$us/ton</span>
               </div>
             </div>
@@ -249,13 +261,13 @@
         </div>
       <!-- 0c -->
         <div class="row">
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Base Imponible</span>          
           </div>
-          <div class="col-sm-1 panel-heading text-left bg-success no-border">
+          <div class="col-sm-1 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Cotizacion</span>          
           </div>
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="m-b-none font-bold">$us</span>          
           </div>
         </div>
@@ -265,20 +277,20 @@
             <label class="col-sm-1 control-label">Zn</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="0.95" ng-model="planilla.baseZnCotizaciones" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.baseZnCotizaciones" required>
                 <span class="input-group-addon">$us/lf</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.baseZnSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseZnSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">No Contenedores</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="82" ng-model="planilla.baseZnContenedoresFactores" required>
+                <input type="text" class="form-control text-right input-sm" fraction="0" numeric-input ng-model="planilla.baseZnContenedoresFactores" required>
                 <span class="input-group-addon">mo3</span>
               </div>
             </div>
@@ -290,20 +302,20 @@
             <label class="col-sm-1 control-label">Ag</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="19.05" ng-model="planilla.baseAgCotizaciones" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.baseAgCotizaciones" required>
                 <span class="input-group-addon">$us/ot</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.baseAgSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseAgSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">Tara Total</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="168100.00" ng-model="planilla.baseAgTaraTotalFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.baseAgTaraTotalFactores">
                 <span class="input-group-addon">Tara</span>
               </div>
             </div>
@@ -317,14 +329,14 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.baseTotalSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseTotalSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">Peso Bruto Humedo</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.baseTotalPesoBrutoFactores">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseTotalPesoBrutoFactores">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
@@ -337,7 +349,7 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.basePromedioSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.basePromedioSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
@@ -354,14 +366,14 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.baseDiferenciaSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseDiferenciaSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">No DUE</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="14062791" ng-model="planilla.baseDiferenciaDueFactores" required>
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.baseDiferenciaDueFactores" required>
                 <span class="input-group-addon">No</span>
               </div>
             </div>
@@ -369,20 +381,20 @@
         </div>
       <!-- 0d -->
         <div class="row">
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Impuestos</span>          
           </div>
-          <div class="col-sm-1 panel-heading text-left bg-success no-border">
+          <div class="col-sm-1 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Alicuota</span>          
           </div>
-          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+          <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="m-b-none font-bold">$us</span>          
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">&nbsp;&nbsp;Nro. de Factura</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="000899" ng-model="planilla.impuestoFacturaFactores" required>
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.impuestoFacturaFactores" required>
                 <span class="input-group-addon">No</span>
               </div>
             </div>
@@ -394,20 +406,20 @@
             <label class="col-sm-1 control-label">Zn</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="5.00" ng-model="planilla.impuestoZnAlicuota" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.impuestoZnAlicuota" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.impuestoZnSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.impuestoZnSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
             <label class="col-sm-2 control-label">Valor Concentrado x kg</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="82" ng-model="planilla.impuestoZnValorConcentradoFactores" required>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="6" numeric-input ng-model="planilla.impuestoZnValorConcentradoFactores" required>
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
@@ -419,13 +431,13 @@
             <label class="col-sm-1 control-label">Ag</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="6.00" ng-model="planilla.impuestoAgAlicuota" required>
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.impuestoAgAlicuota" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.impuestoAgSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.impuestoAgSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
@@ -443,7 +455,7 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.impuestoTotalSusSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.impuestoTotalSusSus">
                 <span class="input-group-addon">$us</span>
               </div>
             </div>
@@ -460,7 +472,7 @@
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" ng-model="planilla.impuestoTotalBsSus">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.impuestoTotalBsSus">
                 <span class="input-group-addon">Bs</span>
               </div>
             </div>
