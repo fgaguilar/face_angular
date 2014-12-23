@@ -131,3 +131,10 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
       return "";
     };
   });
+
+app.controller('PlanCalculoCtrl', function($scope, $routeParams, Plan) {
+  var Id = $routeParams.id;
+  $scope.planilla={};
+  $scope.planilla = Plan.get('id',1);
+  $scope.planilla.d4=$scope.planilla.contenidoZnLeyes;
+});

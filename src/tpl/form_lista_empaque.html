@@ -1,0 +1,92 @@
+<div class="wrapper-md" ng-controller="ListCtrl">
+  <div class="row">
+    <div class="col-sm-3">LOGO</div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3">3.04.P11.F02</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">FORMULARIO LISTA DE EMPAQUE</div>
+    <div class="col-sm-3">Revisión: 2</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3">INTERNA</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Calle Padilla Nº 40</div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Teléfono: 591-2-6120487</div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Fax: 591-2-6120487</div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">POTOSI - BOLIVIA</div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-2">Numero:</div>
+    <div class="col-sm-4">{{contenidoListaEmpaqueFactores}}</div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Toldos</div>
+    <div class="col-sm-6">{{pesoKilosNetosSecosFactores}}</div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">COMPRADOR:</div>
+    <div class="col-sm-6">SUMMIT MINERALS GMBH </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">No. LOTE:</div>
+    <div class="col-sm-6">{{pesoLoteFactores}}</div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">CONCENTRADOS DE:</div>
+    <div class="col-sm-6">Concentrado de  Zinc y Plata</div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">LUGAR DE DESPACHO:</div>
+    <div class="col-sm-6">Mina San Cristobal, Campamento Toldos, Potosi-Bolivia</div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>PESO BRUTO</th>
+        <th>PESO NETO</th>
+        <th>MINERAL</th>
+        <th>UNIDAD</th>
+        <th>CONCEPTO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="plane in planilla | filter:search ">
+        <td>{{plane.id}}</td>
+        <td>{{plane.pesoLoteFactores}}</td>
+        <td>{{plane.contenidoListaEmpaqueFactores}}</td>
+        <td>{{plane.pesoKilosNetosSecosFactores}}</td>
+        <td>
+          <a href="#/app/export/planillaZinc/{{plane.id}}"><i class="fa fa-pencil-square-o"></i></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

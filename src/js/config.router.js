@@ -188,14 +188,18 @@ angular.module('app')
                       }]
                   }
               })
-              .state('app.export.planillaPlomo', {
-                  url: '/planillaPlomo',
-                  templateUrl: 'tpl/form_listado.html'
-              }) 
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc',
                   templateUrl: 'tpl/form_planillaZinc.html'
-              })              
+              })                
+              .state('app.export.planillaPlomo', {
+                  url: '/planillaPlomo',
+                  templateUrl: 'tpl/form_listado.html'
+              })
+              .state('app.export.listaEmpaque', {
+                  url: '/listaEmpaque',
+                  templateUrl: 'tpl/form_lista_empaque.html'
+              })             
               // form
               .state('app.form', {
                   url: '/form',
@@ -207,6 +211,22 @@ angular.module('app')
                       }]
                   }
               })
+              // taxation
+              .state('app.taxation', {
+                  url: '/export',
+                  template: '<div ui-view class="fade-in"></div>',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad){
+                          return uiLoad.load('js/controllers/form.js');
+                      }]
+                  }
+              })
+              .state('app.taxation.verificacionCalculo', {
+                  url: '/verificacionCalculo/:id',
+                  templateUrl: 'tpl/form_plan_calculo.html'
+              })
+
               .state('app.form.elements', {
                   url: '/elements',
                   templateUrl: 'tpl/form_elements.html'

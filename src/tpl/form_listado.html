@@ -3,20 +3,21 @@
   <table class="table">
     <thead>
     <tr>
-      <th>pesoHumedadPeso</th>
-      <th>pesoMermaPeso</th>
-      <th>pesoKilosNetosSecosPeso</th>
-      <th><a href="#/new"><i class="fa fa-plus-square-o"></i></a></th>
+      <th>ID</th>
+      <th>Lote</th>
+      <th>Lista Empaque</th>
+      <th>Fecha</th>
+      <th><a href="#/app/export/planillaZinc"><i class="fa fa-plus-square-o"></i></a></th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="plane in planilla | filter:search ">
-      <td>{{plane.pesoHumedadPeso}}</td>
-      <td>{{plane.pesoMermaPeso}}</td>
-      <td>{{plane.pesoKilosNetosSecosPeso}}</td>
+      <td>{{plane.id}}</td>
+      <td>{{plane.pesoLoteFactores}}</td>
+      <td>{{plane.contenidoListaEmpaqueFactores}}</td>
+      <td>{{plane.pesoKilosNetosSecosFactores}}</td>
       <td>
-        <a href="#/new/{{plane.id}}"><i class="fa fa-plus-square-o"></i></a>
-        <a href="#/edit/{{plane.id}}"><i class="fa fa-pencil-square-o"></i></a>
+        <a href="#/app/export/planillaZinc/{{plane.id}}"><i class="fa fa-pencil-square-o"></i></a>
       </td>
     </tr>
     </tbody>
