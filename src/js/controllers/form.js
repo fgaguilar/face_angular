@@ -11,17 +11,6 @@ app.factory('Plan', ['$resource',
     });
   }]);
 
-/*app.factory('Plan', ['$resource',
-  function($resource){
-    return $resource('http://localhost/face_laravel/public/api/plans/:planId', {}, {
-      'get': {method:'GET', params:{planId:'@planId'}, isArray:false},
-      'save': {method:'POST'},
-      'query': {method:'GET', isArray:true},
-      'update': {method:'PUT'},
-      'remove': {method:'DELETE'},
-      'delete': {method:'DELETE'}
-    });
-  }]);*/
 app.run(function($locale){
     $locale.NUMBER_FORMATS.GROUP_SEP = ",";
 });
@@ -88,7 +77,6 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
 
     $scope.grabar = function() {
       console.error("Ingreso agrabar");
-      debugger;
       Plan.save($scope.planilla, function() {
         $timeout(function() {
           $location.path('/');
@@ -132,9 +120,12 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
     };
   });
 
-app.controller('PlanCalculoCtrl', function($scope, $routeParams, Plan) {
-  var Id = $routeParams.id;
-  $scope.planilla={};
-  $scope.planilla = Plan.get('id',1);
-  $scope.planilla.d4=$scope.planilla.contenidoZnLeyes;
+app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+  var planillaId = $stateParams.planId;
+  $scope.planillaC={};
+  $scope.planilla2={};
+  $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
+    console.log($scope);
+    $scope.planillaC.d4=datos.baseAgCotizaciones;
+  });
 });

@@ -223,7 +223,8 @@ angular.module('app')
                   }
               })
               .state('app.taxation.verificacionCalculo', {
-                  url: '/verificacionCalculo/:id',
+                  url: '/verificacionCalculo/:planId',
+                  //controller: 'PlanCalculoCtrl',
                   templateUrl: 'tpl/form_plan_calculo.html'
               })
 
