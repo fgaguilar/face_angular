@@ -1,13 +1,13 @@
-<div class="wrapper-md" ng-controller="PlanCalculoCtrl">
+<div class="container" ng-controller="PlanCalculoCtrl">
   <div class="row">
-    <div class="col-sm-6">LIQUIDACIONES PARA CONCETRADO ZINC Y PLATA</div>
+    <div class="col-sm-6" style="font-weight:bold;font-size:18px">LIQUIDACIONES PARA CONCETRADO ZINC Y PLATA</div>
     <div class="col-sm-3"></div>
     <div class="col-sm-3"></div>
   </div>
   <div class="row">
-    <div class="col-sm-3">DATOS TECNICOS</div>
-    <div class="col-sm-2">DATOS</div>
-    <div class="col-sm-1">{{planillaC.d4}}</div>
+    <div class="col-sm-3" style="background:#C0C0C0;font-weight: bold">DATOS TECNICOS</div>
+    <div class="col-sm-2 text-right" style="background:#C0C0C0;font-weight: bold">DATOS</div>
+    <div class="col-sm-1 text-right" style="background:#C0C0C0;font-weight: bold">{{planillaC.d4 | number:2}}%</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -16,55 +16,53 @@
     <div class="col-sm-1"></div>
  </div>
  <div class="row">
-    <div class="col-sm-3">CALCULO ICM</div>
+    <div class="col-sm-3" style="font-weight: bold">CALCULO ICM</div>
     <div class="col-sm-2"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1">Calculo Actual</div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1">Calculo Anterior</div>
+    <div class="col-sm-2 text-right" style="color:#31869B;font-weight: bold">Calculo Actual</div>
+    <div class="col-sm-2 text-right" style="color:#31869B;font-weight: bold">Calculo Anterior</div>
  </div>
  <div class="row">
-    <div class="col-sm-3">ZINC</div>
+    <div class="col-sm-3" style="font-weight: bold">ZINC</div>
     <div class="col-sm-2"></div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">T/C Oficial</div>
-    <div class="col-sm-1">{{planillaC.v6}}</div>
+    <div class="col-sm-1" style="border-left:solid;border-top:solid">T/C Oficial</div>
+    <div class="col-sm-1 text-right"style="border-right:solid;border-top:solid">{{planillaC.v6 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.x6}}</div>
+    <div class="col-sm-1 text-right" style="background:#E6B8B7">{{planillaC.x6 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.z6}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z6 | number:2}}</div>
  </div>
  <div class="row">
     <div class="col-sm-3">Peso  bruto para ICM Zinc</div>
-    <div class="col-sm-2">{{planillaC.c7}}</div>
-    <div class="col-sm-1">{{planillaC.d7}}</div>
-    <div class="col-sm-1">LEY Zn</div>
-    <div class="col-sm-1">{{planillaC.v7}}</div>
+    <div class="col-sm-2 text-right" style="background:#FCD5B4">{{planillaC.c7 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.d7 | number:2}}%</div>
+    <div class="col-sm-1" style="border-left:solid">LEY Zn</div>
+    <div class="col-sm-1 text-right" style="border-right:solid">{{planillaC.v7 | number:2}}%</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.x7}}</div>
+    <div class="col-sm-1 text-right" style="background:#E6B8B7">{{planillaC.x7 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.z7}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z7 | number:2}}</div>
  </div>
  <div class="row">
     <div class="col-sm-3">Humedad %</div>
-    <div class="col-sm-2">{{planillaC.c8}}</div>
-    <div class="col-sm-1">Kgs</div>
-    <div class="col-sm-1">GTP Ag</div>
-    <div class="col-sm-1">{{planillaC.v8}}</div>
+    <div class="col-sm-2 text-right" style="background:#E6B8B7">{{planillaC.c8 | number:2}}</div>
+    <div class="col-sm-1 text-right">Kgs</div>
+    <div class="col-sm-1" style="border-left:solid">GTP Ag</div>
+    <div class="col-sm-1 text-right" style="border-right:solid">{{planillaC.v8 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.x8}}</div>
+    <div class="col-sm-1 text-right" style="color:#FF0000;font-weight:bold">{{planillaC.x8 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.z8}}</div>
+    <div class="col-sm-1 text-right" style="color:#FF0000;font-weight:bold">{{planillaC.z8 | number:2}}</div>
  </div>
  <div class="row">
     <div class="col-sm-3">Merma 1%</div>
-    <div class="col-sm-2">{{planillaC.c9}}</div>
+    <div class="col-sm-2 text-right" style="background:#E6B8B7">{{planillaC.c9 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">HUMEDAD</div>
-    <div class="col-sm-1">{{planillaC.v9}}</div>
+    <div class="col-sm-1" style="border-left:solid">HUMEDAD</div>
+    <div class="col-sm-1 text-right" style="border-right:solid">{{planillaC.v9 | number:2}}%</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -72,10 +70,10 @@
  </div>
  <div class="row">
     <div class="col-sm-3"></div>
-    <div class="col-sm-2">{{planilla.c10}}</div>
+    <div class="col-sm-2 text-right" style="color:#FF0000;font-weight:bold">{{planillaC.c10 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">MERMA</div>
-    <div class="col-sm-1">{{planillaC.v10}}</div>
+    <div class="col-sm-1" style="border-left:solid">MERMA</div>
+    <div class="col-sm-1 text-right" style="border-right:solid">{{planillaC.v10 | number:2}}%</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -83,10 +81,10 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Peso neto seco para ICM</div>
-    <div class="col-sm-2">{{planillaC.c11}}</div>
-    <div class="col-sm-1">Kgs</div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.v11}}</div>
+    <div class="col-sm-2 text-right" style="background:#C5D9F1">{{planillaC.c11 | number:2}}</div>
+    <div class="col-sm-1 text-right">Kgs</div>
+    <div class="col-sm-1" style="border-left:solid;border-bottom:solid">&nbsp</div>
+    <div class="col-sm-1 text-right" style="border-right:solid;border-bottom:solid">{{planillaC.v11 | number:2}}%</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -94,8 +92,8 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Ley Zinc</div>
-    <div class="col-sm-2">{{planillaC.c12}}</div>
-    <div class="col-sm-1">%</div>
+    <div class="col-sm-2 text-right">{{planillaC.c12 | number:2}}</div>
+    <div class="col-sm-1 text-right">%</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -105,7 +103,7 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Contenido K Finos</div>
-    <div class="col-sm-2">{{planillaC.c13}}</div>
+    <div class="col-sm-2 text-right" style="background:#CCC0DA">{{planillaC.c13 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1">pkc list</div>
     <div class="col-sm-1">total peso</div>
@@ -116,41 +114,41 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Contenido Libras Finas</div>
-    <div class="col-sm-2">{{planillaC.c14}}</div>
-    <div class="col-sm-1">{{planillaC.d14}}</div>
+    <div class="col-sm-2 text-right">{{planillaC.c14 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.d14 | number:2}}%</div>
     <div class="col-sm-1">kg finos Zn</div>
-    <div class="col-sm-1">{{planillaC.v14}}</div>
-    <div class="col-sm-1">{{planillaC.w14}}</div>
-    <div class="col-sm-1">{{planillaC.x14}}</div>
-    <div class="col-sm-1">{{planillaC.y14}}</div>
-    <div class="col-sm-1">{{planillaC.z14}}</div>
+    <div class="col-sm-1 text-right" style="background:#CCC0DA">{{planillaC.v14 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.w14 | number:6}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.x14 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.y14 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z14 | number:2}}</div>
  </div>
  <div class="row">
     <div class="col-sm-3">Contenido en TMF</div>
-    <div class="col-sm-2">{{planillaC.c15}}</div>
+    <div class="col-sm-2 text-right">{{planillaC.c15 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1">kg finos Ag</div>
-    <div class="col-sm-1">{{planillaC.v15}}</div>
-    <div class="col-sm-1">{{planillaC.w15}}</div>
-    <div class="col-sm-1">{{planillaC.x15}}</div>
-    <div class="col-sm-1">{{planillaC.y15}}</div>
-    <div class="col-sm-1">{{planillaC.z15}}</div>
+    <div class="col-sm-1 text-right" style="background:#C4D79B">{{planillaC.v15 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.w15 | number:6}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.x15 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.y15 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z15 | number:2}}</div>
  </div>
  <div class="row">
     <div class="col-sm-3">Cotizacion US/LF del Ministerio de Mineria</div>
     <div class="col-sm-2"></div>
-    <div class="col-sm-1">{{planillaC.d16}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.d16 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.v16}}</div>
-    <div class="col-sm-1">{{planillaC.w16}}</div>
-    <div class="col-sm-1">{{planillaC.x16}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.v16 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.w16 | number:6}}</div>
+    <div class="col-sm-1 text-right" style="background:#FCD5B4">{{planillaC.x16 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.z16}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z16 | number:2}}</div>
  </div>
  <div class="row">
-    <div class="col-sm-3">VALOR BRUTO PARA I.C.M. US$</div>
-    <div class="col-sm-2">{{planillaC.c17}}</div>
-    <div class="col-sm-1">{{planillaC.d17}}</div>
+    <div class="col-sm-3" style="font-weight: bold">VALOR BRUTO PARA I.C.M. US$</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c17 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.d17 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -160,41 +158,41 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Alicuota ICM (EXPORTACION)</div>
-    <div class="col-sm-2">{{planillaC.c18}}</div>
+    <div class="col-sm-2 text-right">{{planillaC.c18 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.y18}}</div>
-    <div class="col-sm-1">{{planillaC.z18}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.y18 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z18 | number:2}}</div>
  </div>
  <div class="row">
-    <div class="col-sm-3">ICM Zinc A PAGAR</div>
-    <div class="col-sm-2">{{planillaC.c19}}</div>
+    <div class="col-sm-3" style="font-weight: bold">ICM Zinc A PAGAR</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c19 | number:2}}</div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">DM/TON</div>
+    <div class="col-sm-1 text-right" style="font-weight: bold">DM/TON</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.y19}}</div>
-    <div class="col-sm-1">{{planillaC.z19}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.y19 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z19 | number:2}}</div>
  </div>
  <div class="row">
-    <div class="col-sm-3">PLATA</div>
-    <div class="col-sm-2">gpt</div>
-    <div class="col-sm-1">{{planillaC.d20}}</div>
-    <div class="col-sm-1">{{planillaC.u20}}</div>
+    <div class="col-sm-3" style="background:#C0C0C0;font-weight: bold">PLATA</div>
+    <div class="col-sm-2 text-right" style="background:#C0C0C0;font-weight: bold">gpt</div>
+    <div class="col-sm-1 text-right" style="background:#C0C0C0;font-weight: bold">{{planillaC.d20 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.u20 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
-    <div class="col-sm-1">{{planillaC.z20}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.z20 | number:2}}</div>
  </div>
  <div class="row">
     <div class="col-sm-3">Peso neto Seco para ICM</div>
-    <div class="col-sm-2">{{planillaC.c21}}</div>
-    <div class="col-sm-1">Kgs</div>
+    <div class="col-sm-2 text-right" style="background:#C5D9F1">{{planillaC.c21 | number:2}}</div>
+    <div class="col-sm-1 text-right">Kgs</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -204,7 +202,7 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Contenido de Ag en gr/Ton</div>
-    <div class="col-sm-2">{{planillaC.c22}}</div>
+    <div class="col-sm-2 text-right">{{planillaC.c22 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -215,8 +213,8 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Contenido de Ag en kg/Ton</div>
-    <div class="col-sm-2">{{planillaC.c23}}</div>
-    <div class="col-sm-1">{{planillaC.d23}}</div>
+    <div class="col-sm-2 text-right" style="background:#C4D79B">{{planillaC.c23 | number:2}}</div>
+    <div class="col-sm-1 text-right">{{planillaC.d23 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -226,7 +224,7 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Contenido de Ag en OT/Ton</div>
-    <div class="col-sm-2">{{planillaC.c24}}</div>
+    <div class="col-sm-2 text-right">{{planillaC.c24 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -238,7 +236,7 @@
  <div class="row">
     <div class="col-sm-3">Cotización US$/O.T. del Ministerio de Mineria</div>
     <div class="col-sm-2"></div>
-    <div class="col-sm-1">{{planillaC.d25}}/div>
+    <div class="col-sm-1 text-right">{{planillaC.d25 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -247,8 +245,8 @@
     <div class="col-sm-1"></div>
  </div>
  <div class="row">
-    <div class="col-sm-3">VALOR BRUTO PARA I.C.M. US$/TMS</div>
-    <div class="col-sm-2">{{planillaC.c26}}</div>
+    <div class="col-sm-3" style="font-weight: bold">VALOR BRUTO PARA I.C.M. US$/TMS</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c26 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -259,7 +257,7 @@
  </div>
  <div class="row">
     <div class="col-sm-3">Alicuota ICM (EXPORTACION)</div>
-    <div class="col-sm-2">{{planillaC.c27}}</div>
+    <div class="col-sm-2 text-right">{{planillaC.c27 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -269,8 +267,8 @@
     <div class="col-sm-1"></div>
  </div>
  <div class="row">
-    <div class="col-sm-3">ICM Ag A PAGAR</div>
-    <div class="col-sm-2">{{planillaC.c28}}</div>
+    <div class="col-sm-3" style="font-weight: bold">ICM Ag A PAGAR</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c28 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -280,8 +278,8 @@
     <div class="col-sm-1"></div>
  </div>
  <div class="row">
-    <div class="col-sm-3">VALOR ICM TOTAL en $us</div>
-    <div class="col-sm-2">{{planillaC.c30}}</div>
+    <div class="col-sm-3" style="font-weight: bold">VALOR ICM TOTAL en $us</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c30 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -291,8 +289,8 @@
     <div class="col-sm-1"></div>
  </div>
  <div class="row">
-    <div class="col-sm-3">VALOR ICM TOTAL en Bs</div>
-    <div class="col-sm-2">{{planillaC.c31}}</div>
+    <div class="col-sm-3" style="font-weight: bold">VALOR ICM TOTAL en Bs</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c31 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -302,8 +300,8 @@
     <div class="col-sm-1"></div>
  </div>
  <div class="row">
-    <div class="col-sm-3">TOTAL ZINC PLATA PLOMO</div>
-    <div class="col-sm-2">{{planillaC.c32}}</div>
+    <div class="col-sm-3" style="font-weight: bold">TOTAL ZINC PLATA PLOMO</div>
+    <div class="col-sm-2 text-right" style="font-weight: bold">{{planillaC.c32 | number:2}}</div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
@@ -312,5 +310,4 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-1"></div>
  </div>
-
 </div>
