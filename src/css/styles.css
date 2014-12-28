@@ -10,3 +10,122 @@
 .navbar-brand {
   display : none;
 }
+.fondo-gris {
+    background:#C0C0C0;
+    font-weight: bold;
+}
+.fondo-naranja {
+    background:#FCD5B4;
+}
+.fondo-rosado {
+    background:#E6B8B7;
+}
+.fondo-celeste {
+    background:#C5D9F1;
+}
+.fondo-lila {
+    background:#CCC0DA;
+}
+.fondo-verde {
+      background:#C4D79B;
+}
+.texto-negrilla {
+  font-weight: bold;
+}
+.texto-negrilla-rojo {
+  color:#FF0000;
+  font-weight:bold;
+}
+.texto-negrilla-celeste {
+  color:#31869B;
+  font-weight: bold;
+}
+/*TOP*/
+.border-top-left-bold {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+}
+.border-top-bold {
+    border-left: 1px solid black;
+    border-top: 2px solid black;
+}
+.border-top-right-bold {
+    border-left: 1px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+}
+/*MIDLE*/
+.border-left-bold {
+    border-left: 2px solid black;
+    border-top: 1px solid black;
+}
+.border-midle {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+.border-right-bold {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 2px solid black;
+}
+/*BOTTOM*/
+.border-bottom-left-bold {
+    border-left: 2px solid black;
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+}
+.border-bottom-bold {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;  
+}
+.border-bottom-right-bold {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 2px solid black;    
+    border-bottom: 2px solid black;
+}
+/*TOP*/
+.border-top-left {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+.border-top {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+.border-top-right {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+/*MIDLE*/
+.border-left {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+.border-right {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+/*BOTTOM*/
+.border-bottom-left {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.border-bottom {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;  
+}
+.border-bottom-right {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;    
+    border-bottom: 1px solid black;
+}
+.border-top-none {
+    border-top: 0px solid black;
+}

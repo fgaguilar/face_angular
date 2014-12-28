@@ -227,7 +227,11 @@ angular.module('app')
                   //controller: 'PlanCalculoCtrl',
                   templateUrl: 'tpl/form_plan_calculo.html'
               })
-
+              .state('app.taxation.pagoRegalias', {
+                  url: '/pagoRegalias/:planId',
+                  //controller: 'PlanCalculoCtrl',
+                  templateUrl: 'tpl/form_regalia_minera.html'
+              })
               .state('app.form.elements', {
                   url: '/elements',
                   templateUrl: 'tpl/form_elements.html'
