@@ -85,6 +85,20 @@
     border-right: 2px solid black;    
     border-bottom: 2px solid black;
 }
+/*BOTTOM*/
+.border-bottom-left-bold2 {
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.border-bottom-bold2 {
+    border-left: 1px solid black;
+    border-bottom: 2px solid black;  
+}
+.border-bottom-right-bold2 {
+    border-left: 1px solid black;
+    border-right: 2px solid black;    
+    border-bottom: 2px solid black;
+}
 /*TOP*/
 .border-top-left {
     border-left: 1px solid black;
@@ -128,4 +142,19 @@
 }
 .border-top-none {
     border-top: 0px solid black;
+}
+.border-left-none {
+    border-left: 0px solid black;
+}
+.padding-right {
+    padding-right: 10px;
+}
+.border-only-left-bold {
+    border-left: 2px solid black;
+}
+.border-only-right-bold {
+    border-right: 2px solid black;
+}
+.border-only-bottom-bold {
+    border-bottom: 2px solid black;
 }

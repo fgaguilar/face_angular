@@ -188,9 +188,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   $scope.planillaC={};
   $scope.planilla2={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
-    $scope.planillaC.fecha=datos.pesoKilosNetosSecosFactores;
-    $scope.planillaC.tipoCambio=datos.pesoMermaFactores;
-    $scope.planillaC.numeroLote=datos.pesoLoteFactores;
+    
     $scope.planillaC.v7=datos.contenidoZnLeyes;
     $scope.planillaC.d4=$scope.planillaC.v7;
     $scope.planillaC.v6=datos.pesoMermaFactores;
@@ -254,5 +252,30 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
     $scope.planillaC.c30=$scope.planillaC.c28+$scope.planillaC.c29;
     $scope.planillaC.c31=$scope.planillaC.c30*$scope.planillaC.v6;
     $scope.planillaC.c32=$scope.planillaC.c26+$scope.planillaC.c17;
+    $scope.planillaC.fecha=datos.pesoKilosNetosSecosFactores;
+    $scope.planillaC.tipoCambio=datos.pesoMermaFactores;
+    $scope.planillaC.numeroLote=datos.pesoLoteFactores;
+    $scope.planillaC.pesoBrutoZinc=$scope.planillaC.x14;
+    $scope.planillaC.pesoNetoZinc=$scope.planillaC.z14;
+    $scope.planillaC.leyMineralZinc=$scope.planillaC.d4;
+    $scope.planillaC.pesoFinoZinc=$scope.planillaC.c14;
+    $scope.planillaC.cotizacionZinc=$scope.planillaC.d16;
+    $scope.planillaC.valorBrutoZinc=$scope.planillaC.c17;
+    $scope.planillaC.alicuotaZinc=$scope.planillaC.c18;
+    $scope.planillaC.rmZinc=$scope.planillaC.c19;
+    $scope.planillaC.pesoBrutoPlata=$scope.planillaC.x15;
+    $scope.planillaC.pesoNetoPlata=$scope.planillaC.z15;
+    $scope.planillaC.leyMineralPlata=$scope.planillaC.d20;
+    $scope.planillaC.pesoFinoPlata=$scope.planillaC.c24;
+    $scope.planillaC.cotizacionPlata=$scope.planillaC.d25;
+    $scope.planillaC.valorBrutoPlata=$scope.planillaC.c26;
+    $scope.planillaC.alicuotaPlata=$scope.planillaC.c27;
+    $scope.planillaC.rmPlata=$scope.planillaC.c28;
+    $scope.planillaC.sumaPesoBruto=$scope.planillaC.pesoBrutoZinc+$scope.planillaC.pesoBrutoPlata;
+    $scope.planillaC.sumaPesoNeto=$scope.planillaC.pesoNetoZinc+$scope.planillaC.pesoNetoPlata;
+    $scope.planillaC.sumaValorUSD=$scope.planillaC.valorBrutoZinc+$scope.planillaC.valorBrutoPlata;
+    $scope.planillaC.sumaRMUSD=$scope.planillaC.rmZinc+$scope.planillaC.rmPlata;
+    $scope.planillaC.sumaValorBS=$scope.planillaC.sumaValorUSD*$scope.planillaC.tipoCambio;
+    $scope.planillaC.sumaRMBS=$scope.planillaC.sumaRMUSD*$scope.planillaC.tipoCambio;
   });
 });

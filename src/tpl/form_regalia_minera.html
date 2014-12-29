@@ -1,69 +1,201 @@
-<div class="container" ng-controller="RegaliaMineraCtrl">
-  <div class="row">
-    <div class="col-sm-12 text-center m-n font-thin h3">REGALIA MINERA (RM)</div>    
+<div class="wrapper-md" ng-controller="RegaliaMineraCtrl">
+ <div class="panel panel-default">
+  <div class="panel-heading">
+   <div class="row">
+    <div class="font-bold text-center">REGALIA MINERA (RM)</div>
+   </div>
   </div>
-  <div class="row">
+  <div class="panel-body">
+   <div class="row">
     <div class="col-sm-4">&nbsp</div>
     <div class="col-sm-2">Toldos</div>
     <div class="col-sm-2 text-right">{{planillaC.fecha}}</div>
-    <div class="col-sm-4">&nbsp</div>
- </div>
-  <div class="row">
+    <div class="col-sm-3">&nbsp</div>
+   </div>
+   <div class="row">
     <div class="col-sm-4">&nbsp</div>
     <div class="col-sm-2">Exportador</div>
     <div class="col-sm-2 text-right">Minera San Cristobal S.A.</div>
-    <div class="col-sm-4">&nbsp</div>
- </div> 
-  <div class="row">
+    <div class="col-sm-3">&nbsp</div>
+   </div> 
+   <div class="row">
     <div class="col-sm-4">&nbsp</div>
     <div class="col-sm-2">NIT</div>
     <div class="col-sm-2 text-right">1020415021</div>
-    <div class="col-sm-4">&nbsp</div>
- </div> 
- <div class="row">
+    <div class="col-sm-3">&nbsp</div>
+   </div> 
+   <div class="row">
     <div class="col-sm-4">&nbsp</div>
     <div class="col-sm-2">RUE</div>
     <div class="col-sm-2 text-right">1858</div>
-    <div class="col-sm-4">&nbsp</div>
- </div>  
- <div class="row">
+    <div class="col-sm-3">&nbsp</div>
+   </div>  
+   <div class="row">
     <div class="col-sm-4">&nbsp</div>
     <div class="col-sm-2 fondo-celeste texto-negrilla">Tipo de Cambio</div>
     <div class="col-sm-2 text-right texto-negrilla-rojo">{{planillaC.tipoCambio}}</div>
-    <div class="col-sm-4">&nbsp</div>
- </div>
- <div class="row">
+    <div class="col-sm-3">&nbsp</div>
+   </div>
+   <div class="row">
     <div class="col-sm-4">&nbsp</div>
     <div class="col-sm-2 fondo-celeste texto-negrilla">Numero de Lote</div>
     <div class="col-sm-2 text-right texto-negrilla-rojo">{{planillaC.numeroLote}}</div>
-    <div class="col-sm-4">&nbsp</div>
- </div> 
-  <div class="row">
-    <div class="col-sm-1 fondo-celeste texto-negrilla">PARTIDA</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">PESO</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">PESO</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">Ley de</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">PESO</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">COTIZACION</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">VALOR</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
- </div> 
- <div class="row">
-    <div class="col-sm-1 fondo-celeste texto-negrilla">ARANCELARIA</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">MINERAL</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">BRUTO Kg</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">NETO Kg</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">Mineral</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">FINO</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">OF</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">BRUTO OF</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">ALICUOTA</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">RM</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
-    <div class="col-sm-1 fondo-celeste texto-negrilla">&nbsp</div>
- </div>  
+    <div class="col-sm-3">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-12">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-12">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-left-bold">PARTIDA</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">&nbsp</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">PESO</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">PESO</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">Ley de</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">PESO</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">COTIZACION</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">VALOR</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">&nbsp</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-right-bold">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-left-bold2">ARANCELARIA</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">MINERAL</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">BRUTO Kg</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">NETO Kg</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">Mineral</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">FINO</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">OF</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">BRUTO OF</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">ALICUOTA</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-right-bold2">RM</div>
+   </div>  
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1 border-only-left-bold">2608.00.00.00</div>
+    <div class="col-sm-1 border-only-left-bold">Zinc</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.pesoBrutoZinc | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.pesoNetoZinc | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right texto-negrilla-rojo">{{planillaC.leyMineralZinc | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.pesoFinoZinc | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right texto-negrilla-rojo">{{planillaC.cotizacionZinc | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.valorBrutoZinc | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right texto-negrilla-rojo">{{planillaC.alicuotaZinc | number:3}}</div>
+    <div class="col-sm-1 border-only-left-bold border-only-right-bold text-right padding-right">{{planillaC.rmZinc | number:2}}</div>
+   </div>  
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1 border-bottom-left-bold2">2616.10.00.00</div>
+    <div class="col-sm-1 border-bottom-bold2">Plata</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.pesoBrutoPlata | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.pesoNetoPlata | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right texto-negrilla-rojo">{{planillaC.leyMineralPlata | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.pesoFinoPlata | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right texto-negrilla-rojo">{{planillaC.cotizacionPlata | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.valorBrutoPlata | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right texto-negrilla-rojo">{{planillaC.alicuotaPlata | number:3}}</div>
+    <div class="col-sm-1 border-bottom-right-bold2 text-right padding-right">{{planillaC.rmPlata | number:2}}</div>
+   </div>  
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 border-bottom-left-bold2">&nbsp</div>
+    <div class="col-sm-1 border-bottom-bold2">&nbsp</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right texto-negrilla-rojo fondo-rosado">{{planillaC.sumaPesoBruto | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right fondo-celeste">{{planillaC.sumaPesoNeto | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right fondo-celeste texto-negrilla">US$</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right fondo-celeste texto-negrilla">{{planillaC.sumaValorUSD | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right fondo-celeste texto-negrilla">US$</div>
+    <div class="col-sm-1 border-bottom-right-bold2 text-right padding-right fondo-celeste texto-negrilla">{{planillaC.sumaRMUSD | number:2}}</div>
+   </div>  
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 border-bottom-left-bold2">&nbsp</div>
+    <div class="col-sm-1 border-only-bottom-bold">&nbsp</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right fondo-celeste texto-negrilla">Bs</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right fondo-celeste texto-negrilla">{{planillaC.sumaValorBS | number:2}}</div>
+    <div class="col-sm-1 border-only-bottom-bold text-right padding-right fondo-celeste texto-negrilla">Bs</div>
+    <div class="col-sm-1 border-bottom-right-bold2 border-left-none text-right padding-right fondo-celeste texto-negrilla">{{planillaC.sumaRMBS | number:2}}</div>
+   </div>
+   <div class="row">
+       <div class="col-sm-12">&nbsp</div>
+       <div class="col-sm-12">&nbsp</div>
+       <div class="col-sm-12">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-left-bold">TRIBUTO</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">DEPTO</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">No</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">%</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">RM</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-bold">RM</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-top-right-bold">No BOLETA</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-left-bold2">&nbsp</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">ORIGEN</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">CUENTA</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">DISTRIBUCION</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">EN US$</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-bold2">EN BS</div>
+    <div class="col-sm-1 fondo-celeste texto-negrilla text-center border-bottom-right-bold2">3700</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+   </div> 
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">1</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">POTOSI</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">85</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.sumaRMUSD*85/100 | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.sumaRMUSD*85/100*planillaC.tipoCambio | number:2}}</div>
+    <div class="col-sm-1 border-only-left-bold border-only-right-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+   </div>  
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 border-bottom-left-bold2 text-right padding-right">2</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">Colcha K</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">15</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.sumaRMUSD*15/100 | number:2}}</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.sumaRMUSD*15/100*planillaC.tipoCambio | number:2}}</div>
+    <div class="col-sm-1 border-bottom-right-bold2 text-right padding-right">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+   </div>
+   <div class="row">
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1 border-bottom-bold2 text-right padding-right">{{planillaC.sumaRMUSD*85/100+planillaC.sumaRMUSD*15/100 | number:2}}</div>
+    <div class="col-sm-1 border-bottom-right-bold2 text-right padding-right">{{planillaC.sumaRMUSD*85/100*planillaC.tipoCambio+planillaC.sumaRMUSD*15/100*planillaC.tipoCambio | number:2}}</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+    <div class="col-sm-1">&nbsp</div>
+   </div>      
+  </div>
+ </div>
 </div>
