@@ -83,10 +83,6 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
     $scope.planilla.pesoMermaFactores=6.96;
     $scope.planilla.contenidoZnTipoDeCambioFactores=6.96;
     $scope.calcular = function(){
-      $scope.planilla.pesoHumedadPesos=9.18;
-      $scope.planilla.pesoKilosNetosHumedosPeso=1445000.00;
-
-
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
       $scope.planilla.pesoMermaPeso=(($scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso)*$scope.planilla.pesoMermaPesos)/100;
       $scope.planilla.pesoKilosNetosSecosPeso=$scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso-$scope.planilla.pesoMermaPeso;
