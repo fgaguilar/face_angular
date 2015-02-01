@@ -190,8 +190,19 @@ angular.module('app')
               })
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc',
-                  templateUrl: 'tpl/form_planillaZinc.html'
+                  templateUrl: 'tpl/form_planillaZinc.html',
+                  controller: 'FormVacioCtrl'
               })                
+
+/******************************************************************************/              
+              .state('app.export.planillaZincUno', {
+                  url: '/planillaZincUno/:planId',
+                  controller: 'FormUnoCtrl',
+                  templateUrl: 'tpl/form_planillaZinc.html'
+              })  
+
+/******************************************************************************/
+
               .state('app.export.planillaPlomo', {
                   url: '/planillaPlomo',
                   templateUrl: 'tpl/form_listado.html'
@@ -224,7 +235,7 @@ angular.module('app')
               })
               .state('app.taxation.verificacionCalculo', {
                   url: '/verificacionCalculo/:planId',
-                  //controller: 'PlanCalculoCtrl',
+                  controller: 'PlanCalculoCtrl',
                   templateUrl: 'tpl/form_plan_calculo.html'
               })
               .state('app.taxation.pagoRegalias', {

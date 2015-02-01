@@ -17,9 +17,11 @@
       <td>{{plane.contenidoListaEmpaqueFactores}}</td>
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
       <td>
-        <a href="#/app/export/planillaZinc/{{plane.id}}"><i class="fa fa-pencil-square-o"></i></a>
+        <a ui-sref="app.export.planillaZincUno({planId:'1'})">
+          <i  class="fa fa-pencil-square-o"></i>
+        </a>
       </td>
     </tr>
     </tbody>
   </table>
-</div>
+  

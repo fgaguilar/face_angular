@@ -63,11 +63,11 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
+app.controller('FormVacioCtrl',function ($scope,$location,$timeout,Plan) {
     console.groupCollapsed("CreateCtrl");
     $scope.planilla={};
     $scope.grabar = function() {
-      console.error("Ingreso agrabar");
+      console.error("Ingreso a grabar");
       Plan.save($scope.planilla, function() {
         $timeout(function() {
           $location.path('/');
@@ -83,6 +83,7 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
     $scope.planilla.pesoMermaFactores=6.96;
     $scope.planilla.contenidoZnTipoDeCambioFactores=6.96;
     $scope.calcular = function(){
+      console.log('Ingreso a Calcular!!!');
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
       $scope.planilla.pesoMermaPeso=(($scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso)*$scope.planilla.pesoMermaPesos)/100;
       $scope.planilla.pesoKilosNetosSecosPeso=$scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso-$scope.planilla.pesoMermaPeso;
@@ -106,6 +107,54 @@ app.controller('FormDemoCtrl',function ($scope,$location,$timeout,Plan) {
       return "";
     };
   });
+
+app.controller('FormUnoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {    
+  var planillaId = $stateParams.planId;
+  $scope.planillaC={};
+  $scope.planilla2={};
+  $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
+    console.log($scope);
+    $scope.planilla=datos;
+    console.log("DATOS");
+    console.log($scope.planilla);
+    $scope.calcular = function(){
+      console.log('Ingreso a Calcular!!!');
+      $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
+      $scope.planilla.pesoMermaPeso=(($scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso)*$scope.planilla.pesoMermaPesos)/100;
+      $scope.planilla.pesoKilosNetosSecosPeso=$scope.planilla.pesoKilosNetosHumedosPeso-$scope.planilla.pesoHumedadPeso-$scope.planilla.pesoMermaPeso;
+      $scope.planilla.contenidoZnPesokg=$scope.planilla.pesoKilosNetosSecosPeso*$scope.planilla.contenidoZnLeyes/100;
+      $scope.planilla.contenidoZnPesolf=$scope.planilla.contenidoZnPesokg*$scope.planilla.pesoKilosNetosHumedosFactores;
+      $scope.planilla.contenidoAgPesokg=$scope.planilla.pesoKilosNetosSecosPeso*$scope.planilla.contenidoAgLeyes/1000000;
+      $scope.planilla.contenidoAgPesoot=$scope.planilla.contenidoAgPesokg*$scope.planilla.pesoHumedadFactores;
+      $scope.planilla.contenidoAgFleteTotalFactores=$scope.planilla.contenidoAgInternoFactores*1+$scope.planilla.contenidoAgExternoFactores*1;
+      $scope.planilla.baseZnSus=$scope.planilla.contenidoZnPesolf*$scope.planilla.baseZnCotizaciones;
+      $scope.planilla.baseAgSus=$scope.planilla.contenidoAgPesoot*$scope.planilla.baseAgCotizaciones;
+      $scope.planilla.baseTotalSus=$scope.planilla.baseZnSus*1+$scope.planilla.baseAgSus*1;
+      $scope.planilla.basePromedioSus=$scope.planilla.baseTotalSus*45/100;
+      $scope.planilla.baseDiferenciaSus=$scope.planilla.baseTotalSus-$scope.planilla.basePromedioSus;
+      $scope.planilla.impuestoZnSus=$scope.planilla.baseZnSus*$scope.planilla.impuestoZnAlicuota/100;
+      $scope.planilla.impuestoAgSus=$scope.planilla.baseAgSus*$scope.planilla.impuestoAgAlicuota/100;
+      $scope.planilla.impuestoTotalSusSus=$scope.planilla.impuestoZnSus*1+$scope.planilla.impuestoAgSus*1;
+      $scope.planilla.impuestoTotalBsSus=$scope.planilla.impuestoTotalSusSus*$scope.planilla.pesoMermaFactores;
+      $scope.planilla.baseAgTaraTotalFactores=$scope.planilla.baseZnContenedoresFactores*2050;
+      $scope.planilla.baseTotalPesoBrutoFactores=$scope.planilla.pesoKilosNetosHumedosPeso*1+$scope.planilla.baseAgTaraTotalFactores*1;
+      $scope.planilla.impuestoZnValorConcentradoFactores=$scope.planilla.baseTotalSus/$scope.planilla.pesoKilosNetosHumedosPeso;
+      return "";
+    };     
+  });
+  console.groupCollapsed("FormUnoCtrl");
+  $scope.grabar = function() {
+    console.error("Ingreso a actualizar");
+    Plan.update({planillaId: $scope.planilla.id}, $scope.planilla, function() {
+      $timeout(function() {
+        $location.path('/');
+      });
+    });
+  };
+  console.groupEnd();  
+ 
+});
+
 
 app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
   var planillaId = $stateParams.planId;

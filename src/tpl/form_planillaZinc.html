@@ -1,4 +1,4 @@
-<div class="wrapper-md" ng-controller="FormDemoCtrl">
+<div class="wrapper-md">
   <div class="panel panel-default">
     <div class="panel-heading font-bold">Planilla de Calculo de la RM de Zinc</div>
     <div class="panel-body">
@@ -47,14 +47,14 @@
             <label class="col-sm-1 control-label">Humedad</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.pesoHumedadPesos" required>
+                <input type="text" class="form-control text-right input-sm" ng-value="calcular()" fraction="2" numeric-input ng-model="planilla.pesoHumedadPesos" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" 
-                ng-value="calcular()" fraction="2" numeric-input ng-model="planilla.pesoHumedadPeso">
+                 fraction="2" numeric-input ng-model="planilla.pesoHumedadPeso">
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
