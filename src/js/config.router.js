@@ -203,10 +203,16 @@ angular.module('app')
 
 /******************************************************************************/
 
-              .state('app.export.planillaPlomo', {
-                  url: '/planillaPlomo',
+              .state('app.export.planillaZincListado', {
+                  url: '/planillaZinc',
+                  controller: 'ListZincCtrl',
                   templateUrl: 'tpl/form_listado.html'
               })
+              .state('app.export.planillaPlomoListado', {
+                  url: '/planillaPlomo',
+                  controller: 'ListPlomoCtrl',
+                  templateUrl: 'tpl/form_listado.html'
+              })              
               .state('app.export.listaEmpaque', {
                   url: '/listaEmpaque',
                   templateUrl: 'tpl/form_lista_empaque.html'

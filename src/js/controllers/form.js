@@ -49,7 +49,7 @@ app.directive('numericInput', function($filter, $browser, $locale) {
         }        
     }
 })
-app.controller('ListCtrl', function($scope, Plan) {
+app.controller('ListZincCtrl', function($scope, Plan) {
    $scope.planilla = Plan.query();
   // $scope.orderProp = 'id';
 });

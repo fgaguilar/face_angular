@@ -1,21 +1,27 @@
-<div ng-controller="ListCtrl">
+<div>
   <input type="text" ng-model="search" class="search-query" placeholder="Search">
   <table class="table">
     <thead>
     <tr>
       <th>ID</th>
       <th>Lote</th>
-      <th>Lista Empaque</th>
+      <th>Kilos Netos Húmedos</th>
       <th>Fecha</th>
-      <th><a href="#/app/export/planillaZinc"><i class="fa fa-plus-square-o"></i></a></th>
+      <th>
+        <a ui-sref="app.export.planillaZinc">
+          <i  class="fa fa-plus-square-o"></i>
+        </a>
+      </th>
     </tr>
+    
     </thead>
     <tbody>
     <tr ng-repeat="plane in planilla | filter:search ">
       <td>{{plane.id}}</td>
       <td>{{plane.pesoLoteFactores}}</td>
-      <td>{{plane.contenidoListaEmpaqueFactores}}</td>
+      <td>{{plane.pesoKilosNetosHumedosPeso}}</td>
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
+      pesoKilosNetosHumedosPeso
       <td>
         <a ui-sref="app.export.planillaZincUno({planId:plane.id})">
           <i  class="fa fa-pencil-square-o"></i>
