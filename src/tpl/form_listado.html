@@ -3,6 +3,7 @@
   <table class="table">
     <thead>
     <tr>
+      <th>Planilla</th>
       <th>ID</th>
       <th>Lote</th>
       <th>Kilos Netos Húmedos</th>
@@ -17,11 +18,11 @@
     </thead>
     <tbody>
     <tr ng-repeat="plane in planilla | filter:search ">
+      <td>{{plane.planilla}}</td>
       <td>{{plane.id}}</td>
       <td>{{plane.pesoLoteFactores}}</td>
       <td>{{plane.pesoKilosNetosHumedosPeso}}</td>
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
-      pesoKilosNetosHumedosPeso
       <td>
         <a ui-sref="app.export.planillaZincUno({planId:plane.id})">
           <i  class="fa fa-pencil-square-o"></i>
