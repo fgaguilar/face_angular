@@ -5,54 +5,94 @@
       <form action="" name="forma">
       <!-- 1a -->
         <div class="row">  
-          <div class="col-sm-5">Potosí, 25 de junio de 2014</div>
+          <div class="col-sm-5 texto-negrilla">Potosí, {{planillaC.pesoKilosNetosSecosFactores}}</div>
         </div> 
       <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4">COMPRADOR</div>
-          <div class="col-sm-5">SUMMIT MINERALS GMBH</div>
+          <div class="col-sm-4 texto-negrilla">COMPRADOR</div>
+          <div class="col-sm-5">INPUT - SUMMIT MINERALS GMBH</div>
         </div>
         <!-- 3a -->
         <div class="row">  
           <div class="col-sm-4"></div>
-          <div class="col-sm-5">BAHNNHOFSTRASSE 10 CH-5300 Zug - SWITZERLAND</div>
+          <div class="col-sm-5">INPUT - BAHNNHOFSTRASSE 10 CH-5300 Zug - SWITZERLAND</div>
         </div> 
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4">PUERTO EN TRANSITO</div>
-          <div class="col-sm-5">MEJILLONES</div>
+          <div class="col-sm-4 texto-negrilla">PUERTO EN TRANSITO</div>
+          <div class="col-sm-5">INPUT - MEJILLONES</div>
         </div>      
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4">PUERTO DESTINO</div>
-          <div class="col-sm-5">ANTWERP</div>
+          <div class="col-sm-4 texto-negrilla">PUERTO DESTINO</div>
+          <div class="col-sm-5">{{planillaC.puertoDestino}}</div>
         </div>   
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4">PAIS DESTINO</div>
-          <div class="col-sm-5">BELGICA</div>
-        </div>                         
-        <!-- 2a -->
-        <div class="row">  
-          <div class="col-sm-4">CONCENTRADO A GRANEL DE</div>
-          <div class="col-sm-5">ZINC-PLATA</div>
-        </div> 
-        <!-- 2a -->
-        <div class="row">  
-          <div class="col-sm-4">PARTIDA ARANCELARIA</div>
-          <div class="col-sm-5">2608.00.00.00  2616.10.00.00</div>
+          <div class="col-sm-4 texto-negrilla">PAIS DESTINO</div>
+          <div class="col-sm-5">{{planillaC.paisDestino}}</div>
         </div>
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4">ORIGEN</div>
-          <div class="col-sm-5">POTOSI - BOLIVIA</div>
+          <div class="col-sm-4 texto-negrilla">CONCENTRADO A GRANEL DE</div>
+          <div class="col-sm-5">DE DONDE VIENE? ZINC-PLATA</div>
+        </div> 
+        <!-- 2a -->
+        <div class="row">  
+          <div class="col-sm-4 texto-negrilla">PARTIDA ARANCELARIA</div>
+          <div class="col-sm-2">2608.00.00.00</div>
+          <div class="col-sm-2">2616.10.00.00</div>
+        </div>
+        <!-- 2a -->
+        <div class="row">  
+          <div class="col-sm-4 texto-negrilla">ORIGEN</div>
+          <div class="col-sm-5">INPUT - POTOSI - BOLIVIA</div>
         </div>      
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4">No LOTE</div>
-          <div class="col-sm-5">EXMSC-Z-2259-2007</div>
+          <div class="col-sm-4 texto-negrilla">No LOTE</div>
+          <div class="col-sm-5">{{planillaC.pesoLoteFactores}}</div>
         </div> 
- 
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoKilosNetosHumedosPeso | number:2}}</div>
+          <div class="col-sm-1 text-right padding-right texto-negrilla">Mineral</div>
+          <div class="col-sm-1 text-right padding-right texto-negrilla">Leyes</div>
+          <div class="col-sm-1 text-right padding-right texto-negrilla">Finos</div>
+          <div class="col-sm-1 text-right padding-right texto-negrilla">Cotizaciones</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2 texto-negrilla">Humedad</div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoHumedadPesos | number:2}}</div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoHumedadPeso | number:2}}</div>
+          <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2 texto-negrilla">Merma</div>
+          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.pesoMermaPesos | number:2}}</div>
+          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.pesoMermaPeso | number:2}}</div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.contenidoZnLeyes | number:2}}</div>
+          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.contenidoZnPesokg | number:2}}</div>
+          <div class="col-sm-1 text-right">{{planillaC.baseZnCotizaciones | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoZnPesolf | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2 texto-negrilla">Kilos Netos Secos</div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoKilosNetosSecosPeso | number:2}}</div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgLeyes | number:2}}</div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgPesokg | number:2}}</div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.baseAgCotizaciones | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgPesoot}}</div>
+        </div>
       </form>
     </div>
   </div>

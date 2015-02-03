@@ -324,3 +324,14 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
     $scope.planillaC.sumaRMBS=$scope.planillaC.sumaRMUSD*$scope.planillaC.tipoCambio;
   });
 });
+
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+  console.log("Ingreso a FacturaExportacionCtrl");
+  var planillaId = $stateParams.planId;
+  $scope.planillaC={};
+  $scope.planilla2={};
+  $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
+    $scope.planillaC=datos;
+    console.log($scope.planillaC);
+  });
+});
