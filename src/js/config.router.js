@@ -56,27 +56,27 @@ angular.module('app')
                   }
               })
               .state('app.export.planillaZinc', {
-                  url: '/planillaZinc',
+                  url: '/planillaZinc/:tipoPlanilla',
                   templateUrl: 'tpl/form_planillaZinc.html',
                   controller: 'FormVacioCtrl'
-              })                
+              })
 
 /******************************************************************************/              
               .state('app.export.planillaZincUno', {
                   url: '/planillaZincUno/:planId',
                   controller: 'FormUnoCtrl',
                   templateUrl: 'tpl/form_planillaZinc.html'
-              })  
+              })
 
 /******************************************************************************/
 
               .state('app.export.planillaZincListado', {
-                  url: '/planillaZinc',
+                  url: '/planillaZincListado/:tipoPlanilla',
                   controller: 'ListZincCtrl',
                   templateUrl: 'tpl/form_listado.html'
               })
               .state('app.export.planillaPlomoListado', {
-                  url: '/planillaPlomo',
+                  url: '/planillaPlomoListado/:tipoPlanilla',
                   controller: 'ListPlomoCtrl',
                   templateUrl: 'tpl/form_listado.html'
               })              

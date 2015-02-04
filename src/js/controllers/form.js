@@ -18,6 +18,13 @@ app.factory('Control', ['$resource',
     });
   }]);
 
+app.factory('PlanTipo', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/planillasTipo/:tipoPlanilla', {}, {
+      'get': {method:'GET', params:{tipoPlanilla:'@tipoPlanilla'}, isArray:true},
+    });
+  }]);
+
 app.run(function($locale){
     $locale.NUMBER_FORMATS.GROUP_SEP = ",";
 });
@@ -56,10 +63,33 @@ app.directive('numericInput', function($filter, $browser, $locale) {
         }        
     }
 })
-app.controller('ListZincCtrl', function($scope, Plan) {
-   $scope.planilla = Plan.query();
-  // $scope.orderProp = 'id';
+/*app.controller('ListZincCtrl', function($scope, PlanTipo) {
+   $scope.planilla = PlanTipo.query();
+   console.log($scope.planilla);
+});*/
+
+app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
+  console.log("Ingreso a ListZincCtrl");
+  var tipoPlanilla = $stateParams.tipoPlanilla;
+  $scope.planilla={};
+  $scope.planilla2={};
+  $scope.planilla2=PlanTipo.get({'tipoPlanilla': tipoPlanilla}, function(datos){
+    $scope.planilla=datos;
+    $scope.tipoPlanilla=tipoPlanilla;
+  });
 });
+
+app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo) {
+  console.log("Ingreso a ListZincCtrl");
+  var tipoPlanilla = $stateParams.tipoPlanilla;
+  $scope.planilla={};
+  $scope.planilla2={};
+  $scope.planilla2=PlanTipo.get({'tipoPlanilla': tipoPlanilla}, function(datos){
+    $scope.planilla=datos;
+    $scope.tipoPlanilla=tipoPlanilla;
+  });
+});
+
 app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     $scope.grabar = function() {
       Plan.save($scope.plans, function() {
@@ -70,8 +100,9 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$location,$timeout,Plan) {
+app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
     console.groupCollapsed("CreateCtrl");
+    var tipoPlanilla = $stateParams.tipoPlanilla;
     $scope.planilla={};
     $scope.grabar = function() {
       console.error("Ingreso a grabar");
@@ -82,7 +113,7 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,Plan) {
       });
     };
     console.groupEnd();
-
+    $scope.planilla.planilla=tipoPlanilla;
     $scope.planilla.pesoMermaPesos=1.00;
     $scope.planilla.pesoKilosNetosHumedosFactores=2.2046223;
     $scope.planilla.pesoHumedadFactores=32.15073;

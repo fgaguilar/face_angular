@@ -9,8 +9,8 @@
       <th>Kilos Netos Húmedos</th>
       <th>Fecha</th>
       <th>
-        <a ui-sref="app.export.planillaZinc">
-          <i  class="fa fa-plus-square-o"></i>
+        <a ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">
+          <i class="fa fa-plus-square-o"></i>
         </a>
       </th>
     </tr>
@@ -25,7 +25,7 @@
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
       <td>
         <a ui-sref="app.export.planillaZincUno({planId:plane.id})">
-          <i  class="fa fa-pencil-square-o"></i>
+          <i class="fa fa-pencil-square-o"></i>
         </a>
       </td>
     </tr>
