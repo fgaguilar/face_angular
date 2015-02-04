@@ -54,45 +54,74 @@
           <div class="col-sm-5">{{planillaC.pesoLoteFactores}}</div>
         </div> 
         <div class="row">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoKilosNetosHumedosPeso | number:2}}</div>
+          <div class="col-sm-2"></div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.pesoKilosNetosHumedosPeso | number:2}}</div>
           <div class="col-sm-1 text-right padding-right texto-negrilla">Mineral</div>
           <div class="col-sm-1 text-right padding-right texto-negrilla">Leyes</div>
-          <div class="col-sm-1 text-right padding-right texto-negrilla">Finos</div>
-          <div class="col-sm-1 text-right padding-right texto-negrilla">Cotizaciones</div>
+          <div class="col-sm-2 text-right padding-right texto-negrilla">Finos</div>
+          <div class="col-sm-2 text-right padding-right texto-negrilla">Cotizaciones</div>
         </div>
         <div class="row">
           <div class="col-sm-2 texto-negrilla">Humedad</div>
           <div class="col-sm-1 text-right padding-right">{{planillaC.pesoHumedadPesos | number:2}}</div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoHumedadPeso | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.pesoHumedadPeso | number:2}}</div>
           <div class="col-sm-4"></div>
         </div>
         <div class="row">
           <div class="col-sm-2 texto-negrilla">Merma</div>
           <div class="col-sm-1 text-right text-right padding-right">{{planillaC.pesoMermaPesos | number:2}}</div>
-          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.pesoMermaPeso | number:2}}</div>
+          <div class="col-sm-2 text-right text-right padding-right">{{planillaC.pesoMermaPeso | number:2}}</div>
           <div class="col-sm-1"></div>
           <div class="col-sm-1 text-right text-right padding-right">{{planillaC.contenidoZnLeyes | number:2}}</div>
-          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.contenidoZnPesokg | number:2}}</div>
-          <div class="col-sm-1 text-right">{{planillaC.baseZnCotizaciones | number:2}}</div>
+          <div class="col-sm-2 text-right text-right padding-right">{{planillaC.contenidoZnPesokg | number:2}}</div>
+          <div class="col-sm-2 text-right">{{planillaC.baseZnCotizaciones | number:2}}</div>
         </div>
         <div class="row">
-          <div class="col-sm-6"></div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoZnPesolf | number:2}}</div>
+          <div class="col-sm-7"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.contenidoZnPesolf | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-2 texto-negrilla">Kilos Netos Secos</div>
           <div class="col-sm-1"></div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoKilosNetosSecosPeso | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.pesoKilosNetosSecosPeso | number:2}}</div>
           <div class="col-sm-1"></div>
           <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgLeyes | number:2}}</div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgPesokg | number:2}}</div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.baseAgCotizaciones | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.contenidoAgPesokg | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.baseAgCotizaciones | number:2}}</div>
         </div>
         <div class="row">
-          <div class="col-sm-6"></div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgPesoot}}</div>
+          <div class="col-sm-7"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.contenidoAgPesoot | number:2}}</div>
         </div>
+        <div class="row">
+          <div class="col-sm-9"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.baseZnSus | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.baseAgSus | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 texto-negrilla">TOTAL VALOR OFICIAL EXPORTACION</div>
+          <div class="col-sm-6"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.baseTotalSus | number:2}}</div>
+        </div>   
+        <div class="row">
+          <div class="col-sm-3">Son:</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.basePromedioSus | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 texto-negrilla">VALOR FOB NETO DE GASTOS DE REALIZACION</div>
+          <div class="col-sm-5"></div>
+          <div class="col-sm-2 text-right padding-right">{{planillaC.baseDiferenciaSus | number:2}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Son:</div>
+        </div>     
       </form>
     </div>
   </div>

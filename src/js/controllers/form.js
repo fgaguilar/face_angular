@@ -11,6 +11,13 @@ app.factory('Plan', ['$resource',
     });
   }]);
 
+app.factory('Control', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/codigocontrol/:planillaId', {}, {
+      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:false},
+    });
+  }]);
+
 app.run(function($locale){
     $locale.NUMBER_FORMATS.GROUP_SEP = ",";
 });
@@ -325,13 +332,18 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
   $scope.planilla2={};
-  $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
-    $scope.planillaC=datos;
-    console.log($scope.planillaC);
+  $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
+    $scope.planillaC=datos1;
+    $scope.codigoControl=Control.get({'planillaId': planillaId}, function(datos2){
+        console.log(datos2);
+        $scope.planillaC.control=datos2;
+        console.log($scope.planillaC.control);
+    });
   });
 });
+
