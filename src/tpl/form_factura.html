@@ -3,60 +3,69 @@
     <div class="panel-heading font-bold">Factura de Exportación</div>
     <div class="panel-body">
       <form action="" name="forma">
+
       <!-- 1a -->
         <div class="row">  
-          <div class="col-sm-5 texto-negrilla">Potosí, {{planillaC.pesoKilosNetosSecosFactores}}</div>
+          <div class="col-sm-5 texto-negrilla">Potosí, {{factura.fecha}}</div>
         </div> 
       <!-- 2a -->
-        <div class="row">  
-          <div class="col-sm-4 texto-negrilla">COMPRADOR</div>
-          <div class="col-sm-5">INPUT - SUMMIT MINERALS GMBH</div>
+        <div class="row">
+          <div class="form-group">
+            <label class="col-sm-3 control-label texto-negrilla">COMPRADOR</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control text-right input-sm" ng-model="factura.comprador">
+              <input type="text" class="form-control text-right input-sm" ng-model="factura.direccion">
+            </div>
+          </div>
         </div>
-        <!-- 3a -->
-        <div class="row">  
-          <div class="col-sm-4"></div>
-          <div class="col-sm-5">INPUT - BAHNNHOFSTRASSE 10 CH-5300 Zug - SWITZERLAND</div>
-        </div> 
+        <div class="row">
+          <div class="form-group">
+            <label class="col-sm-3 control-label texto-negrilla">PUERTO EN TRANSITO</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control text-right input-sm" ng-model="factura.puertoTransito">
+            </div>
+          </div>
+        </div>              
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4 texto-negrilla">PUERTO EN TRANSITO</div>
-          <div class="col-sm-5">INPUT - MEJILLONES</div>
-        </div>      
-        <!-- 2a -->
-        <div class="row">  
-          <div class="col-sm-4 texto-negrilla">PUERTO DESTINO</div>
-          <div class="col-sm-5">{{planillaC.puertoDestino}}</div>
+          <div class="col-sm-3 texto-negrilla">PUERTO DESTINO</div>
+          <div class="col-sm-9">{{factura.puertoDestino}}</div>
         </div>   
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4 texto-negrilla">PAIS DESTINO</div>
-          <div class="col-sm-5">{{planillaC.paisDestino}}</div>
+          <div class="col-sm-3 texto-negrilla">PAIS DESTINO</div>
+          <div class="col-sm-9">{{factura.paisDestino}}</div>
         </div>
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4 texto-negrilla">CONCENTRADO A GRANEL DE</div>
-          <div class="col-sm-5">DE DONDE VIENE? ZINC-PLATA</div>
+          <div class="col-sm-3 texto-negrilla">CONCENTRADO A GRANEL DE</div>
+          <div class="col-sm-9">ZINC-PLATA</div>
         </div> 
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4 texto-negrilla">PARTIDA ARANCELARIA</div>
+          <div class="col-sm-3 texto-negrilla">PARTIDA ARANCELARIA</div>
           <div class="col-sm-2">2608.00.00.00</div>
           <div class="col-sm-2">2616.10.00.00</div>
         </div>
         <!-- 2a -->
-        <div class="row">  
-          <div class="col-sm-4 texto-negrilla">ORIGEN</div>
-          <div class="col-sm-5">INPUT - POTOSI - BOLIVIA</div>
-        </div>      
+        <div class="row">
+          <div class="form-group">
+            <label class="col-sm-3 control-label texto-negrilla">ORIGEN</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control text-right input-sm" ng-model="factura.origen">
+            </div>
+          </div>
+        </div>           
+      
         <!-- 2a -->
         <div class="row">  
-          <div class="col-sm-4 texto-negrilla">No LOTE</div>
-          <div class="col-sm-5">{{planillaC.pesoLoteFactores}}</div>
+          <div class="col-sm-3 texto-negrilla">No LOTE</div>
+          <div class="col-sm-9">{{factura.numeroLote}}</div>
         </div> 
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-1"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.pesoKilosNetosHumedosPeso | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.pesoKilosNetosHumedosPeso | number:2}}</div>
           <div class="col-sm-1 text-right padding-right texto-negrilla">Mineral</div>
           <div class="col-sm-1 text-right padding-right texto-negrilla">Leyes</div>
           <div class="col-sm-2 text-right padding-right texto-negrilla">Finos</div>
@@ -64,64 +73,68 @@
         </div>
         <div class="row">
           <div class="col-sm-2 texto-negrilla">Humedad</div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.pesoHumedadPesos | number:2}}</div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.pesoHumedadPeso | number:2}}</div>
+          <div class="col-sm-1 text-right padding-right">{{factura.pesoHumedadPesos | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.pesoHumedadPeso | number:2}}</div>
           <div class="col-sm-4"></div>
         </div>
         <div class="row">
           <div class="col-sm-2 texto-negrilla">Merma</div>
-          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.pesoMermaPesos | number:2}}</div>
-          <div class="col-sm-2 text-right text-right padding-right">{{planillaC.pesoMermaPeso | number:2}}</div>
+          <div class="col-sm-1 text-right text-right padding-right">{{factura.pesoMermaPesos | number:2}}</div>
+          <div class="col-sm-2 text-right text-right padding-right">{{factura.pesoMermaPeso | number:2}}</div>
           <div class="col-sm-1"></div>
-          <div class="col-sm-1 text-right text-right padding-right">{{planillaC.contenidoZnLeyes | number:2}}</div>
-          <div class="col-sm-2 text-right text-right padding-right">{{planillaC.contenidoZnPesokg | number:2}}</div>
-          <div class="col-sm-2 text-right">{{planillaC.baseZnCotizaciones | number:2}}</div>
+          <div class="col-sm-1 text-right text-right padding-right">{{factura.contenidoZnLeyes | number:2}}</div>
+          <div class="col-sm-2 text-right text-right padding-right">{{factura.contenidoZnPesokg | number:2}}</div>
+          <div class="col-sm-2 text-right">{{factura.baseZnCotizaciones | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-7"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.contenidoZnPesolf | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.contenidoZnPesolf | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-2 texto-negrilla">Kilos Netos Secos</div>
           <div class="col-sm-1"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.pesoKilosNetosSecosPeso | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.pesoKilosNetosSecosPeso | number:2}}</div>
           <div class="col-sm-1"></div>
-          <div class="col-sm-1 text-right padding-right">{{planillaC.contenidoAgLeyes | number:2}}</div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.contenidoAgPesokg | number:2}}</div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.baseAgCotizaciones | number:2}}</div>
+          <div class="col-sm-1 text-right padding-right">{{factura.contenidoAgLeyes | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.contenidoAgPesokg | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.baseAgCotizaciones | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-7"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.contenidoAgPesoot | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.contenidoAgPesoot | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-9"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.baseZnSus | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.baseZnSus | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-9"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.baseAgSus | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.baseAgSus | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-3 texto-negrilla">TOTAL VALOR OFICIAL EXPORTACION</div>
           <div class="col-sm-6"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.baseTotalSus | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.baseTotalSus | number:2}}</div>
         </div>   
         <div class="row">
           <div class="col-sm-3">Son:</div>
         </div>
         <div class="row">
           <div class="col-sm-9"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.basePromedioSus | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.basePromedioSus | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-4 texto-negrilla">VALOR FOB NETO DE GASTOS DE REALIZACION</div>
           <div class="col-sm-5"></div>
-          <div class="col-sm-2 text-right padding-right">{{planillaC.baseDiferenciaSus | number:2}}</div>
+          <div class="col-sm-2 text-right padding-right">{{factura.baseDiferenciaSus | number:2}}</div>
         </div>
         <div class="row">
           <div class="col-sm-3">Son:</div>
-        </div>     
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Codigo de Control</div>
+          <div class="col-sm-3"></div>
+        </div>      
       </form>
     </div>
   </div>
