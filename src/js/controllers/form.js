@@ -26,14 +26,14 @@ app.factory('Factura', ['$resource',
 app.factory('Control', ['$resource',
   function($resource){
     return $resource('http://localhost/face_laravel/public/api/codigocontrol/:planillaId', {}, {
-      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:false},
+      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:false}
     });
   }]);
 
 app.factory('PlanTipo', ['$resource',
   function($resource){
     return $resource('http://localhost/face_laravel/public/api/planillasTipo/:tipoPlanilla', {}, {
-      'get': {method:'GET', params:{tipoPlanilla:'@tipoPlanilla'}, isArray:true},
+      'get': {method:'GET', params:{tipoPlanilla:'@tipoPlanilla'}, isArray:true}
     });
   }]);
 
@@ -48,9 +48,9 @@ app.directive('numericInput', function($filter, $browser, $locale) {
             var replaceRegex = new RegExp($locale.NUMBER_FORMATS.GROUP_SEP, 'g');
             var fraction = $attrs.fraction || $locale.NUMBER_FORMATS.PATTERNS[0].maxFrac;
             var listener = function() {
-                var value = $element.val().replace(replaceRegex, '')
+                var value = $element.val().replace(replaceRegex, '');
                 $element.val($filter('number')(value, fraction))
-            }
+            };
             ngModelCtrl.$parsers.push(function(viewValue) {
                 var newVal = viewValue.replace(replaceRegex, '');
                 var newValAsNumber = newVal * 1;
@@ -62,24 +62,24 @@ app.directive('numericInput', function($filter, $browser, $locale) {
                     ngModelCtrl.$setValidity(ngModelCtrl.$name+'Numeric', true);
                 }
                 return newVal;
-            })
+            });
             ngModelCtrl.$render = function() {
                 $element.val($filter('number')(ngModelCtrl.$viewValue, fraction))
-            }         
+            };
             $element.bind('change', listener);
             $element.bind('keydown', function(event) {
-                var key = event.keyCode
+                var key = event.keyCode;
                 if (key == 91 || (15 < key && key < 19) || (35 <= key && key <= 40)) 
-                    return 
+                    return newVal;
             })
         }        
     }
-})
+});
 /*app.controller('ListZincCtrl', function($scope, PlanTipo) {
    $scope.planilla = PlanTipo.query();
    console.log($scope.planilla);
 });*/
-
+/*Adicion de cmentario para git*/
 app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
@@ -388,6 +388,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.paisDestino=datos1.paisDestino;
     $scope.factura.numeroLote=datos1.pesoLoteFactores;
     $scope.factura.pesoKilosNetosHumedosPeso=datos1.pesoKilosNetosHumedosPeso;
+<<<<<<< HEAD
     $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos
     $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso
     $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos
@@ -404,6 +405,24 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.baseTotalSus=datos1.baseTotalSus
     $scope.factura.basePromedioSus=datos1.basePromedioSus
     $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus    
+=======
+    $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos;
+    $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso;
+    $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos;
+    $scope.factura.contenidoZnLeyes=datos1.contenidoZnLeyes;
+    $scope.factura.contenidoZnPesokg=datos1.contenidoZnPesokg;
+    $scope.factura.baseZnCotizaciones=datos1.baseZnCotizaciones;
+    $scope.factura.pesoKilosNetosSecosPeso=datos1.pesoKilosNetosSecosPeso;
+    $scope.factura.contenidoAgLeyes=datos1.contenidoAgLeyes;
+    $scope.factura.contenidoAgPesokg=datos1.contenidoAgPesokg;
+    $scope.factura.baseAgCotizaciones=datos1.baseAgCotizaciones;
+    $scope.factura.contenidoAgPesoot=datos1.contenidoAgPesoot;
+    $scope.factura.baseZnSus=datos1.baseZnSus;
+    $scope.factura.baseAgSus=datos1.baseAgSus;
+    $scope.factura.baseTotalSus=datos1.baseTotalSus;
+    $scope.factura.basePromedioSus=datos1.basePromedioSus;
+    $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
+>>>>>>> 8cf4853f5e356ba6cd7cd3f8fe8eef91dd129b05
     $scope.codigoControl=Control.get({'planillaId': planillaId}, function(datos2){
         console.log(datos2);
         $scope.planillaC.control=datos2;
