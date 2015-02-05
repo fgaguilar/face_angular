@@ -11,6 +11,18 @@ app.factory('Plan', ['$resource',
     });
   }]);
 
+app.factory('Factura', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/facturas/:facturaId', {}, {
+      'get': {method:'GET', params:{facturaId:'@facturaId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
 app.factory('Control', ['$resource',
   function($resource){
     return $resource('http://localhost/face_laravel/public/api/codigocontrol/:planillaId', {}, {
@@ -375,7 +387,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.puertoDestino=datos1.puertoDestino;
     $scope.factura.paisDestino=datos1.paisDestino;
     $scope.factura.numeroLote=datos1.pesoLoteFactores;
-    $scope,factura.pesoKilosNetosHumedosPeso=datos1.pesoKilosNetosHumedosPeso;
+    $scope.factura.pesoKilosNetosHumedosPeso=datos1.pesoKilosNetosHumedosPeso;
     $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos
     $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso
     $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos
@@ -397,6 +409,14 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
         $scope.planillaC.control=datos2;
         console.log($scope.planillaC.control);
     });
+    $scope.grabar = function() {
+      console.log("Ingreso a Guardar");
+      Plan.save($scope.factura, function() {
+        $timeout(function() {
+          $location.path('/');
+        });
+      });
+    };
   });
 });
 
