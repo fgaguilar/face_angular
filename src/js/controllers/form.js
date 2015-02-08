@@ -37,6 +37,18 @@ app.factory('PlanTipo', ['$resource',
     });
   }]);
 
+app.factory('Parametro', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/parametros/:parametroId', {}, {
+      'get': {method:'GET', params:{parametroId:'@parametroId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
 app.run(function($locale){
     $locale.NUMBER_FORMATS.GROUP_SEP = ",";
 });
@@ -112,7 +124,7 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Parametro) {
     console.groupCollapsed("CreateCtrl");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     $scope.planilla={};
@@ -125,13 +137,25 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       });
     };
     console.groupEnd();
-    $scope.planilla.planilla=tipoPlanilla;
-    $scope.planilla.pesoMermaPesos=1.00;
-    $scope.planilla.pesoKilosNetosHumedosFactores=2.2046223;
-    $scope.planilla.pesoHumedadFactores=32.15073;
-    $scope.planilla.contenidoAgExternoFactores=32.00;
-    $scope.planilla.pesoMermaFactores=6.96;
-    $scope.planilla.contenidoZnTipoDeCambioFactores=6.96;
+    $scope.parametro2={};
+    $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
+      $scope.planilla.pesoHumedadPesos=datos.humedad;
+      $scope.planilla.pesoMermaPesos=datos.merma;
+      $scope.planilla.contenidoZnLeyes=datos.leyesZn;
+      $scope.planilla.contenidoAgLeyes=datos.leyesAg;
+      $scope.planilla.baseZnCotizaciones=datos.cotizacionesZn;
+      $scope.planilla.baseAgCotizaciones=datos.cotizacionesAg;
+      $scope.planilla.impuestoZnAlicuota=datos.alicuotasZn;
+      $scope.planilla.impuestoAgAlicuota=datos.alicuotasAg;
+      $scope.planilla.puertoDestino=datos.puertoDestino;
+      $scope.planilla.paisDestino=datos.paisDestino;
+      $scope.planilla.pesoKilosNetosHumedosFactores=datos.factorKg1;
+      $scope.planilla.pesoHumedadFactores=datos.factorKg2;
+      $scope.planilla.contenidoAgExternoFactores=datos.externo;
+      $scope.planilla.pesoMermaFactores=datos.tipoCambioANB;
+      $scope.planilla.contenidoZnTipoDeCambioFactores=datos.tipoCambioOficial;
+    });
+
     $scope.calcular = function(){
       console.log('Ingreso a Calcular!!!');
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
