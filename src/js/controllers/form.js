@@ -91,7 +91,7 @@ app.directive('numericInput', function($filter, $browser, $locale) {
    $scope.planilla = PlanTipo.query();
    console.log($scope.planilla);
 });*/
-
+/*Adicion de cmentario para git*/
 app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
@@ -137,6 +137,7 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       });
     };
     console.groupEnd();
+    $scope.planilla.planilla=tipoPlanilla;
     $scope.parametro2={};
     $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
       $scope.planilla.pesoHumedadPesos=datos.humedad;
@@ -399,7 +400,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control,Factura) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   $scope.planillaC={};

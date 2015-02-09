@@ -13,8 +13,8 @@
           <div class="form-group">
             <label class="col-sm-3 control-label texto-negrilla">COMPRADOR</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control text-right input-sm" ng-model="factura.comprador">
-              <input type="text" class="form-control text-right input-sm" ng-model="factura.direccion">
+              <input type="text" class="form-control input-sm" ng-model="factura.comprador">
+              <input type="text" class="form-control input-sm" ng-model="factura.direccion">
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label texto-negrilla">PUERTO EN TRANSITO</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control text-right input-sm" ng-model="factura.puertoTransito">
+              <input type="text" class="form-control input-sm" ng-model="factura.puertoTransito">
             </div>
           </div>
         </div>              
@@ -52,7 +52,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label texto-negrilla">ORIGEN</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control text-right input-sm" ng-model="factura.origen">
+                <input type="text" class="form-control input-sm" ng-model="factura.origen">
             </div>
           </div>
         </div>           
@@ -137,8 +137,9 @@
         </div>
         <div class="form-group">
           <div class="col-sm-4 col-sm-offset-4">
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary" ng-click="grabar()" ng-disabled="forma.$invalid">Guardar Cambios</button>
+            <button class="btn m-b-xs btn-lg btn-primary btn-addon" ng-click="grabar()" ng-disabled="forma.$invalid"><i class="fa fa-plus"></i>Guardar
+            </button>
+            <button class="btn m-b-xs btn-lg btn-danger btn-addon"><i class="fa fa-trash-o"></i>Cancel</button>
           </div>
         </div>
       </form>
