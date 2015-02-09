@@ -37,6 +37,18 @@ app.factory('PlanTipo', ['$resource',
     });
   }]);
 
+app.factory('Parametro', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/parametros/:parametroId', {}, {
+      'get': {method:'GET', params:{parametroId:'@parametroId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
 app.run(function($locale){
     $locale.NUMBER_FORMATS.GROUP_SEP = ",";
 });
@@ -79,7 +91,7 @@ app.directive('numericInput', function($filter, $browser, $locale) {
    $scope.planilla = PlanTipo.query();
    console.log($scope.planilla);
 });*/
-/*Adicion de cmentario para git*/
+
 app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
@@ -112,7 +124,7 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Parametro) {
     console.groupCollapsed("CreateCtrl");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     $scope.planilla={};
@@ -125,13 +137,25 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       });
     };
     console.groupEnd();
-    $scope.planilla.planilla=tipoPlanilla;
-    $scope.planilla.pesoMermaPesos=1.00;
-    $scope.planilla.pesoKilosNetosHumedosFactores=2.2046223;
-    $scope.planilla.pesoHumedadFactores=32.15073;
-    $scope.planilla.contenidoAgExternoFactores=32.00;
-    $scope.planilla.pesoMermaFactores=6.96;
-    $scope.planilla.contenidoZnTipoDeCambioFactores=6.96;
+    $scope.parametro2={};
+    $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
+      $scope.planilla.pesoHumedadPesos=datos.humedad;
+      $scope.planilla.pesoMermaPesos=datos.merma;
+      $scope.planilla.contenidoZnLeyes=datos.leyesZn;
+      $scope.planilla.contenidoAgLeyes=datos.leyesAg;
+      $scope.planilla.baseZnCotizaciones=datos.cotizacionesZn;
+      $scope.planilla.baseAgCotizaciones=datos.cotizacionesAg;
+      $scope.planilla.impuestoZnAlicuota=datos.alicuotasZn;
+      $scope.planilla.impuestoAgAlicuota=datos.alicuotasAg;
+      $scope.planilla.puertoDestino=datos.puertoDestino;
+      $scope.planilla.paisDestino=datos.paisDestino;
+      $scope.planilla.pesoKilosNetosHumedosFactores=datos.factorKg1;
+      $scope.planilla.pesoHumedadFactores=datos.factorKg2;
+      $scope.planilla.contenidoAgExternoFactores=datos.externo;
+      $scope.planilla.pesoMermaFactores=datos.tipoCambioANB;
+      $scope.planilla.contenidoZnTipoDeCambioFactores=datos.tipoCambioOficial;
+    });
+
     $scope.calcular = function(){
       console.log('Ingreso a Calcular!!!');
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
@@ -375,7 +399,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control,Factura) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
@@ -388,7 +412,6 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.paisDestino=datos1.paisDestino;
     $scope.factura.numeroLote=datos1.pesoLoteFactores;
     $scope.factura.pesoKilosNetosHumedosPeso=datos1.pesoKilosNetosHumedosPeso;
-<<<<<<< HEAD
     $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos
     $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso
     $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos
@@ -405,24 +428,6 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.baseTotalSus=datos1.baseTotalSus
     $scope.factura.basePromedioSus=datos1.basePromedioSus
     $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus    
-=======
-    $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos;
-    $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso;
-    $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos;
-    $scope.factura.contenidoZnLeyes=datos1.contenidoZnLeyes;
-    $scope.factura.contenidoZnPesokg=datos1.contenidoZnPesokg;
-    $scope.factura.baseZnCotizaciones=datos1.baseZnCotizaciones;
-    $scope.factura.pesoKilosNetosSecosPeso=datos1.pesoKilosNetosSecosPeso;
-    $scope.factura.contenidoAgLeyes=datos1.contenidoAgLeyes;
-    $scope.factura.contenidoAgPesokg=datos1.contenidoAgPesokg;
-    $scope.factura.baseAgCotizaciones=datos1.baseAgCotizaciones;
-    $scope.factura.contenidoAgPesoot=datos1.contenidoAgPesoot;
-    $scope.factura.baseZnSus=datos1.baseZnSus;
-    $scope.factura.baseAgSus=datos1.baseAgSus;
-    $scope.factura.baseTotalSus=datos1.baseTotalSus;
-    $scope.factura.basePromedioSus=datos1.basePromedioSus;
-    $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
->>>>>>> 8cf4853f5e356ba6cd7cd3f8fe8eef91dd129b05
     $scope.codigoControl=Control.get({'planillaId': planillaId}, function(datos2){
         console.log(datos2);
         $scope.planillaC.control=datos2;
