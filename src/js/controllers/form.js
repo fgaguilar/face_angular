@@ -124,20 +124,21 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Parametro) {
-    console.groupCollapsed("CreateCtrl");
+app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,$state,Plan,Parametro) {
+    console.log("CreateCtrl");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     $scope.planilla={};
     $scope.grabar = function() {
-      console.error("Ingreso a grabar");
+      console.log("Ingreso a grabar");
       Plan.save($scope.planilla, function() {
         $timeout(function() {
-          //$location.path('/');
-          $state.go("app.export.planillaZinc({tipoPlanilla:tipoPlanilla})");
+          $location.path('/');
+          //$location.path('/#/app/export/planillaZincListado/ZINC');
+          //$state.go('app.export.planillaZinc({tipoPlanilla:'+tipoPlanilla+'})');
+          //$state.go('app.export.planillaZinc',{'tipoPlanilla':tipoPlanilla});
         });
       });
     };
-    console.groupEnd();
     $scope.planilla.planilla=tipoPlanilla;
     $scope.parametro2={};
     $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
