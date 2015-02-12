@@ -132,7 +132,8 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       console.error("Ingreso a grabar");
       Plan.save($scope.planilla, function() {
         $timeout(function() {
-          $location.path('/');
+          //$location.path('/');
+          $state.go("app.export.planillaZinc({tipoPlanilla:tipoPlanilla})");
         });
       });
     };
