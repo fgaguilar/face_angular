@@ -24,26 +24,21 @@
       <td>{{plane.pesoKilosNetosHumedosPeso}}</td>
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
       <td>
-        <a ui-sref="app.export.planillaZincUno({planId:plane.id})">
-          <i class="icon-pencil"></i>
-        </a>
-      </td>
-      <td>
-          <div class="btn-group" dropdown is-open="status.isopen">
-            <button type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
-              Acción <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href>Modificar</a></li>
-              <li><a href>Eliminar</a></li>
-              <li class="divider"></li>
-              <li><a href>Factura</a></li>
-              <li class="divider"></li>
-              <li><a href>Verificación</a></li>
-              <li><a href>Regalias</a></li>
-              <li><a href>Lista Empaque</a></li>
-            </ul>
-          </div>
+      <div class="btn-group" dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+          Acción <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a ui-sref="app.export.planillaZincUno({planId:plane.id})">Modificar</a></li>
+          <li><a href>Eliminar</a></li>
+          <li class="divider"></li>
+          <li><a ui-sref="app.billing.facturaExportacion({planId:plane.id})">Factura</a></li>
+          <li class="divider"></li>
+          <li><a ui-sref="app.taxation.verificacionCalculo({planId:plane.id})">Verificación</a></li>
+          <li><a ui-sref="app.taxation.pagoRegalias({planId:plane.id})">Regalias</a></li>
+          <li><a href>Lista Empaque</a></li>
+        </ul>
+      </div>
       </td>
     </tr>
     </tbody>
