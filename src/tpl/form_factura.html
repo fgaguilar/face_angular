@@ -7,13 +7,29 @@
       <!-- 1a -->
         <div class="row">  
           <div class="col-sm-5 texto-negrilla">Potosí, {{factura.fecha}}</div>
+          <div class="col-sm-5 texto-negrilla">Factura, {{factura.factura}}</div>
         </div> 
       <!-- 2a -->
+        <div class="row">
+          <div class="form-group">
+            <label class="col-sm-3 control-label texto-negrilla">NIT</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control input-sm" ng-model="factura.nit">
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="form-group">
             <label class="col-sm-3 control-label texto-negrilla">COMPRADOR</label>
             <div class="col-sm-7">
               <input type="text" class="form-control input-sm" ng-model="factura.comprador">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label class="col-sm-3 control-label texto-negrilla">DIRECCION</label>
+            <div class="col-sm-7">
               <input type="text" class="form-control input-sm" ng-model="factura.direccion">
             </div>
           </div>

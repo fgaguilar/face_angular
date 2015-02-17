@@ -411,6 +411,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
     $scope.planillaC=datos1;
     $scope.factura.fecha=datos1.pesoKilosNetosSecosFactores;
+    $scope.factura.factura=datos1.impuestoFacturaFactores;
     $scope.factura.puertoDestino=datos1.puertoDestino;
     $scope.factura.paisDestino=datos1.paisDestino;
     $scope.factura.numeroLote=datos1.pesoLoteFactores;
@@ -432,7 +433,8 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.baseAgSus=datos1.baseAgSus;
     $scope.factura.baseTotalSus=datos1.baseTotalSus;
     $scope.factura.basePromedioSus=datos1.basePromedioSus;
-    $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;    
+    $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
+    $scope.factura.tipoCambio=datos1.pesoMermaFactores;    
     /*$scope.codigoControl=Control.get({'planillaId': planillaId}, function(datos2){
         console.log(datos2);
         $scope.planillaC.control=datos2;
