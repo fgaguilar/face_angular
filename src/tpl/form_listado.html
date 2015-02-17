@@ -9,9 +9,7 @@
       <th>Kilos Netos Húmedos</th>
       <th>Fecha</th>
       <th>
-        <a ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">
-          <i class="fa fa-plus-square-o"></i>
-        </a>
+        <a class="btn btn-bg btn-primary" ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">Nuevo</a>
       </th>
     </tr>
     
@@ -25,7 +23,7 @@
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
       <td>
       <div class="btn-group" dropdown is-open="status.isopen">
-        <button type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+        <button type="button" class="btn btn-bg btn-primary" dropdown-toggle ng-disabled="disabled">
           Acción <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
