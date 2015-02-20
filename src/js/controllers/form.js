@@ -103,6 +103,15 @@ app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   });
 });
 
+app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
+  console.log("Ingreso a ListZincCtrlGral");
+  $scope.planilla={};
+  $scope.planilla2={};
+  $scope.planilla2=PlanTipo.get(function(datos){
+    $scope.planilla=datos;
+  });
+});
+
 app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
@@ -157,6 +166,13 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       $scope.planilla.contenidoAgExternoFactores=datos.externo;
       $scope.planilla.pesoMermaFactores=datos.tipoCambioANB;
       $scope.planilla.contenidoZnTipoDeCambioFactores=datos.tipoCambioOficial;
+      if (tipoPlanilla=='ZINC') {
+        $scope.planilla.pesoLoteFactores='EXMSC-Z';
+      }
+      else {
+        $scope.planilla.pesoLoteFactores='EXMSC-P';
+      }
+      
     });
 
     $scope.calcular = function(){

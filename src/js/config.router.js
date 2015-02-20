@@ -70,6 +70,11 @@ angular.module('app')
 
 /******************************************************************************/
 
+              .state('app.export.planillaZincListadoGeneral', {
+                  url: '/planillaZincListado',
+                  controller: 'ListZincCtrlGral',
+                  templateUrl: 'tpl/form_listado.html'
+              })
               .state('app.export.planillaZincListado', {
                   url: '/planillaZincListado/:tipoPlanilla',
                   controller: 'ListZincCtrl',
