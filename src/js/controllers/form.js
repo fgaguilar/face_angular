@@ -92,6 +92,16 @@ app.directive('numericInput', function($filter, $browser, $locale) {
    console.log($scope.planilla);
 });*/
 /*Adicion de cmentario para git*/
+
+app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
+  console.log("Ingreso a ListZincCtrlGral");
+  $scope.planilla={};
+  $scope.planilla2={};
+  $scope.planilla2=PlanTipo.get(function(datos){
+    $scope.planilla=datos;
+  });
+});
+
 app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
@@ -100,15 +110,6 @@ app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   $scope.planilla2=PlanTipo.get({'tipoPlanilla': tipoPlanilla}, function(datos){
     $scope.planilla=datos;
     $scope.tipoPlanilla=tipoPlanilla;
-  });
-});
-
-app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
-  console.log("Ingreso a ListZincCtrlGral");
-  $scope.planilla={};
-  $scope.planilla2={};
-  $scope.planilla2=PlanTipo.get(function(datos){
-    $scope.planilla=datos;
   });
 });
 
