@@ -92,6 +92,7 @@ angular.module('app')
               })              
               .state('app.export.listaEmpaque', {
                   url: '/listaEmpaque/:planId',
+                  controller: 'listaEmpaqueCtrl',
                   templateUrl: 'tpl/form_lista_empaque.html'
               })             
               // taxation

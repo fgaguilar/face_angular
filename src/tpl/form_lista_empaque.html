@@ -1,4 +1,4 @@
-<div class="wrapper-md" ng-controller="listaEmpaqueCtrl">
+<div class="wrapper-md">
   <div class="row">
     <div class="col-sm-3">LOGO</div>
     <div class="col-sm-6"></div>
@@ -36,13 +36,13 @@
   </div>
   <div class="row">
     <div class="col-sm-3"></div>
-    <div class="col-sm-2">Numero:</div>
-    <div class="col-sm-4">{{planilla.contenidoListaEmpaqueFactores}}</div>
+    <div class="col-sm-2">No Lista de Empaque:</div>
+    <div class="col-sm-4">{{planillaC.contenidoListaEmpaqueFactores}}</div>
     <div class="col-sm-3"></div>
   </div>
   <div class="row">
     <div class="col-sm-3">Toldos</div>
-    <div class="col-sm-6">{{planilla.pesoKilosNetosSecosFactores}}</div>
+    <div class="col-sm-6">{{planillaC.pesoKilosNetosSecosFactores}}</div>
     <div class="col-sm-3"></div>
   </div>
   <div class="row">
@@ -52,7 +52,7 @@
   </div>
   <div class="row">
     <div class="col-sm-3">No. LOTE:</div>
-    <div class="col-sm-6">{{planilla.pesoLoteFactores}}</div>
+    <div class="col-sm-6">{{planillaC.pesoLoteFactores}}</div>
     <div class="col-sm-3"></div>
   </div>
   <div class="row">
@@ -66,27 +66,32 @@
     <div class="col-sm-3"></div>
   </div>
   <div class="row">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>PESO BRUTO</th>
-        <th>PESO NETO</th>
-        <th>MINERAL</th>
-        <th>UNIDAD</th>
-        <th>CONCEPTO</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="plane in planilla | filter:search ">
-        <td>{{plane.id}}</td>
-        <td>{{plane.pesoLoteFactores}}</td>
-        <td>{{plane.contenidoListaEmpaqueFactores}}</td>
-        <td>{{plane.pesoKilosNetosSecosFactores}}</td>
-        <td>
-          <a href="#/app/export/planillaZinc/{{plane.id}}"><i class="fa fa-pencil-square-o"></i></a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="col-sm-2 text-right fondo-gris border-top-left-bold">PESO BRUTO</div>
+    <div class="col-sm-2 text-right fondo-gris border-top-bold">PESO NETO</div>
+    <div class="col-sm-2 text-center fondo-gris border-top-bold">MINERAL</div>
+    <div class="col-sm-2 text-center fondo-gris border-top-bold">UNIDAD</div>
+    <div class="col-sm-2 text-center fondo-gris border-top-right-bold">CONCEPTO</div>
   </div>
+  <div class="row">
+    <div class="col-sm-2 border-left-bold text-right">{{planillaC.x14 | number:2}}</div>
+    <div class="col-sm-2 border-midle text-right">{{planillaC.z14 | number:2}}</div>
+    <div class="col-sm-2 border-midle">Zinc</div>
+    <div class="col-sm-2 border-midle">Kgr.</div>
+    <div class="col-sm-2 border-right-bold">Concentrado de Zinc y Plata</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 border-left-bold text-right">{{planillaC.x15 | number:2}}</div>
+    <div class="col-sm-2 border-midle text-right">{{planillaC.z15 | number:2}}</div>
+    <div class="col-sm-2 border-midle">Zinc</div>
+    <div class="col-sm-2 border-midle">Kgr.</div>
+    <div class="col-sm-2 border-midle border-right-bold">(a granel)</div>
+  </div>      
+  <div class="row">
+    <div class="col-sm-2 border-bottom-left-bold text-right">{{planillaC.totalx | number:2}}</div>
+    <div class="col-sm-2 border-left border-bottom-bold text-right">{{planillaC.totalz | number:2}}</div>
+    <div class="col-sm-2 border-left border-bottom-bold">&nbsp</div>
+    <div class="col-sm-2 border-left border-bottom-bold">&nbsp</div>
+    <div class="col-sm-2 border-bottom-right-bold">&nbsp</div>
+  </div>      
+
 </div>
