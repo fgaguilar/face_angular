@@ -93,6 +93,17 @@ app.directive('numericInput', function($filter, $browser, $locale) {
 });*/
 /*Adicion de cmentario para git*/
 
+app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
+  console.log("Ingreso a listaEmpaqueCtrl");
+  var tipoPlanilla = $stateParams.planId;
+  $scope.planilla={};
+  $scope.planilla2={};
+  $scope.planilla2=Plan.get({'planId': planId}, function(datos){
+    $scope.planilla=datos;
+    $scope.tipoPlanilla=tipoPlanilla;
+  });
+});
+
 app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrlGral");
   $scope.planilla={};
@@ -149,6 +160,17 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
         });
       });
     };
+    console.log("DATOS");
+    console.log($scope.planilla.planilla);
+    if (tipoPlanilla=='ZINC'){
+      console.log("Entro ZINC");
+      $scope.tipoProducto='Zn';    
+    }
+    else {
+    console.log($scope);
+    console.log("Entro PLOMO");
+      $scope.tipoProducto='Pb';    
+    }
     $scope.planilla.planilla=tipoPlanilla;
     $scope.parametro2={};
     $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
@@ -210,7 +232,16 @@ app.controller('FormUnoCtrl',function ($scope,$location,$timeout,$stateParams,Pl
     console.log($scope);
     $scope.planilla=datos;
     console.log("DATOS");
-    console.log($scope.planilla);
+    console.log($scope.planilla.planilla);
+    if ($scope.planilla.planilla=='ZINC'){
+      console.log("Entro ZINC");
+      $scope.tipoProducto='Zn';    
+    }
+    else {
+    console.log($scope);
+    console.log("Entro PLOMO");
+      $scope.tipoProducto='Pb';    
+    }
     $scope.calcular = function(){
       console.log('Ingreso a Calcular!!!');
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
@@ -462,6 +493,25 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
       console.log("Ingreso a Guardar");
       console.log($scope.factura);
       Factura.save($scope.factura, function() {
+        $timeout(function() {
+          $location.path('/');
+        });
+      });
+    };
+  });
+});
+
+app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams,Parametro) {
+  console.log("Ingreso a ParamatrosCtrl");
+  var parametro=$stateParams.parametroId;
+  $scope.planilla2={};
+  $scope.parametro={};
+  $scope.planilla2=Parametro.get({'parametroId': parametro}, function(datos){
+    $scope.parametro=datos;
+    $scope.grabar = function() {
+      console.log("Ingreso a Actualizar");
+      console.log($scope.parametro);
+      Parametro.update({parametroId: $scope.parametro.id}, $scope.parametro, function() {
         $timeout(function() {
           $location.path('/');
         });

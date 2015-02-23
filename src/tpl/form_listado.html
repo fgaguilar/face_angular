@@ -15,7 +15,7 @@
     
     </thead>
     <tbody>
-    <tr ng-repeat="plane in planilla | filter:search ">
+    <tr ng-repeat="plane in planilla | filter:search | orderBy : 'pesoKilosNetosSecosFactores':true">
       <td>{{plane.planilla}}</td>
       <td>{{plane.id}}</td>
       <td>{{plane.pesoLoteFactores}}</td>
@@ -35,7 +35,7 @@
           <li class="divider"></li>
           <li><a ui-sref="app.taxation.verificacionCalculo({planId:plane.id})">Verificación</a></li>
           <li><a ui-sref="app.taxation.pagoRegalias({planId:plane.id})">Regalias</a></li>
-          <li><a href>Lista Empaque</a></li>
+          <li><a ui-sref="app.export.listaEmpaque({planId:plane.id})">Lista Empaque</a></li>
         </ul>
       </div>
       </td>

@@ -55,6 +55,11 @@ angular.module('app')
                       }]
                   }
               })
+              .state('app.export.parametros', {
+                  url: '/parametros/:parametroId',
+                  controller: 'ParametrosCtrl',
+                  templateUrl: 'tpl/form_parametros.html'
+              })                
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc/:tipoPlanilla',
                   templateUrl: 'tpl/form_planillaZinc.html',
@@ -86,7 +91,7 @@ angular.module('app')
                   templateUrl: 'tpl/form_listado.html'
               })              
               .state('app.export.listaEmpaque', {
-                  url: '/listaEmpaque',
+                  url: '/listaEmpaque/:planId',
                   templateUrl: 'tpl/form_lista_empaque.html'
               })             
               // taxation
@@ -125,7 +130,8 @@ angular.module('app')
                   url: '/facturaExportacion/:planId',
                   controller: 'FacturaExportacionCtrl',
                   templateUrl: 'tpl/form_factura.html'
-              })          
+              })     
+                  
       }
     ]
   );
