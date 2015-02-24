@@ -179,7 +179,7 @@ app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
   });
 });
 
-app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
+app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
   $scope.planilla={};
@@ -190,7 +190,7 @@ app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo) {
   });
 });
 
-app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo) {
+app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
   $scope.planilla={};
@@ -226,15 +226,10 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
         });
       });
     };
-    console.log("DATOS");
-    console.log($scope.planilla.planilla);
     if (tipoPlanilla=='ZINC'){
-      console.log("Entro ZINC");
       $scope.tipoProducto='Zn';    
     }
     else {
-    console.log($scope);
-    console.log("Entro PLOMO");
       $scope.tipoProducto='Pb';    
     }
     $scope.planilla.planilla=tipoPlanilla;
@@ -242,11 +237,18 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
     $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
       $scope.planilla.pesoHumedadPesos=datos.humedad;
       $scope.planilla.pesoMermaPesos=datos.merma;
-      $scope.planilla.contenidoZnLeyes=datos.leyesZn;
+      if (tipoPlanilla=='ZINC'){
+        $scope.planilla.contenidoZnLeyes=datos.leyesZn;
+        $scope.planilla.baseZnCotizaciones=datos.cotizacionesZn;
+        $scope.planilla.impuestoZnAlicuota=datos.alicuotasZn;
+      }
+      else {
+        $scope.planilla.contenidoZnLeyes=datos.leyesPb;
+        $scope.planilla.baseZnCotizaciones=datos.cotizacionesPb;
+        $scope.planilla.impuestoZnAlicuota=datos.alicuotasPb;
+      }
       $scope.planilla.contenidoAgLeyes=datos.leyesAg;
-      $scope.planilla.baseZnCotizaciones=datos.cotizacionesZn;
       $scope.planilla.baseAgCotizaciones=datos.cotizacionesAg;
-      $scope.planilla.impuestoZnAlicuota=datos.alicuotasZn;
       $scope.planilla.impuestoAgAlicuota=datos.alicuotasAg;
       $scope.planilla.puertoDestino=datos.puertoDestino;
       $scope.planilla.paisDestino=datos.paisDestino;
