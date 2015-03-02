@@ -6366,3 +6366,6 @@ button.close {
     display: none !important;
   }
 }
+.set-width {
+  width: 348px !important;
+}

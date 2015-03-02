@@ -1,17 +1,30 @@
 
 <div class="wrapper-sm">
   <div class="panel panel-default">
-    <div class="panel-heading font-bold">Paramtros Generales
+    <div class="panel-heading font-bold">Parametros Generales
     </div>
     <div class="panel-body">
       <form action="" name="forma">
         <div class="row">
+          <div class="col-sm-6 panel-heading text-left bg-success no-border">
+            <span class="text-u-c m-b-none font-bold">Parametros</span>         
+          </div>
+          <div class="col-sm-2 panel-heading text-left bg-success no-border">
+            <span class="text-u-c m-b-none font-bold">Peridiocidad</span>          
+          </div>
+        </div>
+        <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Humedad</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.humedad">
                 <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.humedad_d">
               </div>
             </div>
           </div>
@@ -19,98 +32,95 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Merma</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.merma">
                 <span class="input-group-addon">%</span>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">LeyesZn</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.leyesZn">
-                <span class="input-group-addon">%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">LeyesPb</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.leyesPb">
-                <span class="input-group-addon">%</span>
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input  ng-model="parametro.merma_d">
               </div>
             </div>
           </div>
         </div>        
         <div class="row">
           <div class="form-group">
+            <label class="col-sm-2 control-label">Leyes</label>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.leyes">
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.leyes_d">
+              </div>
+            </div>
+          </div>
+        </div>     
+        <div class="row">
+          <div class="form-group">
             <label class="col-sm-2 control-label">LeyesAg</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.leyesAg">
                 <span class="input-group-addon">g/t</span>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">CotizacionesZn</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.cotizacionesZn">
-                <span class="input-group-addon">$us/lf</span>
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.leyesAg_d">
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="form-group">
-            <label class="col-sm-2 control-label">CotizacionesPb</label>
-            <div class="col-sm-2">
+            <label class="col-sm-2 control-label">Cotizaciones</label>
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.cotizacionesPb">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.cotizaciones">
                 <span class="input-group-addon">$us/lf</span>
               </div>
             </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.cotizaciones_d">
+              </div>
+            </div>
           </div>
-        </div>        
+        </div>       
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">CotizacionesAg</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.cotizacionesAg">
                 <span class="input-group-addon">$us/ot</span>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">AlicuotasZn</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.alicuotasZn">
-                <span class="input-group-addon">%</span>
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.cotizacionesAg_d">
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="form-group">
-            <label class="col-sm-2 control-label">AlicuotasPb</label>
-            <div class="col-sm-2">
+            <label class="col-sm-2 control-label">Alicuotas</label>
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.alicuotasPb">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.alicuotas">
                 <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.alicuotas_d">
               </div>
             </div>
           </div>
@@ -118,10 +128,15 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">AlicuotasAg</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.alicuotasAg">
                 <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.alicuotasAg_d">
               </div>
             </div>
           </div>
@@ -129,10 +144,15 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">TipoCambioANB</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.tipoCambioANB">
                 <span class="input-group-addon">ANB</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.tipoCambioANB_d">
               </div>
             </div>
           </div>
@@ -140,10 +160,15 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">TipoCambioOficial</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.tipoCambioOficial">
                 <span class="input-group-addon">Oficial</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.tipoCambioOficial_d">
               </div>
             </div>
           </div>
@@ -151,9 +176,14 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">PuertoDestino</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control input-sm" placeholder="valor" ng-model="parametro.puertoDestino">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="parametro.puertoDestino">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.puertoDestino_d">
               </div>
             </div>
           </div>
@@ -161,9 +191,14 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">PaisDestino</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control input-sm" placeholder="valor" ng-model="parametro.paisDestino">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="parametro.paisDestino">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.paisDestino_d">
               </div>
             </div>
           </div>
@@ -171,10 +206,15 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">FactorKg1</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.factorKg1">
                 <span class="input-group-addon">lt</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.factorKg1_d">
               </div>
             </div>
           </div>
@@ -182,10 +222,15 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">factorKg2</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.factorKg2">
                 <span class="input-group-addon">of</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.factorKg2_d">
               </div>
             </div>
           </div>
@@ -193,10 +238,15 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Externo</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="2" numeric-input ng-model="parametro.externo">
                 <span class="input-group-addon">$us/ton</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.externo_d">
               </div>
             </div>
           </div>
@@ -204,9 +254,14 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Comprador</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control input-sm" placeholder="valor" ng-model="parametro.comprador">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="parametro.comprador">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.comprador_d">
               </div>
             </div>
           </div>
@@ -214,9 +269,14 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Direccion</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control input-sm" placeholder="valor" ng-model="parametro.direccion">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="parametro.direccion">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.direccion_d">
               </div>
             </div>
           </div>
@@ -224,9 +284,14 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Puerto</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control input-sm" placeholder="valor" ng-model="parametro.puerto">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="parametro.puerto">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.puerto_d">
               </div>
             </div>
           </div>
@@ -234,15 +299,20 @@
         <div class="row">
           <div class="form-group">
             <label class="col-sm-2 control-label">Origen</label>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <div class="input-group m-b">
-                <input type="text" class="form-control input-sm" placeholder="valor" ng-model="parametro.origen">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="parametro.origen">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" placeholder="calculo" fraction="0" numeric-input ng-model="parametro.origen_d">
               </div>
             </div>
           </div>
         </div>                      
         <div class="form-group">
-          <div class="col-sm-2 col-sm-offset-4">
+          <div class="col-sm-8 col-sm-offset-4">
             <button class="btn m-b-xs btn-lg btn-primary btn-addon" ng-click="grabar()" ng-disabled="forma.$invalid"><i class="fa fa-plus"></i>Guardar
             </button>
             <button class="btn m-b-xs btn-lg btn-danger btn-addon"><i class="fa fa-trash-o"></i>Cancel</button>
@@ -252,23 +322,3 @@
     </div>
   </div>
 </div>
-<!-- 
-merma
-leyesZn
-leyesAg
-cotizacionesZn
-cotizacionesAg
-alicuotasZn
-alicuotasAg
-tipoCambioANB
-tipoCambioOficial
-puertoDestino
-paisDestino
-factorKg1
-factorKg2
-externo
-comprador
-direccion
-puerto
-origen
- -->
