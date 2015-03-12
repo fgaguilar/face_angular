@@ -552,6 +552,11 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
     $scope.factura.tipoCambio=datos1.pesoMermaFactores;
     $scope.factura.planilla_id=planillaId;
+    $scope.factura.control='';
+    $scope.factura.autorizacion='';
+    $scope.factura.vencimiento='';
+    $scope.factura.literal1='';
+    $scope.factura.literal2='';
     /*$scope.codigoControl=Control.get({'planillaId': planillaId}, function(datos2){
         console.log(datos2);
         $scope.planillaC.control=datos2;
