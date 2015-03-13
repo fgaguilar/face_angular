@@ -1,4 +1,5 @@
 'use strict';
+
 app.factory('Plan', ['$resource',
   function($resource){
     return $resource('http://localhost/face_laravel/public/api/planillas/:planillaId', {}, {
@@ -569,9 +570,9 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     	$scope.factura.direccion=datos.direccion;
     	$scope.factura.puertoTransito=datos.puerto;
     	$scope.factura.origen=datos.origen;
-      	$scope.factura.concentrado=datos.concentrado;
-      	$scope.factura.partida1=datos.partida1;
-      	$scope.factura.partida2=datos.partida2;
+      $scope.factura.concentrado=datos.concentrado;
+      $scope.factura.partida1=datos.partida1;
+      $scope.factura.partida2=datos.partida2;
     });
 
 
@@ -597,21 +598,17 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
       Parametro.update({parametroId: $scope.parametro.id}, $scope.parametro, function() {
-        $timeout(function() {
-          $state.go('app.export.parametros',parametro);
-          //$location.path('/');
-        });
+          $timeout(function() {
+            $scope.successTextAlert = "Parametros Guardados";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+
+            $state.go('app.export.parametros',parametro);
+            //$location.path('/');
+          });
       });
     };
   });
 });
-    
-/*app.controller('ctrlRead', function ($scope) {
-    $scope.successTextAlert = "Some content";
-    $scope.showSuccessAlert = false;
-
-    // switch flag
-    $scope.switchBool = function (value) {
-        $scope[value] = !$scope[value];
-    };
-});*/

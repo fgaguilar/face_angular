@@ -3,6 +3,7 @@
 /**
  * Config for the router
  */
+
 angular.module('app')
   .run(
     [          '$rootScope', '$state', '$stateParams',
@@ -59,6 +60,7 @@ angular.module('app')
                   url: '/parametros/:parametroId',
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros.html'
+
               })                
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc/:tipoPlanilla',
