@@ -587,7 +587,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
   });
 });
 
-app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams,Parametro) {
+app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams,$state,Parametro) {
   console.log("Ingreso a ParamatrosCtrl");
   var parametro=$stateParams.parametroId;
   $scope.planilla2={};
@@ -596,13 +596,22 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
     $scope.parametro=datos;
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
-      console.log($scope.parametro);
       Parametro.update({parametroId: $scope.parametro.id}, $scope.parametro, function() {
         $timeout(function() {
-          $location.path('/');
+          $state.go('app.export.parametros',parametro);
+          //$location.path('/');
         });
       });
     };
   });
 });
+    
+/*app.controller('ctrlRead', function ($scope) {
+    $scope.successTextAlert = "Some content";
+    $scope.showSuccessAlert = false;
 
+    // switch flag
+    $scope.switchBool = function (value) {
+        $scope[value] = !$scope[value];
+    };
+});*/
