@@ -214,6 +214,7 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
 app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,$state,Plan,Parametro) {
     console.log("CreateCtrl");
     var tipoPlanilla = $stateParams.tipoPlanilla;
+    var ide = 0;
     $scope.planilla={};
     $scope.grabar = function() {
       console.log("Ingreso a grabar");
@@ -227,26 +228,21 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       });
     };
     if (tipoPlanilla=='ZINC'){
-      $scope.tipoProducto='Zn';    
+      $scope.tipoProducto='Zn'; 
+      ide = 1;   
     }
     else {
       $scope.tipoProducto='Pb';    
+      ide = 2;   
     }
     $scope.planilla.planilla=tipoPlanilla;
     $scope.parametro2={};
-    $scope.parametro2=Parametro.get({'parametroId': 1}, function(datos){
+    $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
       $scope.planilla.pesoHumedadPesos=datos.humedad;
       $scope.planilla.pesoMermaPesos=datos.merma;
-      if (tipoPlanilla=='ZINC'){
-        $scope.planilla.contenidoZnLeyes=datos.leyesZn;
-        $scope.planilla.baseZnCotizaciones=datos.cotizacionesZn;
-        $scope.planilla.impuestoZnAlicuota=datos.alicuotasZn;
-      }
-      else {
-        $scope.planilla.contenidoZnLeyes=datos.leyesPb;
-        $scope.planilla.baseZnCotizaciones=datos.cotizacionesPb;
-        $scope.planilla.impuestoZnAlicuota=datos.alicuotasPb;
-      }
+      $scope.planilla.contenidoZnLeyes=datos.leyes;
+      $scope.planilla.baseZnCotizaciones=datos.cotizaciones;
+      $scope.planilla.impuestoZnAlicuota=datos.alicuotas;
       $scope.planilla.contenidoAgLeyes=datos.leyesAg;
       $scope.planilla.baseAgCotizaciones=datos.cotizacionesAg;
       $scope.planilla.impuestoAgAlicuota=datos.alicuotasAg;
@@ -518,14 +514,16 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control,Factura) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control,Factura,Parametro) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
+  var ide = 0;
   $scope.planillaC={};
   $scope.planilla2={};
   $scope.factura={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
     $scope.planillaC=datos1;
+    $scope.factura.nit="0";
     $scope.factura.fecha=datos1.pesoKilosNetosSecosFactores;
     $scope.factura.factura=datos1.impuestoFacturaFactores;
     $scope.factura.puertoDestino=datos1.puertoDestino;
@@ -557,11 +555,26 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.vencimiento='';
     $scope.factura.literal1='';
     $scope.factura.literal2='';
-    /*$scope.codigoControl=Control.get({'planillaId': planillaId}, function(datos2){
-        console.log(datos2);
-        $scope.planillaC.control=datos2;
-        console.log($scope.planillaC.control);
-    });*/
+
+
+    if (datos1.planilla=="ZINC"){
+    	ide=1;
+    }
+    else { 
+    	ide=2;
+    }	
+    $scope.parametro2={};
+    $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
+    	$scope.factura.comprador=datos.comprador;
+    	$scope.factura.direccion=datos.direccion;
+    	$scope.factura.puertoTransito=datos.puerto;
+    	$scope.factura.origen=datos.origen;
+      	$scope.factura.concentrado=datos.concentrado;
+      	$scope.factura.partida1=datos.partida1;
+      	$scope.factura.partida2=datos.partida2;
+    });
+
+
     $scope.grabar = function() {
       console.log("Ingreso a Guardar");
       console.log($scope.factura);
