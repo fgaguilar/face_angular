@@ -35,7 +35,10 @@
           <li class="divider"></li>
           <li><a ui-sref="app.taxation.verificacionCalculo({planId:plane.id})">Verificación</a></li>
           <li><a ui-sref="app.taxation.pagoRegalias({planId:plane.id})">Regalias</a></li>
+          <li><a href="http://localhost:8080/birt/frameset?__report=reportes/regaliaminera.rptdesign&id={{plane.id}}" target="_blank">Imprimir Regalias</a></li>
           <li><a ui-sref="app.export.listaEmpaque({planId:plane.id})">Lista Empaque</a></li>
+          <li><a href="http://localhost:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id={{plane.id}}" target="_blank">Imprimir Lista Empaque</a></li>
+          <li><a href="http://localhost:8080/birt/frameset?__report=reportes/due.rptdesign&id={{plane.id}}" target="_blank">Imprimir DUE</a></li>
         </ul>
       </div>
       </td>
