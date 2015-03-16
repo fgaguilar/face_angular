@@ -60,23 +60,19 @@ angular.module('app')
                   url: '/parametros/:parametroId',
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros.html'
-
               })                
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc/:tipoPlanilla',
                   templateUrl: 'tpl/form_planillaZinc.html',
                   controller: 'FormVacioCtrl'
               })
-
 /******************************************************************************/              
               .state('app.export.planillaZincUno', {
                   url: '/planillaZincUno/:planId',
                   controller: 'FormUnoCtrl',
                   templateUrl: 'tpl/form_planillaZinc.html'
               })
-
 /******************************************************************************/
-
               .state('app.export.planillaZincListadoGeneral', {
                   url: '/planillaZincListado',
                   controller: 'ListZincCtrlGral',

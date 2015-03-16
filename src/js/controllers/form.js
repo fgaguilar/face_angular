@@ -12,6 +12,18 @@ app.factory('Plan', ['$resource',
     });
   }]);
 
+app.factory('Dosificacion', ['$resource',
+  function($resource){
+    return $resource('http://localhost/face_laravel/public/api/dosificaciones/:dosificacionId', {}, {
+      'get': {method:'GET', params:{dosificacionId:'@dosificacionId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
 app.factory('Factura', ['$resource',
   function($resource){
     return $resource('http://localhost/face_laravel/public/api/facturas/:facturaId', {}, {
@@ -24,10 +36,10 @@ app.factory('Factura', ['$resource',
     });
   }]);
 
-app.factory('Control', ['$resource',
+app.factory('Facturac', ['$resource',
   function($resource){
-    return $resource('http://localhost/face_laravel/public/api/codigocontrol/:planillaId', {}, {
-      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:false}
+    return $resource('http://localhost/face_laravel/public/api/factura/:planillaId', {}, {
+      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:true}
     });
   }]);
 
@@ -212,8 +224,8 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,$state,Plan,Parametro) {
-    console.log("CreateCtrl");
+app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion) {
+    console.log("CreateCtrl!!!!!!!!!!!!");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     var ide = 0;
     $scope.planilla={};
@@ -221,10 +233,19 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       console.log("Ingreso a grabar");
       Plan.save($scope.planilla, function() {
         $timeout(function() {
-          $location.path('/');
-          //$location.path('/#/app/export/planillaZincListado/ZINC');
-          //$state.go('app.export.planillaZinc({tipoPlanilla:'+tipoPlanilla+'})');
-          //$state.go('app.export.planillaZinc',{'tipoPlanilla':tipoPlanilla});
+            $scope.successTextAlert = "Planilla Guardada";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };        	
+        	if (tipoPlanilla=='ZINC'){
+        		$state.go('app.export.planillaZincListado',tipoPlanilla);
+        	}
+        	else {
+        		$state.go('app.export.planillaPlomoListado',tipoPlanilla);	
+        	}
+        	console.log("antes de /");
+         	$location.path('/');
         });
       });
     };
@@ -239,6 +260,7 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
     $scope.planilla.planilla=tipoPlanilla;
     $scope.parametro2={};
     $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
+    	console.log('Ingreso a GET!!!!!!');
       $scope.planilla.pesoHumedadPesos=datos.humedad;
       $scope.planilla.pesoMermaPesos=datos.merma;
       $scope.planilla.contenidoZnLeyes=datos.leyes;
@@ -260,7 +282,11 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       else {
         $scope.planilla.pesoLoteFactores='EXMSC-P';
       }
-      
+      console.log("Antes de recuperar dosificacion");
+      $scope.dosificacion2={};
+      $scope.dosificacion2= Dosificacion.get({'dosificacionId': 1}, function(datos2){
+      	$scope.planilla.impuestoFacturaFactores=datos2.numero;
+      });      
     });
 
     $scope.calcular = function(){
@@ -515,13 +541,18 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Control,Factura,Parametro) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   var ide = 0;
   $scope.planillaC={};
   $scope.planilla2={};
   $scope.factura={};
+  $scope.factura2={};
+  $scope.factura2=Facturac.get({'planillaId': planillaId}, function(datos2){
+  	console.log("DATOS2!!!!!!!");
+  	console.log(datos2);
+  });
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
     $scope.planillaC=datos1;
     $scope.factura.nit="0";
@@ -556,8 +587,6 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.vencimiento='';
     $scope.factura.literal1='';
     $scope.factura.literal2='';
-
-
     if (datos1.planilla=="ZINC"){
     	ide=1;
     }
@@ -574,8 +603,6 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
       $scope.factura.partida1=datos.partida1;
       $scope.factura.partida2=datos.partida2;
     });
-
-
     $scope.grabar = function() {
       console.log("Ingreso a Guardar");
       console.log($scope.factura);
@@ -585,7 +612,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
         });
       });
     };
-  });
+  });//fin Plan.get
 });
 
 app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams,$state,Parametro) {
