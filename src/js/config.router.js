@@ -111,7 +111,7 @@ angular.module('app')
               })
               .state('app.taxation.pagoRegalias', {
                   url: '/pagoRegalias/:planId',
-                  //controller: 'PlanCalculoCtrl',
+                  controller: 'RegaliaMineraCtrl',
                   templateUrl: 'tpl/form_regalia_minera.html'
               })
               // billing

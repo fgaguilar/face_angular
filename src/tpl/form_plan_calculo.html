@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 m-n font-thin h3">LIQUIDACIONES PARA CONCETRADO ZINC Y PLATA</div>    
+    <div class="col-sm-6 m-n font-thin h3">LIQUIDACIONES PARA CONCETRADO {{planillaC.planilla}} Y PLATA</div>    
     <div class="col-sm-3">&nbsp</div>
     <div class="col-sm-3">&nbsp</div>
   </div>
@@ -25,7 +25,7 @@
     <div class="col-sm-2 text-right texto-negrilla-celeste">Calculo Anterior</div>
  </div>
  <div class="row">
-    <div class="col-sm-3 texto-negrilla border-left-bold">ZINC</div>
+    <div class="col-sm-3 texto-negrilla border-left-bold">{{planillaC.planilla}}</div>
     <div class="col-sm-2 border-midle">&nbsp</div>
     <div class="col-sm-1 border-right-bold">&nbsp</div>
     <div class="col-sm-1 border-top-left">T/C Oficial</div>
@@ -36,10 +36,10 @@
     <div class="col-sm-1 text-right">{{planillaC.z6 | number:2}}</div>
  </div>
  <div class="row">
-    <div class="col-sm-3 border-left-bold">Peso bruto para RM Zinc</div>
+    <div class="col-sm-3 border-left-bold">Peso bruto para RM {{planillaC.planilla}}</div>
     <div class="col-sm-2 text-right border-midle">{{planillaC.c7 | number:2}}</div>
     <div class="col-sm-1 text-right border-right-bold">{{planillaC.d7 | number:2}}%</div>
-    <div class="col-sm-1 border-midle">LEY Zn</div>
+    <div class="col-sm-1 border-midle">LEY {{planillaC.plan}}</div>
     <div class="col-sm-1 text-right border-right">{{planillaC.v7 | number:2}}%</div>
     <div class="col-sm-1">&nbsp</div>
     <div class="col-sm-1 text-right">{{planillaC.x7 | number:2}}</div>
@@ -93,7 +93,7 @@
     <div class="col-sm-1">&nbsp</div>
  </div>
  <div class="row">
-    <div class="col-sm-3 border-left-bold">Ley Zinc</div>
+    <div class="col-sm-3 border-left-bold">Ley {{planillaC.planilla}}</div>
     <div class="col-sm-2 text-right border-midle">{{planillaC.c12 | number:2}}</div>
     <div class="col-sm-1 text-right border-right-bold">%</div>
     <div class="col-sm-1 border-top-left">&nbsp</div>
@@ -108,8 +108,8 @@
     <div class="col-sm-2 text-right border-midle">{{planillaC.c13 | number:2}}</div>
     <div class="col-sm-1 border-right-bold">&nbsp</div>
     <div class="col-sm-1 text-center border-left border-top-none">pkc list</div>
-    <div class="col-sm-1 text-center border-midle border-top-none">total peso</div>
-    <div class="col-sm-1 text-center border-midle border-top-none">asignacion</div>
+    <div class="col-sm-1 text-center border-midle border-top-none">Total peso</div>
+    <div class="col-sm-1 text-center border-midle border-top-none">Asignacion</div>
     <div class="col-sm-1 text-center border-midle border-top-none">BRUTO</div>
     <div class="col-sm-1 text-center border-midle border-top-none">Humedad</div>
     <div class="col-sm-1 text-center border-right border-top-none">NETO</div>
@@ -118,7 +118,7 @@
     <div class="col-sm-3 border-left-bold">Contenido Libras Finas</div>
     <div class="col-sm-2 text-right border-midle">{{planillaC.c14 | number:2}}</div>
     <div class="col-sm-1 text-right border-right-bold">{{planillaC.d14 | number:2}}%</div>
-    <div class="col-sm-1 border-left">kg finos Zn</div>
+    <div class="col-sm-1 border-left">kg finos {{planillaC.plan}}</div>
     <div class="col-sm-1 text-right border-midle">{{planillaC.v14 | number:2}}</div>
     <div class="col-sm-1 text-right border-midle">{{planillaC.w14 | number:6}}</div>
     <div class="col-sm-1 text-right border-midle">{{planillaC.x14 | number:2}}</div>
@@ -148,7 +148,7 @@
     <div class="col-sm-1 text-right border-bottom-right">{{planillaC.z16 | number:2}}</div>
  </div>
  <div class="row">
-    <div class="col-sm-3 texto-negrilla border-left-bold">VALOR BRUTO PARA I.C.M. US$</div>
+    <div class="col-sm-3 texto-negrilla border-left-bold">VALOR BRUTO PARA R.M. US$</div>
     <div class="col-sm-2 text-right texto-negrilla border-midle">{{planillaC.c17 | number:2}}</div>
     <div class="col-sm-1 text-right border-right-bold">{{planillaC.d17 | number:2}}</div>
     <div class="col-sm-1">&nbsp</div>
@@ -170,7 +170,7 @@
     <div class="col-sm-1 text-right">{{planillaC.z18 | number:2}}</div>
  </div>
  <div class="row">
-    <div class="col-sm-3 texto-negrilla border-bottom-left-bold">RM Zinc A PAGAR</div>
+    <div class="col-sm-3 texto-negrilla border-bottom-left-bold">RM {{planillaC.planilla}} A PAGAR</div>
     <div class="col-sm-2 text-right texto-negrilla border-bottom-bold">{{planillaC.c19 | number:2}}</div>
     <div class="col-sm-1 border-bottom-right-bold">&nbsp</div>
     <div class="col-sm-1 text-right texto-negrilla">DM/TON</div>
@@ -247,7 +247,7 @@
     <div class="col-sm-1">&nbsp</div>
  </div>
  <div class="row">
-    <div class="col-sm-3 texto-negrilla border-left-bold">VALOR BRUTO PARA I.C.M. US$/TMS</div>
+    <div class="col-sm-3 texto-negrilla border-left-bold">VALOR BRUTO PARA R.M. US$/TMS</div>
     <div class="col-sm-2 text-right texto-negrilla border-midle">{{planillaC.c26 | number:2}}</div>
     <div class="col-sm-1 border-right-bold">&nbsp</div>
     <div class="col-sm-1">&nbsp</div>

@@ -1,4 +1,4 @@
-<div class="wrapper-md" ng-controller="RegaliaMineraCtrl">
+<div class="wrapper-md">
  <div class="panel panel-default">
   <div class="panel-heading">
    <div class="row">
@@ -77,15 +77,15 @@
    <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-1 border-only-left-bold">2608.00.00.00</div>
-    <div class="col-sm-1 border-only-left-bold">Zinc</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.pesoBrutoZinc | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.pesoNetoZinc | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right texto-negrilla-rojo">{{planillaC.leyMineralZinc | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.pesoFinoZinc | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right texto-negrilla-rojo">{{planillaC.cotizacionZinc | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.valorBrutoZinc | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right texto-negrilla-rojo">{{planillaC.alicuotaZinc | number:3}}</div>
-    <div class="col-sm-1 border-only-left-bold border-only-right-bold text-right padding-right">{{planillaC.rmZinc | number:2}}</div>
+    <div class="col-sm-1 border-left">{{planillaC.planilla}}</div>
+    <div class="col-sm-1 border-left text-right padding-right">{{planillaC.pesoBrutoZinc | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right">{{planillaC.pesoNetoZinc | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right texto-negrilla-rojo">{{planillaC.leyMineralZinc | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right">{{planillaC.pesoFinoZinc | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right texto-negrilla-rojo">{{planillaC.cotizacionZinc | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right">{{planillaC.valorBrutoZinc | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right texto-negrilla-rojo">{{planillaC.alicuotaZinc | number:3}}</div>
+    <div class="col-sm-1 border-left border-only-right-bold text-right padding-right">{{planillaC.rmZinc | number:2}}</div>
    </div>  
    <div class="row">
     <div class="col-sm-1"></div>
@@ -161,12 +161,12 @@
     <div class="col-sm-1">&nbsp</div>
     <div class="col-sm-1">&nbsp</div>
     <div class="col-sm-1 border-only-left-bold text-right padding-right">1</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">POTOSI</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">&nbsp</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">85</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.sumaRMUSD*85/100 | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold text-right padding-right">{{planillaC.sumaRMUSD*85/100*planillaC.tipoCambio | number:2}}</div>
-    <div class="col-sm-1 border-only-left-bold border-only-right-bold text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-left text-right padding-right">POTOSI</div>
+    <div class="col-sm-1 border-left text-right padding-right">&nbsp</div>
+    <div class="col-sm-1 border-left text-right padding-right">85</div>
+    <div class="col-sm-1 border-left text-right padding-right">{{planillaC.sumaRMUSD*85/100 | number:2}}</div>
+    <div class="col-sm-1 border-left text-right padding-right">{{planillaC.sumaRMUSD*85/100*planillaC.tipoCambio | number:2}}</div>
+    <div class="col-sm-1 border-left border-only-right-bold text-right padding-right">&nbsp</div>
     <div class="col-sm-1">&nbsp</div>
     <div class="col-sm-1">&nbsp</div>
    </div>  

@@ -109,6 +109,7 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
   console.log(planillaId);
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log('Ingreso a get');
+    $scope.planillaC.planilla=$scope.planilla2.planilla;
     $scope.planillaC.contenidoListaEmpaqueFactores=datos.contenidoListaEmpaqueFactores;
     $scope.planillaC.pesoKilosNetosSecosFactores=datos.pesoKilosNetosSecosFactores;
     $scope.planillaC.pesoLoteFactores=datos.pesoLoteFactores;
@@ -378,6 +379,13 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
   $scope.planilla2={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
+    $scope.planillaC.planilla=$scope.planilla2.planilla;
+    if ($scope.planillaC.planilla=="ZINC") {
+      $scope.planillaC.plan="Zn";
+    }
+    else {
+      $scope.planillaC.plan="Pb";      
+    }
     $scope.planillaC.v7=datos.contenidoZnLeyes;
     $scope.planillaC.d4=$scope.planillaC.v7;
     $scope.planillaC.v6=datos.pesoMermaFactores;
@@ -449,7 +457,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   $scope.planillaC={};
   $scope.planilla2={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
-    
+    $scope.planillaC.planilla=$scope.planilla2.planilla;
     $scope.planillaC.v7=datos.contenidoZnLeyes;
     $scope.planillaC.d4=$scope.planillaC.v7;
     $scope.planillaC.v6=datos.pesoMermaFactores;
