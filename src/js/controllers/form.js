@@ -581,12 +581,14 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.basePromedioSus=datos1.basePromedioSus;
     $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
     $scope.factura.tipoCambio=datos1.pesoMermaFactores;
+    $scope.factura.baseDiferenciaBs=$scope.factura.baseDiferenciaSus;//*$scope.factura.tipoCambio;
     $scope.factura.planilla_id=planillaId;
     $scope.factura.control='';
     $scope.factura.autorizacion='';
     $scope.factura.vencimiento='';
     $scope.factura.literal1='';
     $scope.factura.literal2='';
+    $scope.factura.literal3='';
     if (datos1.planilla=="ZINC"){
     	ide=1;
     }
