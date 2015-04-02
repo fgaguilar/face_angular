@@ -37,7 +37,13 @@
             <label class="col-sm-1 control-label">PUERTO DESTINO</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino">
+                <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino"> -->
+                <select class="form-control m-t" ng-model="planilla.puertoDestino" required >
+                  <option value="">Elija Opcion</option>
+                  <option value="AKITA">AKITA</option>
+                  <option value="ANTWERP">ANTWERP</option>
+                  <option value="SHIKAMA">SHIKAMA</option>
+                </select>
               </div>
             </div>
           </div>
@@ -69,7 +75,12 @@
             <label class="col-sm-1 control-label">PAIS DESTINO</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino">
+                <select class="form-control m-t" ng-model="planilla.paisDestino" required >
+                  <option value="">Elija Opcion</option>
+                  <option value="BELGICA">BELGICA</option>
+                  <option value="JAPON">JAPON</option>
+                </select>                
+                <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino"> -->
               </div>
             </div>
           </div>
