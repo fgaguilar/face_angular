@@ -642,8 +642,8 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
               $scope[value] = !$scope[value];
             };
 
-            $state.go('app.export.parametros',parametro);
-            //$location.path('/');
+            //$state.go('app.export.parametros',parametro);
+            $location.path('/');
           });
       });
     };

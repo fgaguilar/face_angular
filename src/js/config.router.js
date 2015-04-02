@@ -60,7 +60,12 @@ angular.module('app')
                   url: '/parametros/:parametroId',
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros.html'
-              })                
+              }) 
+              .state('app.export.parametros2', {
+                  url: '/parametros2/:parametroId',
+                  controller: 'ParametrosCtrl',
+                  templateUrl: 'tpl/form_parametros2.html'
+              })                              
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc/:tipoPlanilla',
                   templateUrl: 'tpl/form_planillaZinc.html',
