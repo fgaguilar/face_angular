@@ -316,7 +316,7 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
     };
   });
 
-app.controller('FormUnoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {    
+app.controller('FormUnoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
   $scope.planilla2={};
@@ -649,3 +649,42 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
     };
   });
 });
+
+  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+    $scope.items = items;
+    $scope.selected = {
+      item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+      $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+  }])
+  ; 
+  app.controller('ModalDemoCtrl', ['$scope', '$modal', '$log', '$state', function($scope, $modal, $log, $state) {
+    $scope.items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+    $scope.open = function (size) {
+      var modalInstance = $modal.open({
+        templateUrl: 'myModalContent.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+        $log.info('Eligio Item ' + $scope.selected);
+        $state.go('app.export.parametros','1');
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+  }])
