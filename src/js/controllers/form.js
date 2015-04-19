@@ -650,41 +650,57 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
   });
 });
 
-  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-    $scope.items = items;
-    $scope.selected = {
+  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'mensaje', function($scope, $modalInstance, mensaje) {
+    $scope.mensaje = mensaje;
+    /*$scope.selected = {
       item: $scope.items[0]
-    };
+    };*/
 
     $scope.ok = function () {
-      $modalInstance.close($scope.selected.item);
+      $modalInstance.close($scope.mensaje);
     };
 
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
   }])
   ; 
-  app.controller('ModalDemoCtrl', ['$scope', '$modal', '$log', '$state', function($scope, $modal, $log, $state) {
-    $scope.items = ['item1', 'item2', 'item3', 'item4', 'item5'];
-    $scope.open = function (size) {
-      var modalInstance = $modal.open({
-        templateUrl: 'myModalContent.html',
-        controller: 'ModalInstanceCtrl',
-        size: size,
-        resolve: {
-          items: function () {
-            return $scope.items;
-          }
-        }
-      });
+  app.controller('ModalDemoCtrl', ['$scope', '$modal', '$log', '$state','$stateParams','Parametro', function($scope, $modal, $log, $state, $stateParams, Parametro) {
+    console.log("Ingreso a ModalDemoCtrl");
+    var valor=0;
+    var planillaC = {};
+    $scope.mensaje = 'Debe actualizar los parametros';
 
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-        $log.info('Eligio Item ' + $scope.selected);
-        $state.go('app.export.parametros','1');
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
+    if ($stateParams.tipoPlanilla=='ZINC'){
+      valor=1;
+    }
+    else {
+      valor=2;
     };
-  }])
+
+    $scope.planillaC=Parametro.get({'parametroId': valor}, function(datos){
+      $scope.parametro=datos;
+      console.log("Ingreso a ModalDemoCtrl");
+      console.log(valor);
+      console.log($scope.parametro.alicuotas);
+      if ($scope.parametro.alicuotas==0){
+        console.log("ingreso a == 0");
+        //$scope.open = function (size) {
+          var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            size: 'lg',
+            resolve: {
+              mensaje: function () {
+                return $scope.mensaje;
+              }
+            }
+          });
+
+          modalInstance.result.then(function () {
+            $state.go('app.export.parametros','1');
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+        //};
+      };
+      console.log("Salio");
+    });
+  }]);
