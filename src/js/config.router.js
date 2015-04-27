@@ -59,7 +59,10 @@ angular.module('app')
               .state('app.export.parametros', {
                   url: '/parametros/:parametroId',
                   controller: 'ParametrosCtrl',
-                  templateUrl: 'tpl/form_parametros.html'
+                  templateUrl: 'tpl/form_parametros.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               }) 
               .state('app.export.parametros2', {
                   url: '/parametros2/:parametroId',
@@ -170,3 +173,25 @@ angular.module('app')
       }
     ]
   );
+
+var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
+  var deferred = $q.defer();
+
+  $http.get('http://localhost:3000/loggedin').success(function(user){
+    $rootScope.errorMessage = null;
+    // User is Authenticated
+    if (user != '0')
+    {
+      $rootScope.currentUser = user;
+      deferred.resolve();
+    }
+    // User is not Authenticated
+    else {
+      $rootScope.errorMessage = 'You need to login in';
+      deferred.reject();
+      $location.url('/login');
+    }
+  });
+
+  return deferred.promise;
+}
