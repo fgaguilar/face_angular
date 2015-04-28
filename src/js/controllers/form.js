@@ -95,7 +95,7 @@ app.directive('numericInput', function($filter, $browser, $locale) {
             $element.bind('keydown', function(event) {
                 var key = event.keyCode;
                 if (key == 91 || (15 < key && key < 19) || (35 <= key && key <= 40)) 
-                    return newVal;
+                    return ;
             })
         }        
     }
@@ -225,7 +225,7 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion) {
+app.controller('FormVacioCtrl',function ($scope,$rootScope,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion) {
     console.log("CreateCtrl!!!!!!!!!!!!");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     var ide = 0;
@@ -245,8 +245,6 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
         	else {
         		$state.go('app.export.planillaPlomoListado',tipoPlanilla);	
         	}
-        	console.log("antes de /");
-         	$location.path('/');
         });
       });
     };
@@ -259,6 +257,7 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       ide = 2;   
     }
     $scope.planilla.planilla=tipoPlanilla;
+    $scope.planilla.created_by=$rootScope.currentUser.username;
     $scope.parametro2={};
     $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
     	console.log('Ingreso a GET!!!!!!');
@@ -276,7 +275,7 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
       $scope.planilla.pesoHumedadFactores=datos.factorKg2;
       $scope.planilla.contenidoAgExternoFactores=datos.externo;
       $scope.planilla.pesoMermaFactores=datos.tipoCambioANB;
-      $scope.planilla.contenidoZnTipoDeCambioFactores=datos.tipoCambioOficial;
+      $scope.planilla.contenidoZnTipoDeCambioFactores=datos.tipoCambioOficial;   
       if (tipoPlanilla=='ZINC') {
         $scope.planilla.pesoLoteFactores='EXMSC-Z';
       }
@@ -284,10 +283,13 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
         $scope.planilla.pesoLoteFactores='EXMSC-P';
       }
       console.log("Antes de recuperar dosificacion");
+      console.log($scope.planilla);
+      console.log("===============================");
       $scope.dosificacion2={};
       $scope.dosificacion2= Dosificacion.get({'dosificacionId': 1}, function(datos2){
       	$scope.planilla.impuestoFacturaFactores=datos2.numero;
       });      
+
     });
 
     $scope.calcular = function(){
@@ -316,13 +318,14 @@ app.controller('FormVacioCtrl',function ($scope,$location,$timeout,$stateParams,
     };
   });
 
-app.controller('FormUnoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+app.controller('FormUnoCtrl',function ($scope,$rootScope,$location,$timeout,$stateParams,Plan) {
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
   $scope.planilla2={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
     $scope.planilla=datos;
+    $scope.planilla.updated_by=$rootScope.currentUser.username;
     console.log("DATOS");
     console.log($scope.planilla.planilla);
     if ($scope.planilla.planilla=='ZINC'){
@@ -704,3 +707,4 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
       console.log("Salio");
     });
   }]);
+

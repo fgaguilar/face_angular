@@ -305,3 +305,8 @@
       $scope.mytime = null;
     };
   }]);
+
+  app.controller('NavController', ['$scope','$rootScope', function ($scope,$rootScope) {
+    console.log("rootScope");
+    $scope.user=$rootScope.currentUser;
+  }]);

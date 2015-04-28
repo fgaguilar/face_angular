@@ -23,14 +23,15 @@
 //     };
 //   }]);
 
-app.controller('SigninFormController', ['$scope','$http', '$rootScope','$location', function ($scope,$http,$rootScope,$location) {
+app.controller('SigninFormController', ['$scope','$state', '$http', '$rootScope','$location', function ($scope, $state, $http,$rootScope,$location) {
   $scope.login = function(user){
     console.log(user);
     $http.post('http://localhost:3000/login', user)
     .success(function(user){
       console.log(user);
       $rootScope.currentUser = user;
-      $location.url('/profile');
+      $state.go('app.dashboard-v1');
+      //$location.url('/profile');
     });
   }
 }]);
