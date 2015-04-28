@@ -216,6 +216,7 @@ app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
 });
 
 app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
+  console.log('Ingreso a CreateCtrl');
     $scope.grabar = function() {
       Plan.save($scope.plans, function() {
         $timeout(function() {
@@ -225,8 +226,8 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$rootScope,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion) {
-    console.log("CreateCtrl!!!!!!!!!!!!");
+app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion) {
+    console.log("Ingreso a FormVacioCtrl");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     var ide = 0;
     $scope.planilla={};
@@ -257,7 +258,7 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$location,$timeout,$s
       ide = 2;   
     }
     $scope.planilla.planilla=tipoPlanilla;
-    $scope.planilla.created_by=$rootScope.currentUser.username;
+    $scope.planilla.created_by=$cookies.uName;
     $scope.parametro2={};
     $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
     	console.log('Ingreso a GET!!!!!!');
@@ -318,14 +319,15 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$location,$timeout,$s
     };
   });
 
-app.controller('FormUnoCtrl',function ($scope,$rootScope,$location,$timeout,$stateParams,Plan) {
+app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,Plan) {
+  console.log('Ingreso a FormUnoCtrl');
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
   $scope.planilla2={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
     $scope.planilla=datos;
-    $scope.planilla.updated_by=$rootScope.currentUser.username;
+    $scope.planilla.updated_by=$cookies.uName;
     console.log("DATOS");
     console.log($scope.planilla.planilla);
     if ($scope.planilla.planilla=='ZINC'){
@@ -377,6 +379,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$location,$timeout,$sta
 
 
 app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+  console.log('Ingreso a PlanCalculoCtrl');
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
   $scope.planilla2={};
@@ -456,6 +459,7 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
 });
 
 app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+  console.log('Ingreso a RegaliaMineraCtrl');
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
   $scope.planilla2={};
@@ -654,17 +658,13 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
 });
 
   app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'mensaje', function($scope, $modalInstance, mensaje) {
+    console.log('Ingreso a ModalInstanceCtrl');    
     $scope.mensaje = mensaje;
-    /*$scope.selected = {
-      item: $scope.items[0]
-    };*/
-
     $scope.ok = function () {
       $modalInstance.close($scope.mensaje);
     };
+  }]);
 
-  }])
-  ; 
   app.controller('ModalDemoCtrl', ['$scope', '$modal', '$log', '$state','$stateParams','Parametro', function($scope, $modal, $log, $state, $stateParams, Parametro) {
     console.log("Ingreso a ModalDemoCtrl");
     var valor=0;
@@ -682,8 +682,10 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
       $scope.parametro=datos;
       console.log("Ingreso a ModalDemoCtrl");
       console.log(valor);
-      console.log($scope.parametro.alicuotas);
-      if ($scope.parametro.alicuotas==0){
+      console.log($scope.parametro);
+
+      if (($scope.parametro.cotizaciones==0)||($scope.parametro.cotizacionesAg==0)||
+        ($scope.parametro.alicuotas==0)||($scope.parametro.alicuotasAg==0)){
         console.log("ingreso a == 0");
         //$scope.open = function (size) {
           var modalInstance = $modal.open({
@@ -692,13 +694,44 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
             size: 'lg',
             resolve: {
               mensaje: function () {
-                return $scope.mensaje;
+                return $scope.mensaje + "1 de " + $stateParams.tipoPlanilla;
               }
             }
           });
 
           modalInstance.result.then(function () {
-            $state.go('app.export.parametros','1');
+            var tipoListado=1;
+            console.log("Parametro " + tipoListado);
+            $state.go('app.dashboard-v1');
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+        //};
+      };
+      if (
+        ($scope.parametro.humedad==0)||($scope.parametro.merma==0)||
+        ($scope.parametro.leyes==0)||($scope.parametro.leyesAg==0)||
+        ($scope.parametro.tipoCambioANB==0)||($scope.parametro.tipoCambioOficial==0)||
+        ($scope.parametro.factorKg1==0)||($scope.parametro.factorKg2==0)||
+        ($scope.parametro.externo==0)
+        ){
+        console.log("ingreso a == 0");
+        //$scope.open = function (size) {
+          var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            size: 'lg',
+            resolve: {
+              mensaje: function () {
+                return $scope.mensaje + "2 de " + $stateParams.tipoPlanilla;
+              }
+            }
+          });
+
+          modalInstance.result.then(function () {
+            var tipoListado=1;
+            console.log("Parametro " + tipoListado);
+            $state.go('app.dashboard-v1');
           }, function () {
             $log.info('Modal dismissed at: ' + new Date());
           });

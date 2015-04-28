@@ -306,7 +306,14 @@
     };
   }]);
 
-  app.controller('NavController', ['$scope','$rootScope', function ($scope,$rootScope) {
-    console.log("rootScope");
-    $scope.user=$rootScope.currentUser;
+  app.controller('NavController', ['$scope', '$cookies', function ($scope,$cookies) {
+    console.log('Ingreso a NavController');
+    console.log("======= NavController: $cookies.currentUser ========");
+    console.log($cookies.fName);
+    console.log($cookies.lName);
+    $scope.user ={
+      "firstName": $cookies.fName,
+      "lastName" : $cookies.lName
+    };
+    console.log($scope.user);
   }]);

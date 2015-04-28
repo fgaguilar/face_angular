@@ -23,15 +23,20 @@
 //     };
 //   }]);
 
-app.controller('SigninFormController', ['$scope','$state', '$http', '$rootScope','$location', function ($scope, $state, $http,$rootScope,$location) {
+app.controller('SigninFormController', ['$scope','$cookies','$state','$http',function ($scope,$cookies,$state,$http) {
+  console.log('Ingreso a SigninFormController');
   $scope.login = function(user){
-    console.log(user);
     $http.post('http://localhost:3000/login', user)
     .success(function(user){
       console.log(user);
-      $rootScope.currentUser = user;
+      $cookies.fName = user.firstName;
+      $cookies.lName = user.lastName;
+      $cookies.uName = user.username;
+      console.log("======= SigninFormController:$cookies.currentUser ========");
+      console.log($cookies.fName);
+      console.log($cookies.lName);
+      console.log($cookies.uName);
       $state.go('app.dashboard-v1');
-      //$location.url('/profile');
     });
   }
 }]);
