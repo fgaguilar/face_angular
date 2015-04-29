@@ -57,7 +57,9 @@ angular.module('app')
                   }
               })
               .state('app.export.parametros', {
-                  url: '/parametros/:parametroId',
+                  //url: '/parametros/:parametroId',
+                  url: '/parametros',
+                  params: {'parametroId':null},
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros.html',
                   resolve: {
@@ -65,7 +67,8 @@ angular.module('app')
                   }
               }) 
               .state('app.export.parametros2', {
-                  url: '/parametros2/:parametroId',
+                  url: '/parametros2',
+                  params: {'parametroId':null},
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros2.html'
               })                              
@@ -74,13 +77,11 @@ angular.module('app')
                   templateUrl: 'tpl/form_planillaZinc.html',
                   controller: 'FormVacioCtrl'
               })
-/******************************************************************************/              
               .state('app.export.planillaZincUno', {
-                  url: '/planillaZincUno/:planId',
+                  url: '/planillaZincUno/:tipoPlanilla/:planId',
                   controller: 'FormUnoCtrl',
                   templateUrl: 'tpl/form_planillaZinc.html'
               })
-/******************************************************************************/
               .state('app.export.planillaZincListadoGeneral', {
                   url: '/planillaZincListado',
                   controller: 'ListZincCtrlGral',
