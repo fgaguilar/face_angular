@@ -37,6 +37,11 @@ app.controller('SigninFormController', ['$scope','$cookies','$state','$http',fun
       console.log($cookies.lName);
       console.log($cookies.uName);
       $state.go('app.dashboard-v1');
+    }).error(function(data, status, headers, config) {
+      $scope.authError = 'Usuario o Password Incorrectos';
+      console.log('Error en Autenticacion');
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
     });
   }
 }]);

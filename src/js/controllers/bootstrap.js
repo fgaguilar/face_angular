@@ -306,14 +306,31 @@
     };
   }]);
 
-  app.controller('NavController', ['$scope', '$cookies', function ($scope,$cookies) {
+  app.controller('NavController', ['$scope', '$state', '$http', '$cookies', function ($scope, $state, $http, $cookies) {
     console.log('Ingreso a NavController');
     console.log("======= NavController: $cookies.currentUser ========");
     console.log($cookies.fName);
     console.log($cookies.lName);
+    if (!$cookies.fName){
+      console.log('Ingreso por cookies nulos');
+      $state.go('access.signin');
+    };
     $scope.user ={
       "firstName": $cookies.fName,
       "lastName" : $cookies.lName
     };
     console.log($scope.user);
+    $scope.logout = function(){
+      console.log('Ingreso a logout desde angular');
+    $http.post('http://localhost:3000/logout')
+    .success(function(){
+      delete $cookies["fName"];
+      delete $cookies["lName"];
+      delete $cookies["uName"];
+      console.log('============ remove cookies ==============');
+      console.log($cookies.uName);
+      console.log($cookies.fName);
+      console.log($cookies.lName);
+    });
+  }
   }]);

@@ -32,7 +32,8 @@ angular.module('app')
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
                         return $ocLazyLoad.load(['js/controllers/chart.js']);
-                    }]
+                    }],
+                    loggedin: checkLoggedin
                   }
               })
               .state('app.dashboard-v2', {
@@ -42,7 +43,8 @@ angular.module('app')
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
                         return $ocLazyLoad.load(['js/controllers/chart.js']);
-                    }]
+                    }],
+                    loggedin: checkLoggedin
                   }
               })
               // export
@@ -70,37 +72,58 @@ angular.module('app')
                   url: '/parametros2',
                   params: {'parametroId':null},
                   controller: 'ParametrosCtrl',
-                  templateUrl: 'tpl/form_parametros2.html'
+                  templateUrl: 'tpl/form_parametros2.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })                              
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc/:tipoPlanilla',
                   templateUrl: 'tpl/form_planillaZinc.html',
-                  controller: 'FormVacioCtrl'
+                  controller: 'FormVacioCtrl',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })
               .state('app.export.planillaZincUno', {
                   url: '/planillaZincUno/:tipoPlanilla/:planId',
                   controller: 'FormUnoCtrl',
-                  templateUrl: 'tpl/form_planillaZinc.html'
+                  templateUrl: 'tpl/form_planillaZinc.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })
               .state('app.export.planillaZincListadoGeneral', {
                   url: '/planillaZincListado',
                   controller: 'ListZincCtrlGral',
-                  templateUrl: 'tpl/form_listado.html'
+                  templateUrl: 'tpl/form_listado.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })
               .state('app.export.planillaZincListado', {
                   url: '/planillaZincListado/:tipoPlanilla',
                   controller: 'ListZincCtrl',
-                  templateUrl: 'tpl/form_listado.html'
+                  templateUrl: 'tpl/form_listado.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })
               .state('app.export.planillaPlomoListado', {
                   url: '/planillaPlomoListado/:tipoPlanilla',
                   controller: 'ListPlomoCtrl',
-                  templateUrl: 'tpl/form_listado.html'
+                  templateUrl: 'tpl/form_listado.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })              
               .state('app.export.listaEmpaque', {
                   url: '/listaEmpaque/:planId',
                   controller: 'listaEmpaqueCtrl',
-                  templateUrl: 'tpl/form_lista_empaque.html'
+                  templateUrl: 'tpl/form_lista_empaque.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })             
               // taxation
               .state('app.taxation', {
@@ -116,12 +139,18 @@ angular.module('app')
               .state('app.taxation.verificacionCalculo', {
                   url: '/verificacionCalculo/:planId',
                   controller: 'PlanCalculoCtrl',
-                  templateUrl: 'tpl/form_plan_calculo.html'
+                  templateUrl: 'tpl/form_plan_calculo.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })
               .state('app.taxation.pagoRegalias', {
                   url: '/pagoRegalias/:planId',
                   controller: 'RegaliaMineraCtrl',
-                  templateUrl: 'tpl/form_regalia_minera.html'
+                  templateUrl: 'tpl/form_regalia_minera.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })
               // billing
               .state('app.billing', {
@@ -137,7 +166,10 @@ angular.module('app')
               .state('app.billing.facturaExportacion', {
                   url: '/facturaExportacion/:planId',
                   controller: 'FacturaExportacionCtrl',
-                  templateUrl: 'tpl/form_factura.html'
+                  templateUrl: 'tpl/form_factura.html',
+                  resolve: {
+                    loggedin: checkLoggedin
+                  }
               })     
               .state('access', {
                   url: '/access',
@@ -175,10 +207,27 @@ angular.module('app')
     ]
   );
 
-var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
+var checkLoggedin = function($q, $state, $timeout, $http, $location, $rootScope, $cookies){
+  console.log('Ingreso a checkLoggedin');
   var deferred = $q.defer();
 
   $http.get('http://localhost:3000/loggedin').success(function(user){
+    console.log('Luego de loggedin');
+    console.log(user);
+    if (!$cookies.fName){
+      console.log('Ingreso por cookies nulos');
+      $state.go('access.signin');
+      $http.post('http://localhost:3000/logout')
+      .success(function(){
+        delete $cookies["fName"];
+        delete $cookies["lName"];
+        delete $cookies["uName"];
+        console.log('============ remove cookies ==============');
+        console.log($cookies.uName);
+        console.log($cookies.fName);
+        console.log($cookies.lName);
+      });
+    };
     $rootScope.errorMessage = null;
     // User is Authenticated
     if (user != '0')
