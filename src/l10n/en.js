@@ -15,7 +15,7 @@
 },
 "aside" : {
   "nav" : {
-    "HEADER" : "Navigacion",
+    "HEADER" : "Navegacion",
     "DASHBOARD" : "Panel de Control",
     "EXPORT" : "Exportacion",
     "TAXATION" : "Impuestos",
