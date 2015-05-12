@@ -316,6 +316,7 @@
       $state.go('access.signin');
     };
     $scope.user ={
+      "username": $cookies.uName,
       "firstName": $cookies.fName,
       "lastName" : $cookies.lName
     };

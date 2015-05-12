@@ -213,7 +213,7 @@ var checkLoggedin = function($q, $state, $timeout, $http, $location, $rootScope,
 
   $http.get('http://localhost:3000/loggedin').success(function(user){
     console.log('Luego de loggedin');
-    console.log(user);
+    console.log("USER: "+user);
     if (!$cookies.fName){
       console.log('Ingreso por cookies nulos');
       $state.go('access.signin');
