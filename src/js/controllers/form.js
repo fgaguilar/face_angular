@@ -700,7 +700,7 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
             size: 'lg',
             resolve: {
               mensaje: function () {
-                return $scope.mensaje + "1 de " + $stateParams.tipoPlanilla + "\"";
+                return $scope.mensaje + "2 " + $stateParams.tipoPlanilla + "\"";
               }
             }
           });
@@ -712,7 +712,7 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
           console.log('======= Scope de parametros ===============');
           console.log($scope.valor);
           console.log('======= Scope de parametros ===============');          
-          $state.go('app.export.parametros',{'parametroId':$scope.valor});
+          $state.go('app.export.parametros2',{'parametroId':$scope.valor});
         //};
       };
       if (
@@ -730,7 +730,7 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
             size: 'lg',
             resolve: {
               mensaje: function () {
-                return $scope.mensaje + "2 de " + $stateParams.tipoPlanilla + "\"";
+                return $scope.mensaje + "1 " + $stateParams.tipoPlanilla + "\"";
               }
             }
           });
