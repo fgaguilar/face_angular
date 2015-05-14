@@ -211,13 +211,13 @@ var checkLoggedin = function($q, $state, $timeout, $http, $location, $rootScope,
   console.log('Ingreso a checkLoggedin');
   var deferred = $q.defer();
 
-  $http.get('http://localhost:3000/loggedin').success(function(user){
+  $http.get('http://face:3000/loggedin').success(function(user){
     console.log('Luego de loggedin');
     console.log("USER: "+user);
     if (!$cookies.fName){
       console.log('Ingreso por cookies nulos');
       $state.go('access.signin');
-      $http.post('http://localhost:3000/logout')
+      $http.post('http://face:3000/logout')
       .success(function(){
         delete $cookies["fName"];
         delete $cookies["lName"];

@@ -323,7 +323,7 @@
     console.log($scope.user);
     $scope.logout = function(){
       console.log('Ingreso a logout desde angular');
-      $http.post('http://localhost:3000/logout').success(function(){
+      $http.post('http://face:3000/logout').success(function(){
         delete $cookies["fName"];
         delete $cookies["lName"];
         delete $cookies["uName"];

@@ -26,7 +26,7 @@
 app.controller('SigninFormController', ['$scope','$cookies','$state','$http',function ($scope,$cookies,$state,$http) {
   console.log('Ingreso a SigninFormController');
   $scope.login = function(user){
-    $http.post('http://localhost:3000/login', user).success(function(user){
+    $http.post('http://face:3000/login', user).success(function(user){
       console.log(user);
       $cookies.fName = user.firstName;
       $cookies.lName = user.lastName;
