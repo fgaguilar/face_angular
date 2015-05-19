@@ -54,7 +54,7 @@ angular.module('app')
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad){
-                          return uiLoad.load('js/controllers/form.js');
+                          return uiLoad.load(['js/controllers/form.js','js/directives/formDirectives.js']);
                       }]
                   }
               })
@@ -132,7 +132,7 @@ angular.module('app')
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad){
-                          return uiLoad.load('js/controllers/form.js');
+                          return uiLoad.load(['js/controllers/form.js','js/directives/formDirectives.js']);
                       }]
                   }
               })
@@ -159,7 +159,7 @@ angular.module('app')
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad){
-                          return uiLoad.load('js/controllers/form.js');
+                          return uiLoad.load(['js/controllers/form.js','js/directives/formDirectives.js']);
                       }]
                   }
               })
