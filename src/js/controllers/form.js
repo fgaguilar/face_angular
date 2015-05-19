@@ -693,7 +693,6 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
       if (($scope.parametro.cotizaciones==0)||($scope.parametro.cotizacionesAg==0)||
         ($scope.parametro.alicuotas==0)||($scope.parametro.alicuotasAg==0)){
         console.log("ingreso a PARAMETROS 2 == 0");
-        //$scope.open = function (size) {
           var modalInstance = $modal.open({
             templateUrl: 'myModalContent.html',
             controller: 'ModalInstanceCtrl',
@@ -713,9 +712,8 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
           console.log($scope.valor);
           console.log('======= Scope de parametros ===============');          
           $state.go('app.export.parametros2',{'parametroId':$scope.valor});
-        //};
       };
-      if (
+      /*if (
         ($scope.parametro.humedad==0)||($scope.parametro.merma==0)||
         ($scope.parametro.leyes==0)||($scope.parametro.leyesAg==0)||
         ($scope.parametro.tipoCambioANB==0)||($scope.parametro.tipoCambioOficial==0)||
@@ -723,7 +721,6 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
         ($scope.parametro.externo==0)
         ){
         console.log("ingreso a PARAMETROS 1 == 0");
-        //$scope.open = function (size) {
           var modalInstance = $modal.open({
             templateUrl: 'myModalContent.html',
             controller: 'ModalInstanceCtrl',
@@ -743,8 +740,7 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
           console.log($scope.valor);
           console.log('======= Scope de parametros ===============');
           $state.go('app.export.parametros',{'parametroId':$scope.valor});
-        //};
-      };
+      };*/
       console.log("Salio");
     });
   }]);
