@@ -334,7 +334,9 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   });
   console.groupCollapsed("FormUnoCtrl");
   $scope.grabar = function() {
-    console.error("Ingreso a actualizar");
+    console.log("Ingreso a actualizar");
+    $scope.miFecha = new Date($scope.planilla.pesoKilosNetosSecosFactores.getFullYear(),$scope.planilla.pesoKilosNetosSecosFactores.getMonth(),$scope.planilla.pesoKilosNetosSecosFactores.getDate());
+    $scope.planilla.pesoKilosNetosSecosFactores=$scope.miFecha;
     Plan.update({planillaId: $scope.planilla.id}, $scope.planilla, function() {
       $timeout(function() {
         $location.path('/');
@@ -342,9 +344,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
     });
   };
   console.groupEnd();  
- 
 });
-
 
 app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
   console.log('Ingreso a PlanCalculoCtrl');
@@ -524,7 +524,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   var ide = 0;
@@ -572,6 +572,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$timeout,$sta
     $scope.factura.literal1='';
     $scope.factura.literal2='';
     $scope.factura.literal3='';
+    $scope.factura.created_by=$cookies.uName;
     if (datos1.planilla=="ZINC"){
     	ide=1;
     }

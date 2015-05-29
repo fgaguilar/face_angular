@@ -8,19 +8,21 @@
       <th>Lote</th>
       <th>Kilos Netos Húmedos</th>
       <th>Fecha</th>
-      <th>
+      <th>Creación</th>      
+      <th>      
         <a class="btn btn-bg btn-primary" ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">Nuevo</a>
       </th>
     </tr>
     
     </thead>
     <tbody>
-    <tr ng-repeat="plane in planilla | filter:search | orderBy : 'pesoKilosNetosSecosFactores':true">
+    <tr ng-repeat="plane in planilla | filter:search | orderBy : 'created_at':true">
       <td>{{plane.planilla}}</td>
       <td>{{plane.id}}</td>
       <td>{{plane.pesoLoteFactores}}</td>
       <td>{{plane.pesoKilosNetosHumedosPeso}}</td>
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
+      <td>{{plane.created_at}}</td>      
       <td>
       <div class="btn-group" dropdown is-open="status.isopen">
         <button type="button" class="btn btn-bg btn-primary" dropdown-toggle ng-disabled="disabled">
