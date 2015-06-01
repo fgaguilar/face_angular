@@ -1,9 +1,8 @@
 <div class="wrapper-md">
   <div class="panel panel-default">
-    <div class="panel-heading font-bold">Factura de Exportación</div>
-    <div class="panel-body">
+    <div class="panel-heading font-bold" ng-hide="longitud">Factura de Exportación</div>
+    <div class="panel-body" ng-hide="longitud">
       <form action="" name="forma">
-
       <!-- 1a -->
         <div class="row">  
           <div class="col-sm-5 texto-negrilla">Potosí, {{factura.fecha}}</div>
@@ -150,5 +149,6 @@
         </div>
       </form>
     </div>
+    <div class="panel-heading font-bold" ng-show="longitud">Factura de Exportación ya creada</div>
   </div>
 </div>

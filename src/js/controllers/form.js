@@ -524,7 +524,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   });
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$state,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   var ide = 0;
@@ -533,72 +533,84 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$tim
   $scope.factura={};
   $scope.factura2={};
   $scope.factura2=Facturac.get({'planillaId': planillaId}, function(datos2){
-  	console.log("DATOS2!!!!!!!");
-  	console.log(datos2);
-  });
-  $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
-    $scope.planillaC=datos1;
-    $scope.factura.nit="0";
-    $scope.factura.fecha=datos1.pesoKilosNetosSecosFactores;
-    $scope.factura.factura=datos1.impuestoFacturaFactores;
-    $scope.factura.puertoDestino=datos1.puertoDestino;
-    $scope.factura.paisDestino=datos1.paisDestino;
-    $scope.factura.numeroLote=datos1.pesoLoteFactores;
-    $scope.factura.pesoKilosNetosHumedosPeso=datos1.pesoKilosNetosHumedosPeso;
-    $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos;
-    $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso;
-    $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos;
-    $scope.factura.pesoMermaPeso=datos1.pesoMermaPeso;
-    $scope.factura.contenidoZnLeyes=datos1.contenidoZnLeyes;
-    $scope.factura.contenidoZnPesokg=datos1.contenidoZnPesokg;
-    $scope.factura.contenidoZnPesolf=datos1.contenidoZnPesolf;
-    $scope.factura.baseZnCotizaciones=datos1.baseZnCotizaciones;
-    $scope.factura.pesoKilosNetosSecosPeso=datos1.pesoKilosNetosSecosPeso;
-    $scope.factura.contenidoAgLeyes=datos1.contenidoAgLeyes;
-    $scope.factura.contenidoAgPesokg=datos1.contenidoAgPesokg;
-    $scope.factura.baseAgCotizaciones=datos1.baseAgCotizaciones;
-    $scope.factura.contenidoAgPesoot=datos1.contenidoAgPesoot;
-    $scope.factura.baseZnSus=datos1.baseZnSus;
-    $scope.factura.baseAgSus=datos1.baseAgSus;
-    $scope.factura.baseTotalSus=datos1.baseTotalSus;
-    $scope.factura.basePromedioSus=datos1.basePromedioSus;
-    $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
-    $scope.factura.tipoCambio=datos1.pesoMermaFactores;
-    $scope.factura.baseDiferenciaBs=$scope.factura.baseDiferenciaSus*$scope.factura.tipoCambio;
-    $scope.factura.planilla_id=planillaId;
-    $scope.factura.control='';
-    $scope.factura.autorizacion='';
-    $scope.factura.vencimiento='';
-    $scope.factura.literal1='';
-    $scope.factura.literal2='';
-    $scope.factura.literal3='';
-    $scope.factura.created_by=$cookies.uName;
-    if (datos1.planilla=="ZINC"){
-    	ide=1;
-    }
-    else { 
-    	ide=2;
-    }	
-    $scope.parametro2={};
-    $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
-    	$scope.factura.comprador=datos.comprador;
-    	$scope.factura.direccion=datos.direccion;
-    	$scope.factura.puertoTransito=datos.puerto;
-    	$scope.factura.origen=datos.origen;
-      $scope.factura.concentrado=datos.concentrado;
-      $scope.factura.partida1=datos.partida1;
-      $scope.factura.partida2=datos.partida2;
-    });
-    $scope.grabar = function() {
-      console.log("Ingreso a Guardar");
-      console.log($scope.factura);
-      Factura.save($scope.factura, function() {
-        $timeout(function() {
-          $location.path('/');
+  	console.log("DATOS 2 !!!!!!!");
+    console.log(datos2.length);
+    $scope.longitud=true;  
+    if (datos2.length==0){
+      $scope.longitud=false;      
+      $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
+        $scope.planillaC=datos1;
+        $scope.tipoPlanilla=datos1.planilla;
+        $scope.factura.nit="0";
+        $scope.factura.fecha=datos1.pesoKilosNetosSecosFactores;
+        $scope.factura.factura=datos1.impuestoFacturaFactores;
+        $scope.factura.puertoDestino=datos1.puertoDestino;
+        $scope.factura.paisDestino=datos1.paisDestino;
+        $scope.factura.numeroLote=datos1.pesoLoteFactores;
+        $scope.factura.pesoKilosNetosHumedosPeso=datos1.pesoKilosNetosHumedosPeso;
+        $scope.factura.pesoHumedadPesos=datos1.pesoHumedadPesos;
+        $scope.factura.pesoHumedadPeso=datos1.pesoHumedadPeso;
+        $scope.factura.pesoMermaPesos=datos1.pesoMermaPesos;
+        $scope.factura.pesoMermaPeso=datos1.pesoMermaPeso;
+        $scope.factura.contenidoZnLeyes=datos1.contenidoZnLeyes;
+        $scope.factura.contenidoZnPesokg=datos1.contenidoZnPesokg;
+        $scope.factura.contenidoZnPesolf=datos1.contenidoZnPesolf;
+        $scope.factura.baseZnCotizaciones=datos1.baseZnCotizaciones;
+        $scope.factura.pesoKilosNetosSecosPeso=datos1.pesoKilosNetosSecosPeso;
+        $scope.factura.contenidoAgLeyes=datos1.contenidoAgLeyes;
+        $scope.factura.contenidoAgPesokg=datos1.contenidoAgPesokg;
+        $scope.factura.baseAgCotizaciones=datos1.baseAgCotizaciones;
+        $scope.factura.contenidoAgPesoot=datos1.contenidoAgPesoot;
+        $scope.factura.baseZnSus=datos1.baseZnSus;
+        $scope.factura.baseAgSus=datos1.baseAgSus;
+        $scope.factura.baseTotalSus=datos1.baseTotalSus;
+        $scope.factura.basePromedioSus=datos1.basePromedioSus;
+        $scope.factura.baseDiferenciaSus=datos1.baseDiferenciaSus;
+        $scope.factura.tipoCambio=datos1.pesoMermaFactores;
+        $scope.factura.baseDiferenciaBs=$scope.factura.baseDiferenciaSus*$scope.factura.tipoCambio;
+        $scope.factura.planilla_id=planillaId;
+        $scope.factura.control='';
+        $scope.factura.autorizacion='';
+        $scope.factura.vencimiento='';
+        $scope.factura.literal1='';
+        $scope.factura.literal2='';
+        $scope.factura.literal3='';
+        $scope.factura.created_by=$cookies.uName;
+        if (datos1.planilla=="ZINC"){
+          ide=1;
+        }
+        else { 
+          ide=2;
+        } 
+        $scope.parametro2={};
+        $scope.parametro2=Parametro.get({'parametroId': ide}, function(datos){
+          $scope.factura.comprador=datos.comprador;
+          $scope.factura.direccion=datos.direccion;
+          $scope.factura.puertoTransito=datos.puerto;
+          $scope.factura.origen=datos.origen;
+          $scope.factura.concentrado=datos.concentrado;
+          $scope.factura.partida1=datos.partida1;
+          $scope.factura.partida2=datos.partida2;
         });
+      });//fin Plan.get
+    }
+  });
+  $scope.grabar = function() {
+    console.log("Ingreso a Guardar");
+    console.log($scope.factura.planilla_id);
+    Factura.save($scope.factura, function() {
+      $timeout(function() {
+        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+        window.open($scope.url);
+        if ($scope.tipoPlanilla=='ZINC'){
+          $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
+        }
+        else {
+          $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':$scope.tipoPlanilla});
+        }
       });
-    };
-  });//fin Plan.get
+    });
+  };
 });
 
 app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams,$state,Parametro) {
