@@ -152,6 +152,14 @@ angular.module('app')
                     //loggedin: checkLoggedin
                   //}
               })
+              .state('app.taxation.m03', {
+                  url: '/m03/:planId',
+                  controller: 'M03Ctrl',
+                  templateUrl: 'tpl/form_m03.html'
+                  //resolve: {
+                    //loggedin: checkLoggedin
+                  //}
+              })              
               // billing
               .state('app.billing', {
                   url: '/billing',
