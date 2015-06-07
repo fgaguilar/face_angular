@@ -332,10 +332,39 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
       return "";
     };     
   });
+  var isDate = function(date) {
+      return ((new Date(date)).toString() !== "Invalid Date") ? true : false;         
+  }
   console.groupCollapsed("FormUnoCtrl");
   $scope.grabar = function() {
-    console.log("Ingreso a actualizar");
-    $scope.miFecha = new Date($scope.planilla.pesoKilosNetosSecosFactores.getFullYear(),$scope.planilla.pesoKilosNetosSecosFactores.getMonth(),$scope.planilla.pesoKilosNetosSecosFactores.getDate());
+    console.log("Ingreso a actualizar " + $scope.planilla.pesoKilosNetosSecosFactores);
+    if ($scope.planilla.pesoKilosNetosSecosFactores.getFullYear) {
+      $scope.anio=$scope.planilla.pesoKilosNetosSecosFactores.getFullYear();
+      console.log("Anio1 "+$scope.anio);
+    }
+    else {
+      $scope.anio=$scope.planilla.pesoKilosNetosSecosFactores.substr(0, 4);
+      console.log("Anio2 "+$scope.anio);
+    }
+
+    if ($scope.planilla.pesoKilosNetosSecosFactores.getMonth) {
+      $scope.mes=$scope.planilla.pesoKilosNetosSecosFactores.getMonth();
+      console.log("Mes1 "+$scope.mes);
+    }
+    else {
+      $scope.mes=$scope.planilla.pesoKilosNetosSecosFactores.substr(5, 2);
+      console.log("Mes2 "+$scope.mes);
+    }
+
+    if ($scope.planilla.pesoKilosNetosSecosFactores.getDate) {
+      $scope.dia=$scope.planilla.pesoKilosNetosSecosFactores.getDate();
+      console.log("Dia1 "+$scope.dia);
+    }
+    else {
+      $scope.dia=$scope.planilla.pesoKilosNetosSecosFactores.substr(8, 2);
+      console.log("Dia2 "+$scope.dia);
+    }
+    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
     $scope.planilla.pesoKilosNetosSecosFactores=$scope.miFecha;
     Plan.update({planillaId: $scope.planilla.id}, $scope.planilla, function() {
       $timeout(function() {
