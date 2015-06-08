@@ -261,6 +261,16 @@
           </div>
         </div>
         <div class="row">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fecha</label>
+            <div class="col-sm-4">
+              <div class="input-group m-b">
+                <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="fecha" disabled="disabled">
+              </div>
+            </div>
+          </div>
+        </div>        
+        <div class="row">
           <div class="alert alert-success" ng-show="showSuccessAlert">
             <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button> 
             <strong>Correcto!</strong> {{successTextAlert}}
