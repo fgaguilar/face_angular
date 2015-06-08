@@ -74,11 +74,12 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
   console.log(planillaId);
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log('Ingreso a get');
+
     $scope.planillaC.planilla=$scope.planilla2.planilla;
     $scope.planillaC.contenidoListaEmpaqueFactores=datos.contenidoListaEmpaqueFactores;
     $scope.planillaC.pesoKilosNetosSecosFactores=datos.pesoKilosNetosSecosFactores;
     $scope.planillaC.pesoLoteFactores=datos.pesoLoteFactores;
-  
+    $scope.planillaC.id=datos.id;
     $scope.planillaC.v7=datos.contenidoZnLeyes;
     $scope.planillaC.d4=$scope.planillaC.v7;
     $scope.planillaC.v6=datos.pesoMermaFactores;
