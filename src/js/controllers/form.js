@@ -135,10 +135,11 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
     var tipoPlanilla = $stateParams.tipoPlanilla;
     var ide = 0;
     $scope.planilla={};
+    $scope.planillaC={};
     $scope.grabar = function() {
-      console.log("Antes de grabar");
+      console.log("Antes de grabar Planilla");
       Plan.save($scope.planilla, function() {
-        console.log("Ingreso a grabar");
+        console.log("Ingreso a grabar Planilla");
         $timeout(function() {
             $scope.successTextAlert = "Planilla Guardada";
             $scope.showSuccessAlert = true;
@@ -314,19 +315,21 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   console.groupEnd();  
 });
 
-app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
+app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Plancalculo) {
   console.log('Ingreso a PlanCalculoCtrl');
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
+  $scope.planillaT={};
   $scope.planilla2={};
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
     $scope.planillaC.planilla=$scope.planilla2.planilla;
+    $scope.planillaC.planilla_id=planillaId;
     if ($scope.planillaC.planilla=="ZINC") {
-      $scope.planillaC.plan="Zn";
+      $scope.plan="Zn";
     }
     else {
-      $scope.planillaC.plan="Pb";      
+      $scope.plan="Pb";      
     }
     $scope.planillaC.v7=datos.contenidoZnLeyes;
     $scope.planillaC.d4=$scope.planillaC.v7;
@@ -391,6 +394,33 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
     $scope.planillaC.c30=$scope.planillaC.c28+$scope.planillaC.c29;
     $scope.planillaC.c31=$scope.planillaC.c30*$scope.planillaC.v6;
     $scope.planillaC.c32=$scope.planillaC.c26+$scope.planillaC.c17;
+    $scope.planillaT=Plancalculo.get({'planillaId': planillaId}, function(datos2){
+      if (datos2.length==0){
+        Plancalculo.save($scope.planillaC, function() {
+          console.log("Ingreso a grabar PlanillaCalculo");
+          $timeout(function() {
+            $scope.successTextAlert = "PlanillaCalculo Guardada";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+            $location.path('/');
+          });
+        });
+      }
+      else {
+        Plancalculo.update({planillaId: planillaId}, $scope.planillaC, function() {
+          $timeout(function() {
+            $scope.successTextAlert = "PlanillaCalculo Actualizado";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+            $location.path('/');
+          });
+        });
+      }
+    });
   });
 });
 

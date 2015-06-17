@@ -1,5 +1,17 @@
 'use strict';
 
+app.factory('Plancalculo', ['$resource',
+  function($resource){
+    return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/plancalculos/:planillaId', {}, {
+      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
 app.factory('Plan', ['$resource',
   function($resource){
     return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/planillas/:planillaId', {}, {
