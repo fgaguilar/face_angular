@@ -3,7 +3,7 @@
 app.factory('Plancalculo', ['$resource',
   function($resource){
     return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/plancalculos/:planillaId', {}, {
-      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:false},
+      'get': {method:'GET', params:{planillaId:'@planillaId'}, isArray:true},
       'save': {method:'POST'},
       'query': {method:'GET', isArray:true},
       'update': {method:'PUT'},

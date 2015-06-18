@@ -395,7 +395,10 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
     $scope.planillaC.c31=$scope.planillaC.c30*$scope.planillaC.v6;
     $scope.planillaC.c32=$scope.planillaC.c26+$scope.planillaC.c17;
     $scope.planillaT=Plancalculo.get({'planillaId': planillaId}, function(datos2){
+      console.log("Ingreso a querer grabar calculo " + datos2.length);
+      console.log(datos2[0].id);
       if (datos2.length==0){
+        console.log("No existe calculo");
         Plancalculo.save($scope.planillaC, function() {
           console.log("Ingreso a grabar PlanillaCalculo");
           $timeout(function() {
@@ -404,19 +407,18 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $location.path('/');
           });
         });
       }
       else {
-        Plancalculo.update({planillaId: planillaId}, $scope.planillaC, function() {
+        console.log("Existe calculo");
+        Plancalculo.update({planillaId: datos2[0].id}, $scope.planillaC, function() {
           $timeout(function() {
             $scope.successTextAlert = "PlanillaCalculo Actualizado";
             $scope.showSuccessAlert = true;
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $location.path('/');
           });
         });
       }
