@@ -396,7 +396,6 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
     $scope.planillaC.c32=$scope.planillaC.c26+$scope.planillaC.c17;
     $scope.planillaT=Plancalculo.get({'planillaId': planillaId}, function(datos2){
       console.log("Ingreso a querer grabar calculo " + datos2.length);
-      console.log(datos2[0].id);
       if (datos2.length==0){
         console.log("No existe calculo");
         Plancalculo.save($scope.planillaC, function() {
