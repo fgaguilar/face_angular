@@ -321,6 +321,7 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
   $scope.planillaC={};
   $scope.planillaT={};
   $scope.planilla2={};
+
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
     $scope.planillaC.planilla=$scope.planilla2.planilla;
@@ -423,6 +424,12 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
       }
     });
   });
+
+  $scope.imprimir = function() {  
+    console.log($scope.planilla2);
+        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.planilla2.id;
+        window.open($scope.url);  
+  };
 });
 
 app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$stateParams,Plan) {
