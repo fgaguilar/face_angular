@@ -86,6 +86,12 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
     $scope.tipoPlanilla=planillaId;
   });
   console.log('Salio de get');
+  $scope.imprimir = function() {  
+    console.log($scope.planilla2);
+        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id=" + $scope.planilla2.id;
+        window.open($scope.url);  
+  };
+
 });
 
 app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
@@ -321,7 +327,6 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
   $scope.planillaC={};
   $scope.planillaT={};
   $scope.planilla2={};
-
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
     $scope.planillaC.planilla=$scope.planilla2.planilla;
@@ -424,10 +429,9 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
       }
     });
   });
-
-  $scope.imprimir = function() {  
+$scope.imprimir = function() {  
     console.log($scope.planilla2);
-        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.planilla2.id;
+        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + $scope.planilla2.id;
         window.open($scope.url);  
   };
 });
@@ -528,6 +532,12 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
     $scope.planillaC.sumaValorBS=$scope.planillaC.sumaValorUSD*$scope.planillaC.tipoCambio;
     $scope.planillaC.sumaRMBS=$scope.planillaC.sumaRMUSD*$scope.planillaC.tipoCambio;
   });
+ console.log('Salio de get');
+  $scope.imprimir = function() {  
+    console.log($scope.planilla2);
+        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + $scope.planilla2.id;
+        window.open($scope.url);  
+  };
 });
 
 app.controller('M03Ctrl',function ($scope,$location,$timeout,$stateParams,Plan) {
@@ -626,6 +636,12 @@ app.controller('M03Ctrl',function ($scope,$location,$timeout,$stateParams,Plan) 
     $scope.planillaC.sumaValorBS=$scope.planillaC.sumaValorUSD*$scope.planillaC.tipoCambio;
     $scope.planillaC.sumaRMBS=$scope.planillaC.sumaRMUSD*$scope.planillaC.tipoCambio;
   });
+console.log('Salio de get');
+  $scope.imprimir = function() {  
+    console.log($scope.planilla2);
+        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + $scope.planilla2.id;
+        window.open($scope.url);  
+  };
 });
 
 app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$state,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
@@ -743,7 +759,7 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
   });
 });
 
-  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$stateParams', 'mensaje', function($scope, $modalInstance, $stateParams, mensaje) {
+   app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$stateParams', 'mensaje', function($scope, $modalInstance, $stateParams, mensaje) {
     console.log('Ingreso a ModalInstanceCtrl');    
     $scope.mensaje = mensaje;
     $scope.ok = function () {
