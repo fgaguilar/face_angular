@@ -94,6 +94,24 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
 
 });
 
+app.controller('ListPaisCtrl',function ($scope,Paise) {
+  console.log("Ingreso a ListPaisCtrl");
+  $scope.paise={};
+  $scope.paise2={};
+  $scope.paise2=Paise.get(function(datos){
+    $scope.paise=datos;
+  });
+});
+
+app.controller('ListPuertoCtrl',function ($scope,Puerto) {
+  console.log("Ingreso a ListPuertoCtrl");
+  $scope.puerto={};
+  $scope.puerto2={};
+  $scope.puerto2=Puerto.get(function(datos){
+    $scope.puerto=datos;
+  });
+});
+
 app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrlGral");
   $scope.planilla={};
@@ -281,6 +299,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   var isDate = function(date) {
       return ((new Date(date)).toString() !== "Invalid Date") ? true : false;         
   }
+
   console.groupCollapsed("FormUnoCtrl");
   $scope.grabar = function() {
     console.log("Ingreso a actualizar " + $scope.planilla.pesoKilosNetosSecosFactores);
@@ -737,22 +756,44 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
   console.log("Ingreso a ParamatrosCtrl");
   var parametro=$stateParams.parametroId;
   $scope.planilla2={};
-  $scope.parametro={};
-  $scope.planilla2=Parametro.get({'parametroId': parametro}, function(datos){
-    $scope.parametro=datos;
+  $scope.parametro1={};
+  $scope.parametro2={};
+  $scope.planilla2=Parametro.get({'parametroId': 1}, function(datos){
+    $scope.parametro1=datos;
     $scope.fecha=datos.updated_at;
-    $scope.grabar = function() {
+    $scope.grabar1 = function(tipo) {
       console.log("Ingreso a Actualizar");
-      Parametro.update({parametroId: $scope.parametro.id}, $scope.parametro, function() {
+      console.log(tipo);
+      console.log($scope.parametro1.id);
+      Parametro.update({parametroId: tipo}, $scope.parametro1, function() {
           $timeout(function() {
-            $scope.successTextAlert = "Parametros Guardados";
-            $scope.showSuccessAlert = true;
+            $scope.successTextAlert1 = "Parametros Guardados";
+            $scope.showSuccessAlert1 = true;
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-
-            //$state.go('app.export.parametros',parametro);
-            $location.path('/');
+            $state.go('app.export.parametros',parametro);
+            //$location.path('/');
+          });
+      });
+    };
+  });  
+  $scope.planilla2=Parametro.get({'parametroId': 2}, function(datos){
+    $scope.parametro2=datos;
+    $scope.fecha=datos.updated_at;
+    $scope.grabar2 = function(tipo) {
+      console.log("Ingreso a Actualizar");
+      console.log(tipo);
+      console.log($scope.parametro2.id);
+      Parametro.update({parametroId: tipo}, $scope.parametro2, function() {
+          $timeout(function() {
+            $scope.successTextAlert2 = "Parametros Guardados";
+            $scope.showSuccessAlert2 = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+            $state.go('app.export.parametros',parametro);
+            //$location.path('/');
           });
       });
     };
@@ -844,3 +885,74 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
     });
   }]);
 
+app.controller('PaisesNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise) {
+    console.log("Ingreso a PaisesNewCtrl");
+    $scope.paise={};
+    $scope.paiseC={};
+    $scope.grabar = function() {
+      console.log("Antes de grabar Pais");
+      Paise.save($scope.paise, function() {
+        console.log("Ingreso a grabar Pais");
+        $timeout(function() {
+            $scope.successTextAlert = "Pais Guardado";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };      
+            $state.go('app.export.paisesNew');    
+        });
+      });
+    };
+  });
+
+app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise) {
+  console.log("Ingreso a PaisesCtrl");
+  var paise=$stateParams.paiseId;
+  $scope.planilla2={};
+  $scope.paise={};
+  $scope.planilla2=Paise.get({'paiseId': paise}, function(datos){
+    $scope.paise=datos;
+    $scope.fecha=datos.updated_at;
+    $scope.grabar = function() {
+      console.log("Ingreso a Actualizar");
+      console.log($scope.paise.id);
+      Paise.update({paiseId: paise}, $scope.paise, function() {
+          $timeout(function() {
+            $scope.successTextAlert = "Paises Guardados";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+            $state.go('app.export.paises',paise);
+            //$location.path('/');
+          });
+      });
+    };
+  });  
+});
+
+app.controller('PuertosCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto) {
+  console.log("Ingreso a PuertosCtrl");
+  var puerto=$stateParams.puertoId;
+  $scope.planilla2={};
+  $scope.puerto={};
+  $scope.planilla2=Puerto.get({'puertoId': puerto}, function(datos){
+    $scope.puerto=datos;
+    $scope.fecha=datos.updated_at;
+    $scope.grabar = function() {
+      console.log("Ingreso a Actualizar");
+      console.log($scope.puerto.id);
+      Puerto.update({puertoId: puerto}, $scope.puerto, function() {
+          $timeout(function() {
+            $scope.successTextAlert = "Puertos Guardados";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+            $state.go('app.export.puertos',puerto);
+            //$location.path('/');
+          });
+      });
+    };
+  });  
+});

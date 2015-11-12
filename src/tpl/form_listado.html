@@ -8,7 +8,8 @@
       <th>Lote</th>
       <th>Kilos Netos Húmedos</th>
       <th>Fecha</th>
-      <th>Creación</th>      
+      <th>Creación</th>
+      <th>Factura</th>      
       <th>      
         <a class="btn btn-bg btn-primary" ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">Nuevo</a>
       </th>
@@ -22,7 +23,8 @@
       <td>{{plane.pesoLoteFactores}}</td>
       <td>{{plane.pesoKilosNetosHumedosPeso}}</td>
       <td>{{plane.pesoKilosNetosSecosFactores}}</td>
-      <td>{{plane.created_at}}</td>      
+      <td>{{plane.created_at}}</td>
+      <td>{{plane.impuestoFacturaFactores}}</td>
       <td>
       <div class="btn-group" dropdown is-open="status.isopen">
         <button type="button" class="btn btn-bg btn-primary" dropdown-toggle ng-disabled="disabled">

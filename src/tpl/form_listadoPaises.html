@@ -1,0 +1,34 @@
+<div>
+  <input type="text" ng-model="search" class="search-query" placeholder="Search">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Pais</th>
+      <th>Creación</th>
+      <th>      
+        <a class="btn btn-bg btn-primary" ui-sref="app.export.paisesNew">Nuevo</a>
+      </th>
+    </tr>
+    
+    </thead>
+    <tbody>
+    <tr ng-repeat="plane in paise | filter:search | orderBy : 'created_at':true">
+      <td>{{plane.id}}</td>
+      <td>{{plane.descripcion}}</td>
+      <td>{{plane.created_at}}</td>
+      <td>
+      <div class="btn-group" dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-bg btn-primary" dropdown-toggle ng-disabled="disabled">
+          Acción <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a ui-sref="aapp.export.paisesUpdate({paisId:plane.id})">Modificar</a></li>
+          <li><a href>Eliminar</a></li>
+        </ul>
+      </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  

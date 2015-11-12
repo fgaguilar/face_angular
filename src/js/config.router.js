@@ -68,6 +68,36 @@ angular.module('app')
                     //loggedin: checkLoggedin
                   //}
               }) 
+
+              .state('app.export.paisesNew', {
+                  url: '/paises',
+                  controller: 'PaisesNewCtrl',
+                  templateUrl: 'tpl/form_paises.html',
+              }) 
+              .state('app.export.paisesUpdate', {
+                  url: '/paises/:paisId',
+                  controller: 'PaisesUpdateCtrl',
+                  templateUrl: 'tpl/form_paises.html',
+              })              
+
+              .state('app.export.puertos', {
+                  //url: '/puertos/:puertoId',
+                  url: '/puertos',
+                  params: {'puertoId':null},
+                  controller: 'PuertosCtrl',
+                  templateUrl: 'tpl/form_puertos.html',
+                  //resolve: {
+                    //loggedin: checkLoggedin
+                  //}
+              })     
+              .state('app.export.listadoPaises', {
+                  url: '/listadoPaises',
+                  controller: 'ListPaisCtrl',
+                  templateUrl: 'tpl/form_listadoPaises.html',
+                  //resolve: {
+                    //loggedin: checkLoggedin
+                  //}
+              })                                      
               .state('app.export.parametros2', {
                   url: '/parametros2',
                   params: {'parametroId':null},
@@ -87,8 +117,8 @@ angular.module('app')
               })
               .state('app.export.planillaZincUno', {
                   url: '/planillaZincUno/:tipoPlanilla/:planId',
-                  controller: 'FormUnoCtrl',
                   templateUrl: 'tpl/form_planillaZinc.html',
+                  controller: 'FormUnoCtrl',
                   //resolve: {
                     //loggedin: checkLoggedin
                   //}

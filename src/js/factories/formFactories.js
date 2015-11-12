@@ -73,3 +73,27 @@ app.factory('Parametro', ['$resource',
       'delete': {method:'DELETE'}
     });
   }]);
+
+app.factory('Paise', ['$resource',
+  function($resource){
+    return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/paises/:paiseId', {}, {
+      'get': {method:'GET', params:{paiseId:'@paiseId'}, isArray:true},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
+app.factory('Puerto', ['$resource',
+  function($resource){
+    return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/puertos/:puertoId', {}, {
+      'get': {method:'GET', params:{puertoId:'@puertoId'}, isArray:true},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
