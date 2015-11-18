@@ -94,24 +94,6 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
 
 });
 
-app.controller('ListPaisCtrl',function ($scope,Paise) {
-  console.log("Ingreso a ListPaisCtrl");
-  $scope.paise={};
-  $scope.paise2={};
-  $scope.paise2=Paise.get(function(datos){
-    $scope.paise=datos;
-  });
-});
-
-app.controller('ListPuertoCtrl',function ($scope,Puerto) {
-  console.log("Ingreso a ListPuertoCtrl");
-  $scope.puerto={};
-  $scope.puerto2={};
-  $scope.puerto2=Puerto.get(function(datos){
-    $scope.puerto=datos;
-  });
-});
-
 app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
   console.log("Ingreso a ListZincCtrlGral");
   $scope.planilla={};
@@ -765,14 +747,19 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
       console.log("Ingreso a Actualizar");
       console.log(tipo);
       console.log($scope.parametro1.id);
-      Parametro.update({parametroId: tipo}, $scope.parametro1, function() {
+      Parametro.update({parametroId: 1}, $scope.parametro1, function() {
           $timeout(function() {
             $scope.successTextAlert1 = "Parametros Guardados";
             $scope.showSuccessAlert1 = true;
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $state.go('app.export.parametros',parametro);
+            if (tipo==1){
+              $state.go('app.export.parametros',parametro);
+            }
+            else {
+              $state.go('app.export.parametros',parametro2); 
+            }
             //$location.path('/');
           });
       });
@@ -785,14 +772,19 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
       console.log("Ingreso a Actualizar");
       console.log(tipo);
       console.log($scope.parametro2.id);
-      Parametro.update({parametroId: tipo}, $scope.parametro2, function() {
+      Parametro.update({parametroId: 2}, $scope.parametro2, function() {
           $timeout(function() {
             $scope.successTextAlert2 = "Parametros Guardados";
             $scope.showSuccessAlert2 = true;
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $state.go('app.export.parametros',parametro);
+            if (tipo==2){
+              $state.go('app.export.parametros',parametro);
+            }
+            else {
+              $state.go('app.export.parametros',parametro2); 
+            }
             //$location.path('/');
           });
       });
@@ -885,6 +877,25 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
     });
   }]);
 
+
+app.controller('ListPaisCtrl',function ($scope,Paise) {
+  console.log("Ingreso a ListPaisCtrl");
+  $scope.paise={};
+  $scope.paise2={};
+  $scope.paise2=Paise.query(function(datos){
+    $scope.paise=datos;
+  });
+});
+
+app.controller('ListPuertoCtrl',function ($scope,Puerto) {
+  console.log("Ingreso a ListPuertoCtrl");
+  $scope.puerto={};
+  $scope.puerto2={};
+  $scope.puerto2=Puerto.query(function(datos){
+    $scope.puerto=datos;
+  });
+});
+
 app.controller('PaisesNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise) {
     console.log("Ingreso a PaisesNewCtrl");
     $scope.paise={};
@@ -906,8 +917,9 @@ app.controller('PaisesNewCtrl',function ($scope,$location,$timeout,$stateParams,
   });
 
 app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise) {
-  console.log("Ingreso a PaisesCtrl");
+  console.log("Ingreso a PaisesUpdateCtrl");
   var paise=$stateParams.paiseId;
+  console.log(paise);
   $scope.planilla2={};
   $scope.paise={};
   $scope.planilla2=Paise.get({'paiseId': paise}, function(datos){
@@ -918,12 +930,12 @@ app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$statePara
       console.log($scope.paise.id);
       Paise.update({paiseId: paise}, $scope.paise, function() {
           $timeout(function() {
-            $scope.successTextAlert = "Paises Guardados";
+            $scope.successTextAlert = "Pais Actualizado";
             $scope.showSuccessAlert = true;
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $state.go('app.export.paises',paise);
+            $state.go('app.export.paisesUpdate');
             //$location.path('/');
           });
       });
@@ -931,9 +943,30 @@ app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$statePara
   });  
 });
 
-app.controller('PuertosCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto) {
-  console.log("Ingreso a PuertosCtrl");
+app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto) {
+    console.log("Ingreso a PuertosNewCtrl");
+    $scope.puerto={};
+    $scope.puertoC={};
+    $scope.grabar = function() {
+      console.log("Antes de grabar Puertos");
+      Puerto.save($scope.puerto, function() {
+        console.log("Ingreso a grabar Puerto");
+        $timeout(function() {
+            $scope.successTextAlert = "Puerto Guardado";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };      
+            $state.go('app.export.puertosNew');    
+        });
+      });
+    };
+  });
+
+app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto) {
+  console.log("Ingreso a PuertosUpdateCtrl");
   var puerto=$stateParams.puertoId;
+  console.log(puerto);
   $scope.planilla2={};
   $scope.puerto={};
   $scope.planilla2=Puerto.get({'puertoId': puerto}, function(datos){
@@ -944,12 +977,12 @@ app.controller('PuertosCtrl',function ($scope,$location,$timeout,$stateParams,$s
       console.log($scope.puerto.id);
       Puerto.update({puertoId: puerto}, $scope.puerto, function() {
           $timeout(function() {
-            $scope.successTextAlert = "Puertos Guardados";
+            $scope.successTextAlert = "Puerto Actualizado";
             $scope.showSuccessAlert = true;
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $state.go('app.export.puertos',puerto);
+            $state.go('app.export.puertosUpdate');
             //$location.path('/');
           });
       });

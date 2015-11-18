@@ -9,13 +9,17 @@
             <div class="row">
               <div class="form-group">
                 <label class="col-sm-3 control-label">Descripcion o Nombre Pais</label>
-                <div class="col-sm-3">
+                <div class="col-sm-3" ng-controller="ListPaisCtrl">
                   <div class="input-group m-b">
-                    <input type="text" class="form-control input-sm set-width" placeholder="valor" ng-model="puerto.descripcion">
+                    <select class="form-control m-t" ng-model="puerto.pais" required >
+                      <option value="">Elija Opcion</option>
+                      <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
+                    </select>
                   </div>
                 </div>                
               </div>
             </div>
+
             <div class="row">
               <div class="form-group">
                 <label class="col-sm-3 control-label">Descripcion o Nombre Puerto</label>

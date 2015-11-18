@@ -5,16 +5,18 @@
     <tr>
       <th>ID</th>
       <th>Pais</th>
+      <th>Puerto</th>
       <th>Creación</th>
       <th>      
-        <a class="btn btn-bg btn-primary" ui-sref="app.export.paisesNew">Nuevo</a>
+        <a class="btn btn-bg btn-primary" ui-sref="app.export.puertosNew">Nuevo</a>
       </th>
     </tr>
     
     </thead>
     <tbody>
-    <tr ng-repeat="plane in paise | filter:search | orderBy : 'created_at':true">
+    <tr ng-repeat="plane in puerto | filter:search | orderBy : 'created_at':true">
       <td>{{plane.id}}</td>
+      <td>{{plane.pais}}</td>
       <td>{{plane.descripcion}}</td>
       <td>{{plane.created_at}}</td>
       <td>
@@ -23,7 +25,7 @@
           Acción <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a ui-sref="app.export.paisesUpdate({paiseId:plane.id})">Modificar</a></li>
+          <li><a ui-sref="app.export.puertosUpdate({puertoId:plane.id})">Modificar</a></li>
           <li><a href>Eliminar</a></li>
         </ul>
       </div>

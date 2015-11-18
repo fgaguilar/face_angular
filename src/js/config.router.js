@@ -64,9 +64,6 @@ angular.module('app')
                   params: {'parametroId':null},
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros.html',
-                  //resolve: {
-                    //loggedin: checkLoggedin
-                  //}
               }) 
 
               .state('app.export.paisesNew', {
@@ -75,45 +72,42 @@ angular.module('app')
                   templateUrl: 'tpl/form_paises.html',
               }) 
               .state('app.export.paisesUpdate', {
-                  url: '/paises/:paisId',
+                  url: '/paises/:paiseId',
                   controller: 'PaisesUpdateCtrl',
                   templateUrl: 'tpl/form_paises.html',
-              })              
-
-              .state('app.export.puertos', {
-                  //url: '/puertos/:puertoId',
-                  url: '/puertos',
-                  params: {'puertoId':null},
-                  controller: 'PuertosCtrl',
-                  templateUrl: 'tpl/form_puertos.html',
-                  //resolve: {
-                    //loggedin: checkLoggedin
-                  //}
-              })     
+              })                
               .state('app.export.listadoPaises', {
                   url: '/listadoPaises',
                   controller: 'ListPaisCtrl',
                   templateUrl: 'tpl/form_listadoPaises.html',
-                  //resolve: {
-                    //loggedin: checkLoggedin
-                  //}
-              })                                      
+              })
+
+              .state('app.export.puertosNew', {
+                  url: '/puertos',
+                  controller: 'PuertosNewCtrl',
+                  templateUrl: 'tpl/form_puertos.html',
+              }) 
+              .state('app.export.puertosUpdate', {
+                  url: '/puertos/:puertoId',
+                  controller: 'PuertosUpdateCtrl',
+                  templateUrl: 'tpl/form_puertos.html',
+              })                
+              .state('app.export.listadoPuertos', {
+                  url: '/listadoPuertos',
+                  controller: 'ListPuertoCtrl',
+                  templateUrl: 'tpl/form_listadoPuertos.html',
+              })
+
               .state('app.export.parametros2', {
                   url: '/parametros2',
                   params: {'parametroId':null},
                   controller: 'ParametrosCtrl',
                   templateUrl: 'tpl/form_parametros2.html',
-                  //resolve: {
-                    //loggedin: checkLoggedin
-                  //}
               })                              
               .state('app.export.planillaZinc', {
                   url: '/planillaZinc/:tipoPlanilla',
                   templateUrl: 'tpl/form_planillaZinc.html',
                   controller: 'FormVacioCtrl',
-                  resolve: {
-                    //loggedin: checkLoggedin
-                  }
               })
               .state('app.export.planillaZincUno', {
                   url: '/planillaZincUno/:tipoPlanilla/:planId',

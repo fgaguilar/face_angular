@@ -77,7 +77,7 @@ app.factory('Parametro', ['$resource',
 app.factory('Paise', ['$resource',
   function($resource){
     return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/paises/:paiseId', {}, {
-      'get': {method:'GET', params:{paiseId:'@paiseId'}, isArray:true},
+      'get': {method:'GET', params:{paiseId:'@paiseId'}, isArray:false},
       'save': {method:'POST'},
       'query': {method:'GET', isArray:true},
       'update': {method:'PUT'},
@@ -89,11 +89,18 @@ app.factory('Paise', ['$resource',
 app.factory('Puerto', ['$resource',
   function($resource){
     return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/puertos/:puertoId', {}, {
-      'get': {method:'GET', params:{puertoId:'@puertoId'}, isArray:true},
+      'get': {method:'GET', params:{puertoId:'@puertoId'}, isArray:false},
       'save': {method:'POST'},
       'query': {method:'GET', isArray:true},
       'update': {method:'PUT'},
       'remove': {method:'DELETE'},
       'delete': {method:'DELETE'}
+    });
+  }]);
+
+app.factory('PuertoPais', ['$resource',
+  function($resource){
+    return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/puertoPais/:pais', {}, {
+      'get': {method:'GET', params:{pais:'@pais'}, isArray:true}
     });
   }]);

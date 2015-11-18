@@ -48,19 +48,18 @@
               </div>
             </div>
             <label class="col-sm-1 control-label">PUERTO DESTINO</label>
-            <div class="col-sm-2">
+            <div class="col-sm-2" ng-controller="ListPuertoCtrl">
               <div class="input-group m-b">
-                <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino"> -->
                 <select class="form-control m-t" ng-model="planilla.puertoDestino" required >
                   <option value="">Elija Opcion</option>
-                  <option value="AKITA">AKITA</option>
-                  <option value="ANTWERP">ANTWERP</option>
-                  <option value="SHIKAMA">SHIKAMA</option>
-                </select>
+                  <option ng-repeat="pais in puerto" value="{{pais.id}}">{{pais.descripcion}}</option>
+                </select>                
               </div>
             </div>
+
           </div>
         </div> 
+
       <!-- 2a -->
         <div class="row">
           <div class="form-group">
@@ -86,14 +85,12 @@
               </div>
             </div>
             <label class="col-sm-1 control-label">PAIS DESTINO</label>
-            <div class="col-sm-2">
+            <div class="col-sm-2" ng-controller="ListPaisCtrl">
               <div class="input-group m-b">
                 <select class="form-control m-t" ng-model="planilla.paisDestino" required >
                   <option value="">Elija Opcion</option>
-                  <option value="BELGICA">BELGICA</option>
-                  <option value="JAPON">JAPON</option>
+                  <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
                 </select>                
-                <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino"> -->
               </div>
             </div>
           </div>
