@@ -1055,23 +1055,27 @@ app.controller('ImprimirTodoCtrl', function ($scope,$stateParams){
     var planId=$stateParams.planId;
     console.log('Ingreso a ImprimirTodoCtrl!!!!!');
     $scope.imprimirPlan = function() {  
-      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + planId;
+      $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + planId;
       window.open($scope.url);  
     };
     $scope.imprimirFactura = function() {  
-      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + planId;
+      $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + planId;
+      window.open($scope.url);  
+    };
+    $scope.imprimirdue = function() {  
+      $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/due.rptdesign&id=" + planId;
       window.open($scope.url);  
     };
     $scope.imprimirLista = function() {  
-      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id=" + $scope.planilla2.id;
+      $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id=" + planId;
       window.open($scope.url);  
     };
     $scope.imprimirRegalia = function() {  
-      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + $scope.planilla2.id;
+      $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + planId;
       window.open($scope.url);  
     };
     $scope.imprimirM03 = function() {  
-      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + $scope.planilla2.id;
+      $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + planId;
       window.open($scope.url);  
     };    
 });
