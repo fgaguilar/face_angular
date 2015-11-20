@@ -529,19 +529,15 @@
                   <option value="">Elija Opcion</option>
                   <option ng-repeat="pais in puerto" value="{{pais.id}}">{{pais.descripcion}}</option>
                 </select>
-            <!--
-             <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino">
-            -->
           </div>
         </div>
      <label class="col-sm-1 control-label">PAIS DESTINO</label>
         <div class="col-sm-2">
           <div class="input-group m-b">
-           <select class="form-control m-t" ng-model="planilla.paisDestino" ng-change="mostrar(planilla.paisDestino)" required >
+           <select class="form-control m-t" ng-model="planilla.paisDestino" required >
                     <option value="">Elija Opcion</option>
                     <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
                   </select>
-          <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino"> -->
           </div>
         </div>
    </div>
