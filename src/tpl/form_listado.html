@@ -33,6 +33,7 @@
         <ul class="dropdown-menu" role="menu">
           <li><a ui-sref="app.export.planillaZincUno({tipoPlanilla:tipoPlanilla,planId:plane.id})">Modificar</a></li>
           <li><a href>Eliminar</a></li>
+          <li><a ui-sref="app.export.imprimirTodo({planId:plane.id})">Imprimir Todo</a></li>
           <li class="divider"></li>
           <li><a ui-sref="app.billing.facturaExportacion({planId:plane.id})">Factura</a></li>
           <li><a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id={{plane.id}}" target="_blank">Imprimir</a></li>

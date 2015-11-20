@@ -458,7 +458,7 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
       }
     });
   });
-$scope.imprimir = function() {  
+  $scope.imprimir = function() {  
     console.log($scope.planilla2);
         $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + $scope.planilla2.id;
         window.open($scope.url);  
@@ -1031,6 +1031,31 @@ app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$statePar
       });
     };
   });  
+});
+
+app.controller('ImprimirTodoCtrl', function ($scope,$stateParams){
+    var planId=$stateParams.planId;
+    console.log('Ingreso a ImprimirTodoCtrl!!!!!');
+    $scope.imprimirPlan = function() {  
+      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + planId;
+      window.open($scope.url);  
+    };
+    $scope.imprimirFactura = function() {  
+      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + planId;
+      window.open($scope.url);  
+    };
+    $scope.imprimirLista = function() {  
+      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id=" + $scope.planilla2.id;
+      window.open($scope.url);  
+    };
+    $scope.imprimirRegalia = function() {  
+      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + $scope.planilla2.id;
+      window.open($scope.url);  
+    };
+    $scope.imprimirM03 = function() {  
+      $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + $scope.planilla2.id;
+      window.open($scope.url);  
+    };    
 });
 
 app.controller('ctrl', function ($scope,Paise){

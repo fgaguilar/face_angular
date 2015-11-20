@@ -117,6 +117,14 @@ angular.module('app')
                     //loggedin: checkLoggedin
                   //}
               })
+              .state('app.export.imprimirTodo', {
+                  url: '/imprimirTodo/:planId',
+                  templateUrl: 'tpl/form_imprimirTodo.html',
+                  controller: 'ImprimirTodoCtrl',
+                  //resolve: {
+                    //loggedin: checkLoggedin
+                  //}
+              })              
               .state('app.export.planillaZincListadoGeneral', {
                   url: '/planillaZincListado',
                   controller: 'ListZincCtrlGral',
