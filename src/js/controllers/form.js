@@ -166,7 +166,8 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
           console.log("Ingreso a Get Pais de MostrarPais");
           $scope.paisP=datos;
           console.log($scope.paisP.descripcion);
-          $scope.planilla.paisDestino=$scope.paisP.descripcion;
+          $scope.planilla.paisDestino=$scope.paisP.id;
+          $scope.paisDestinoDescripcion=$scope.paisP.descripcion;
         });
       });      
     }
@@ -269,15 +270,34 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
 
   $scope.puerto={};
   $scope.puerto2={};
+  $scope.puertoP={};
   $scope.puerto2=Puerto.query(function(datos){
     $scope.puerto=datos;
   });
 
   $scope.pais={};
   $scope.pais2={};
+  $scope.paisP={};
   $scope.pais2=Paise.query(function(datos){
     $scope.paise=datos;
   });  
+
+  $scope.mostrarPais = function(item){
+    console.log("MostrarPais");
+    console.log(item);
+    $scope.puerto2=Puerto.get({'puertoId': item}, function(datos){
+      console.log("Ingreso a Get puerto de MostrarPais");
+      $scope.puertoP=datos;
+      console.log($scope.puertoP.pais);
+      $scope.pais2=Paise.get({'paiseId': $scope.puertoP.pais}, function(datos){
+        console.log("Ingreso a Get Pais de MostrarPais");
+        $scope.paisP=datos;
+        console.log($scope.paisP.descripcion);
+        $scope.planilla.paisDestino=$scope.paisP.id;
+        $scope.paisDestinoDescripcion=$scope.paisP.descripcion;
+      });
+    });      
+  }
 
   $scope.planillaC={};
   $scope.planilla2={};
@@ -299,6 +319,12 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
     console.log("Entro PLOMO");
       $scope.tipoProducto='Pb';    
     }
+    $scope.pais2=Paise.get({'paiseId': $scope.planilla.paisDestino}, function(datos){
+      console.log("Ingreso a Get Pais de pais destino");
+      $scope.paisP=datos;
+      console.log($scope.paisP.descripcion);
+      $scope.paisDestinoDescripcion=$scope.paisP.descripcion;
+    });    
     $scope.calcular = function(){
       console.log('Ingreso a Calcular!!!');
       $scope.planilla.pesoHumedadPeso=($scope.planilla.pesoHumedadPesos*$scope.planilla.pesoKilosNetosHumedosPeso)/100;
