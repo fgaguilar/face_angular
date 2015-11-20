@@ -136,10 +136,23 @@ app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
     };
 });
   // Form controller
-app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion) {
+app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,$state,Plan,Parametro,Dosificacion,Puerto,Paise) {
     console.log("Ingreso a FormVacioCtrl");
     var tipoPlanilla = $stateParams.tipoPlanilla;
     var ide = 0;
+
+    $scope.puerto={};
+    $scope.puerto2={};
+    $scope.puerto2=Puerto.query(function(datos){
+      $scope.puerto=datos;
+    });
+
+    $scope.pais={};
+    $scope.pais2={};
+    $scope.pais2=Paise.query(function(datos){
+      $scope.paise=datos;
+    });  
+
     $scope.planilla={};
     $scope.planillaC={};
     $scope.grabar = function() {
@@ -232,9 +245,22 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
     };
   });
 
-app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,Plan) {
+app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,Plan,Puerto,Paise) {
   console.log('Ingreso a FormUnoCtrl');
   var planillaId = $stateParams.planId;
+
+  $scope.puerto={};
+  $scope.puerto2={};
+  $scope.puerto2=Puerto.query(function(datos){
+    $scope.puerto=datos;
+  });
+
+  $scope.pais={};
+  $scope.pais2={};
+  $scope.pais2=Paise.query(function(datos){
+    $scope.paise=datos;
+  });  
+
   $scope.planillaC={};
   $scope.planilla2={};
   console.log('Antes de get');
@@ -242,6 +268,8 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
     console.log($scope);
     $scope.planilla=datos;
     $scope.planilla.updated_by=$cookies.uName;
+    console.log("DATOS");
+    console.log($scope.planilla);
     console.log("DATOS");
     console.log($scope.planilla.planilla);
     if ($scope.planilla.planilla=='ZINC'){
@@ -878,13 +906,22 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
   }]);
 
 
-app.controller('ListPaisCtrl',function ($scope,Paise) {
+app.controller('ListPaisCtrl',function ($scope,Paise,PuertoPais) {
   console.log("Ingreso a ListPaisCtrl");
   $scope.paise={};
   $scope.paise2={};
+  $scope.puerto={};
+  $scope.puerto2={};
   $scope.paise2=Paise.query(function(datos){
     $scope.paise=datos;
   });
+  $scope.mostrar=function(item){
+    $scope.puerto2=PuertoPais.get({'pais': item},function(datos){
+      $scope.puertob=datos;
+      console.log($scope.puertob);
+    });
+    console.log(item);
+  }   
 });
 
 app.controller('ListPuertoCtrl',function ($scope,Puerto) {
@@ -943,12 +980,18 @@ app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$statePara
   });  
 });
 
-app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto) {
+app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto,Paise) {
     console.log("Ingreso a PuertosNewCtrl");
     $scope.puerto={};
     $scope.puertoC={};
+    $scope.paise={};
+    $scope.paise2={};
+    $scope.paise2=Paise.query(function(datos){
+      $scope.paise=datos;
+    });    
     $scope.grabar = function() {
       console.log("Antes de grabar Puertos");
+      console.log($scope.puerto);
       Puerto.save($scope.puerto, function() {
         console.log("Ingreso a grabar Puerto");
         $timeout(function() {
@@ -957,7 +1000,7 @@ app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };      
-            $state.go('app.export.puertosNew');    
+            $state.go('app.export.listadoPuertos');    
         });
       });
     };
@@ -988,4 +1031,21 @@ app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$statePar
       });
     };
   });  
+});
+
+app.controller('ctrl', function ($scope,Paise){
+    console.log('Ingreso a ctrl!!!!!');
+    $scope.itemList=[];
+    //$scope.blisterPackTemplates=[{id:1,name:"a"},{id:2,name:"b"},{id:3,name:"c"}]
+    $scope.paise2={};
+    $scope.paise2=Paise.query(function(datos){
+      console.log('Ingreso a QUERY!!!!!');
+      console.log(datos);
+      $scope.blisterPackTemplates=datos;
+      console.log($scope.blisterPackTemplates);
+    });
+        
+    $scope.changedValue=function(item){
+      $scope.itemList.push(item.descripcion);
+    }    
 });

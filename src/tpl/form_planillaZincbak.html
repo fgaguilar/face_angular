@@ -48,19 +48,19 @@
               </div>
             </div>
             <label class="col-sm-1 control-label">PUERTO DESTINO</label>
+            <!-- <div class="col-sm-2" ng-controller="ListPuertoCtrl"> -->
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino"> -->
                 <select class="form-control m-t" ng-model="planilla.puertoDestino" required >
                   <option value="">Elija Opcion</option>
-                  <option value="AKITA">AKITA</option>
-                  <option value="ANTWERP">ANTWERP</option>
-                  <option value="SHIKAMA">SHIKAMA</option>
+                  <option ng-repeat="pais in puerto" value="{{pais.id}}">{{pais.descripcion}}</option>
                 </select>
               </div>
             </div>
+
           </div>
         </div> 
+
       <!-- 2a -->
         <div class="row">
           <div class="form-group">
@@ -85,17 +85,40 @@
                 <span class="input-group-addon">ot</span>
               </div>
             </div>
-            <label class="col-sm-1 control-label">PAIS DESTINO</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <select class="form-control m-t" ng-model="planilla.paisDestino" required >
-                  <option value="">Elija Opcion</option>
-                  <option value="BELGICA">BELGICA</option>
-                  <option value="JAPON">JAPON</option>
-                </select>                
-                <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino"> -->
+            <div ng-controller="ListPaisCtrl">
+              <label class="col-sm-1 control-label">PAIS DESTINO</label>
+              <div class="col-sm-2">
+                <div class="input-group m-b">
+                  <select class="form-control m-t" ng-model="planilla.paisDestino" ng-change="mostrar(planilla.paisDestino)" required >
+                    <option value="">Elija Opcion</option>
+                    <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
+                  </select>
+                </div>
+              </div>
+  <!-- -->
+              <label class="col-sm-1 control-label">PUERTO DESTINO</label>
+              <div class="col-sm-2">
+                <div class="input-group m-b">
+                  <select class="form-control m-t" ng-model="planilla.puertoDestino2" required >
+                    <option value="">Elija Opcion</option>
+                    <option ng-repeat="pais in puertob" value="{{pais.id}}">{{pais.descripcion}}</option>
+                  </select>                
+                </div>
               </div>
             </div>
+            <div class="col-sm-2" ng-controller="ctrl">
+              <div class="input-group m-b">
+
+                <select  ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)" 
+                data-ng-options="blisterPackTemplate as blisterPackTemplate.descripcion for blisterPackTemplate in blisterPackTemplates">
+                  <option value="">Select Account</option>
+                </select>
+                {{itemList}}
+
+              </div>
+            </div>
+<!-- -->
+
           </div>
         </div>
       <!-- 3a -->
@@ -505,6 +528,107 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">No. TRÁMITE SIN</label>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nrotramitesin">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">No. INE RM</label>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroinerm">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">FECHA</label>
+            </div>
+            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
+              <div class="input-group w-md">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="planilla.fechahora" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>  </button>
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">No. BOLETA BANCO</label>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroboletabanco">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">No. INE RM VALIDADO</label>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroinermvalidado">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">No. ID</label>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroid">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="control-label">No. Orden Form. 3007</label>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroordenform3007">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>        
         <div class="row">
           <div class="alert alert-success" ng-show="showSuccessAlert"> 
             <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button> 

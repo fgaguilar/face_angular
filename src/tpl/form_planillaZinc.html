@@ -2,22 +2,55 @@
   <div class="panel panel-default">
     <div class="panel-heading font-bold">Planilla de Calculo de la RM de {{planilla.planilla}}
     </div>
-      <div class="panel-body">
+    <div class="panel-heading font-bold">I .-DATOS DE CABECERA
+    </div>
+  <form action="" name="forma">
+    <div class="row">
+           <div class="form-group">
+            <label class="col-sm-2 control-label">&nbsp;&nbsp;Nro. de Factura</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.impuestoFacturaFactores" required>
+                <span class="input-group-addon">No</span>
+              </div>
+            </div>
+         <div class="col-sm-0">
+          </div>
+           <label class="col-sm-1 control-label">Lote</label>
+            <div class="col-sm-3">
+             <div class="input-group m-b">
+               <input type="text" class="form-control text-right input-sm" ng-model="planilla.pesoLoteFactores" required>
+               <span class="input-group-addon">No</span>
+             </div>
+          </div>
+           <label class="col-sm-1 control-label">Fecha</label>
+            <div class="col-sm-1" ng-controller="DatepickerDemoCtrl">
+              <div class="input-group w-md">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="planilla.pesoKilosNetosSecosFactores" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>  </button>
+                </span>
+              </div>
+            </div>
+            </div>
+     </div>
+    </div>
+   
+  <!---   FIN CABECERA  ...........................................................................................-->      
       <!-- modal -->
-        <div ng-controller="ModalDemoCtrl">
+       <div ng-controller="ModalDemoCtrl">
           <script type="text/ng-template" id="myModalContent.html">
             <div ng-include="'tpl/modalParametros.html'"></div>
           </script>
-          <!-- <div class="panel-heading b-b b-light">Modal</div>
-          <div class="panel-body">
-            <button class="btn btn-success" ng-click="open()">Open me!</button>
-            <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
-            <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
-          </div> -->
       </div>
-      <!-- /modal -->      
-      <form action="" name="forma">
+            <!-- /modal -->      
+
       <!-- 0a -->
+      <div class="row">
+        <div class="col-sm-4 panel-heading text-left bg-success2 no-border">
+            <span class="text-u-c m-b-none font-bold">II. VALOR EXPORTACION /  REGALIA MINERA </span>         
+       </div>
+     </div> 
         <div class="row">
           <div class="col-sm-3 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Pesos</span>         
@@ -25,9 +58,7 @@
           <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Peso</span>          
           </div>
-          <div class="col-sm-4 panel-heading text-left bg-danger2 no-border">
-            <span class="text-u-c m-b-none font-bold">Factores</span>          
-          </div>
+
         </div>
       <!-- 1a -->
         <div class="row">  
@@ -40,26 +71,8 @@
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
-            <label class="col-sm-2 control-label">1 kg</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="7" numeric-input ng-model="planilla.pesoKilosNetosHumedosFactores">
-                <span class="input-group-addon">lf</span>
-              </div>
-            </div>
-            <label class="col-sm-1 control-label">PUERTO DESTINO</label>
-            <div class="col-sm-2" ng-controller="ListPuertoCtrl">
-              <div class="input-group m-b">
-                <select class="form-control m-t" ng-model="planilla.puertoDestino" required >
-                  <option value="">Elija Opcion</option>
-                  <option ng-repeat="pais in puerto" value="{{pais.id}}">{{pais.descripcion}}</option>
-                </select>                
-              </div>
-            </div>
-
           </div>
         </div> 
-
       <!-- 2a -->
         <div class="row">
           <div class="form-group">
@@ -75,22 +88,6 @@
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" 
                  fraction="2" numeric-input ng-model="planilla.pesoHumedadPeso">
                 <span class="input-group-addon">kg</span>
-              </div>
-            </div>
-            <label class="col-sm-2 control-label">1 kg</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="5" numeric-input ng-model="planilla.pesoHumedadFactores">
-                <span class="input-group-addon">ot</span>
-              </div>
-            </div>
-            <label class="col-sm-1 control-label">PAIS DESTINO</label>
-            <div class="col-sm-2" ng-controller="ListPaisCtrl">
-              <div class="input-group m-b">
-                <select class="form-control m-t" ng-model="planilla.paisDestino" required >
-                  <option value="">Elija Opcion</option>
-                  <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
-                </select>                
               </div>
             </div>
           </div>
@@ -111,13 +108,7 @@
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
-            <label class="col-sm-2 control-label">1 $us</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.pesoMermaFactores">
-                <span class="input-group-addon">ANB</span>
-              </div>
-            </div>
+            
           </div>
         </div>
       <!-- 4a -->
@@ -130,31 +121,10 @@
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
-            <label class="col-sm-2 control-label">Fecha</label>
-            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
-              <div class="input-group w-md">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="planilla.pesoKilosNetosSecosFactores" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>  </button>
-                </span>
-              </div>
-            </div>
+            
           </div>
         </div> 
-      <!-- 5a -->
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-5">
-            </div>
-            <label class="col-sm-2 control-label">Lote</label>
-            <div class="col-sm-3">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.pesoLoteFactores" required>
-                <span class="input-group-addon">No</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- 5a -->       
       <!-- 0b -->
         <div class="row">
           <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
@@ -166,15 +136,9 @@
           <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="text-u-c m-b-none font-bold">Peso</span>          
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">&nbsp;&nbsp;Lista Empaque</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.contenidoListaEmpaqueFactores" required>
-                <span class="input-group-addon">No</span>
-              </div>
-            </div>
-          </div>
+           <div class="col-sm-4 panel-heading text-left bg-danger2 no-border">
+            <span class="text-u-c m-b-none font-bold">Factores</span>          
+          </div>         
         </div>
       <!-- 1b -->
         <div class="row">
@@ -192,13 +156,11 @@
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
-            <div class="col-sm-2">
-              
-            </div>
+            <label class="col-sm-2 control-label">1 kg</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.contenidoZnTipoDeCambioFactores">
-                <span class="input-group-addon">Oficial</span>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="7" numeric-input ng-model="planilla.pesoKilosNetosHumedosFactores">
+                <span class="input-group-addon">lf</span>
               </div>
             </div>
           </div>
@@ -212,6 +174,13 @@
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo"  fraction="2" numeric-input ng-model="planilla.contenidoZnPesolf">
                 <span class="input-group-addon">lf</span>
+              </div>
+            </div>
+            <label class="col-sm-2 control-label">1 kg</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="5" numeric-input ng-model="planilla.pesoHumedadFactores">
+                <span class="input-group-addon">ot</span>
               </div>
             </div>
             <div class="col-sm-2">        
@@ -236,13 +205,6 @@
                 <span class="input-group-addon">kg</span>
               </div>
             </div>
-            <label class="col-sm-2 control-label">Flete Total</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.contenidoAgFleteTotalFactores">
-                <span class="input-group-addon">$us/ton</span>
-              </div>
-            </div>
           </div>
         </div>
       <!-- 4b -->
@@ -256,31 +218,9 @@
                 <span class="input-group-addon">ot</span>
               </div>
             </div>
-            <label class="col-sm-2 control-label">Interno (MSC-AV)</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.contenidoAgInternoFactores" required>
-                <span class="input-group-addon">$us/ton</span>
-              </div>
-            </div>
           </div>
         </div>
       <!-- 5b -->
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-2">
-            </div>
-            <label class="col-sm-2 control-label">Externo (AV-MEJ)</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.contenidoAgExternoFactores">
-                <span class="input-group-addon">$us/ton</span>
-              </div>
-            </div>
-          </div>
-        </div>
       <!-- 0c -->
         <div class="row">
           <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
@@ -299,7 +239,7 @@
             <label class="col-sm-1 control-label">{{tipoProducto}}</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.baseZnCotizaciones" required>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.baseZnCotizaciones" required>
                 <span class="input-group-addon">$us/lf</span>
               </div>
             </div>
@@ -307,13 +247,6 @@
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseZnSus">
                 <span class="input-group-addon">$us</span>
-              </div>
-            </div>
-            <label class="col-sm-2 control-label">No Contenedores</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="0" numeric-input ng-model="planilla.baseZnContenedoresFactores" required>
-                <span class="input-group-addon">mo3</span>
               </div>
             </div>
           </div>
@@ -324,7 +257,7 @@
             <label class="col-sm-1 control-label">Ag</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.baseAgCotizaciones" required>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.baseAgCotizaciones" required>
                 <span class="input-group-addon">$us/ot</span>
               </div>
             </div>
@@ -332,13 +265,6 @@
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseAgSus">
                 <span class="input-group-addon">$us</span>
-              </div>
-            </div>
-            <label class="col-sm-2 control-label">Tara Total</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.baseAgTaraTotalFactores">
-                <span class="input-group-addon">Tara</span>
               </div>
             </div>
           </div>
@@ -353,13 +279,6 @@
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseTotalSus">
                 <span class="input-group-addon">$us</span>
-              </div>
-            </div>
-            <label class="col-sm-2 control-label">Peso Bruto Humedo</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseTotalPesoBrutoFactores">
-                <span class="input-group-addon">kg</span>
               </div>
             </div>
           </div>
@@ -383,24 +302,15 @@
         </div>
       <!-- 5c -->
         <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
+          <div class="col-sm-3">
             </div>
             <div class="col-sm-2">
               <div class="input-group m-b">
                 <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseDiferenciaSus">
                 <span class="input-group-addon">$us</span>
               </div>
-            </div>
-            <label class="col-sm-2 control-label">No DUE</label>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.baseDiferenciaDueFactores" required>
-                <span class="input-group-addon">No</span>
-              </div>
-            </div>
-          </div>
-        </div>
+            </div>        
+            </div>        
       <!-- 0d -->
         <div class="row">
           <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
@@ -412,6 +322,7 @@
           <div class="col-sm-2 panel-heading text-left bg-success2 no-border">
             <span class="m-b-none font-bold">$us</span>          
           </div>
+          <!-- 
           <div class="form-group">
             <label class="col-sm-2 control-label">&nbsp;&nbsp;Nro. de Factura</label>
             <div class="col-sm-2">
@@ -420,7 +331,8 @@
                 <span class="input-group-addon">No</span>
               </div>
             </div>
-          </div>
+          </div> 
+        -->
         </div>
       <!-- 1d -->
         <div class="row">
@@ -428,7 +340,7 @@
             <label class="col-sm-1 control-label">{{tipoProducto}}</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.impuestoZnAlicuota" required>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.impuestoZnAlicuota" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
@@ -453,7 +365,7 @@
             <label class="col-sm-1 control-label">Ag</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.impuestoAgAlicuota" required>
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.impuestoAgAlicuota" required>
                 <span class="input-group-addon">%</span>
               </div>
             </div>
@@ -502,107 +414,138 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="form-group">
+    <div class="row">    
+     <div class="col-sm-4 panel-heading text-left bg-success2 no-border">
+         <span class="text-u-c m-b-none font-bold">III. DATOS COMPLEMENTARIOS PARA DUE </span>         
+     </div>
+    </div>
+     <div class="row">
+
+      <div class="form-group">
+         <div class="col-sm-0">
+           </div>
+            <label class="col-sm-1 control-label">No DUE</label>
             <div class="col-sm-3">
-              <label class="control-label">No. TRÁMITE SIN</label>
+              <div class="input-group m-b">
+               <input type="text" class="form-control text-right input-sm" ng-model="planilla.baseDiferenciaDueFactores" required>
+               <span class="input-group-addon">No</span>
+              </div>
             </div>
+          <label class="col-sm-2 control-label">&nbsp;&nbsp;Lista Empaque</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nrotramitesin">
+                <input type="text" class="form-control text-right input-sm" ng-model="planilla.contenidoListaEmpaqueFactores" required>
+                <span class="input-group-addon">No</span>
               </div>
             </div>
-            <div class="col-sm-4">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
-              <label class="control-label">No. INE RM</label>
-            </div>
+           </div>
+      </div>
+<div class="row">
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Flete Total</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroinerm">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.contenidoAgFleteTotalFactores">
+                <span class="input-group-addon">$us/ton</span>
               </div>
             </div>
-            <div class="col-sm-4">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
-              <label class="control-label">FECHA</label>
-            </div>
-            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
-              <div class="input-group w-md">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="planilla.fechahora" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>  </button>
-                </span>
-              </div>
-            </div>
-            <div class="col-sm-4">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
-              <label class="control-label">No. BOLETA BANCO</label>
-            </div>
+          <label class="col-sm-2 control-label">Interno (MSC-AV)</label>
             <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroboletabanco">
+                <input type="text" class="form-control text-right input-sm" fraction="2" numeric-input ng-model="planilla.contenidoAgInternoFactores" required>
+                <span class="input-group-addon">$us/ton</span>
               </div>
             </div>
-            <div class="col-sm-4">
-            </div>
-          </div>
-        </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="form-group">
             <div class="col-sm-3">
-              <label class="control-label">No. INE RM VALIDADO</label>
             </div>
             <div class="col-sm-2">
+            </div> -->
+            <label class="col-sm-2 control-label">Externo (AV-MEJ)</label>
+            <div class="col-sm-2">
               <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroinermvalidado">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" fraction="2" numeric-input ng-model="planilla.contenidoAgExternoFactores">
+                <span class="input-group-addon">$us/ton</span>
               </div>
             </div>
-            <div class="col-sm-4">
+       <!--   </div>
+        </div>  -->
+      </div>
+     </div>
+     <div class="row">
+      <div class="form-group">
+          <label class="col-sm-2 control-label">No Contenedores</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" fraction="0" numeric-input ng-model="planilla.baseZnContenedoresFactores" required>
+                <span class="input-group-addon">mo3</span>
+              </div>
+           </div> 
+         <label class="col-sm-2 control-label">Tara Total</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.baseAgTaraTotalFactores">
+                <span class="input-group-addon">Tara</span>
+              </div>
             </div>
+          <label class="col-sm-2 control-label">Peso Bruto Humedo</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled" placeholder="calculo" fraction="2" numeric-input ng-model="planilla.baseTotalPesoBrutoFactores">
+                <span class="input-group-addon">kg</span>
+              </div>
+          </div>
+      </div>
+     </div>
+    <div class="row">    
+     <div class="col-sm-4 panel-heading text-left bg-success2 no-border">
+         <span class="text-u-c m-b-none font-bold">IV. DATOS COMPLEMENTARIOS PARA FACTURA </span>         
+     </div>
+    </div>
+           <div class="row">
+         <!-- <div class="panel-body">  -->
+           <label class="col-sm-2 control-label">1 $us</label>
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.pesoMermaFactores">
+                <span class="input-group-addon">ANB</span>
+              </div>
+               </div>
+         <!--</div> -->
+            <div class="col-sm-2">
+              <div class="input-group m-b">
+                <input type="text" class="form-control text-right input-sm" disabled="disabled"  fraction="2" numeric-input ng-model="planilla.contenidoZnTipoDeCambioFactores">
+                <span class="input-group-addon">Oficial</span>
+              </div>
+            </div>
+      </div>
+<div class="row">
+   <div class="form-group">
+     <label class="col-sm-1 control-label">PUERTO DESTINO</label>
+        <div class="col-sm-2">
+          <div class="input-group m-b">
+                <select class="form-control m-t" ng-model="planilla.puertoDestino" required >
+                  <option value="">Elija Opcion</option>
+                  <option ng-repeat="pais in puerto" value="{{pais.id}}">{{pais.descripcion}}</option>
+                </select>
+            <!--
+             <input type="text" class="form-control text-right input-sm" ng-model="planilla.puertoDestino">
+            -->
           </div>
         </div>
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
-              <label class="control-label">No. ID</label>
-            </div>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroid">
-              </div>
-            </div>
-            <div class="col-sm-4">
-            </div>
+     <label class="col-sm-1 control-label">PAIS DESTINO</label>
+        <div class="col-sm-2">
+          <div class="input-group m-b">
+           <select class="form-control m-t" ng-model="planilla.paisDestino" ng-change="mostrar(planilla.paisDestino)" required >
+                    <option value="">Elija Opcion</option>
+                    <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
+                  </select>
+          <!-- <input type="text" class="form-control text-right input-sm" ng-model="planilla.paisDestino"> -->
           </div>
         </div>
-        <div class="row">
-          <div class="form-group">
-            <div class="col-sm-3">
-              <label class="control-label">No. Orden Form. 3007</label>
-            </div>
-            <div class="col-sm-2">
-              <div class="input-group m-b">
-                <input type="text" class="form-control text-right input-sm" ng-model="planilla.nroordenform3007">
-              </div>
-            </div>
-            <div class="col-sm-4">
-            </div>
-          </div>
-        </div>        
+   </div>
+ </div>
         <div class="row">
           <div class="alert alert-success" ng-show="showSuccessAlert"> 
             <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button> 
@@ -619,4 +562,5 @@
       </form>
     </div>
   </div>
+</div>
 </div>
