@@ -1050,15 +1050,20 @@ app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams
     };
   });
 
-app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto) {
+app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto,Paise) {
   console.log("Ingreso a PuertosUpdateCtrl");
   var puerto=$stateParams.puertoId;
   console.log(puerto);
-  $scope.planilla2={};
+  $scope.puerto2={};
   $scope.puerto={};
-  $scope.planilla2=Puerto.get({'puertoId': puerto}, function(datos){
+  $scope.puerto2=Puerto.get({'puertoId': puerto}, function(datos){
     $scope.puerto=datos;
-    $scope.fecha=datos.updated_at;
+    console.log($scope.puerto);
+    $scope.paise={};
+    $scope.paise2={};
+    $scope.paise2=Paise.query(function(datos){
+      $scope.paise=datos;
+    });     
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
       console.log($scope.puerto.id);
@@ -1121,4 +1126,50 @@ app.controller('ctrl', function ($scope,Paise){
     $scope.changedValue=function(item){
       $scope.itemList.push(item.descripcion);
     }    
+});
+
+app.controller('DosificacionesNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise) {
+    console.log("Ingreso a PaisesNewCtrl");
+    $scope.paise={};
+    $scope.paiseC={};
+    $scope.grabar = function() {
+      console.log("Antes de grabar Pais");
+      Paise.save($scope.paise, function() {
+        console.log("Ingreso a grabar Pais");
+        $timeout(function() {
+            $scope.successTextAlert = "Pais Guardado";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };      
+            $state.go('app.export.paisesNew');    
+        });
+      });
+    };
+  });
+
+app.controller('DosificacionesUpdateCtrl',function ($scope,$location,$timeout,$stateParams,$state,Dosificacion) {
+  console.log("Ingreso a DosificacionesUpdateCtrl");
+  var dosificacion=$stateParams.dosificacionId;
+  console.log(dosificacion);
+  $scope.planilla2={};
+  $scope.dosificacion={};
+  $scope.planilla2=Dosificacion.get({'dosificacionId': dosificacion}, function(datos){
+    $scope.dosificacion=datos;
+    $scope.fecha=datos.updated_at;
+    $scope.grabar = function() {
+      console.log("Ingreso a Actualizar");
+      console.log($scope.dosificacion.id);
+      Dosificacion.update({dosificacionId: dosificacion}, $scope.dosificacion, function() {
+          $timeout(function() {
+            $scope.successTextAlert = "Dosificacion Actualizado";
+            $scope.showSuccessAlert = true;
+            $scope.switchBool = function (value) {
+              $scope[value] = !$scope[value];
+            };
+            $state.go('app.billing.dosificacionesUpdate');
+          });
+      });
+    };
+  });  
 });

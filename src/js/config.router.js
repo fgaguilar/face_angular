@@ -191,7 +191,7 @@ angular.module('app')
                   //resolve: {
                     //loggedin: checkLoggedin
                   //}
-              })              
+              })                             
               // billing
               .state('app.billing', {
                   url: '/billing',
@@ -211,6 +211,16 @@ angular.module('app')
                     //loggedin: checkLoggedin
                   //}
               })     
+              .state('app.billing.dosificacionesNew', {
+                  url: '/dosificaciones',
+                  controller: 'DosificacionesNewCtrl',
+                  templateUrl: 'tpl/form_dosificacion.html',
+              }) 
+              .state('app.billing.dosificacionesUpdate', {
+                  url: '/dosificaciones/:dosificacionId',
+                  controller: 'DosificacionesUpdateCtrl',
+                  templateUrl: 'tpl/form_dosificacion.html',
+              })               
               .state('access', {
                   url: '/access',
                   template: '<div ui-view class="fade-in-right-big smooth"></div>'

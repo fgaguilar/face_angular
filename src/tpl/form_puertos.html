@@ -11,9 +11,8 @@
                 <label class="col-sm-3 control-label">Descripcion o Nombre Pais</label>
                 <div class="col-sm-3">
                   <div class="input-group m-b">
-                    <select class="form-control m-t" ng-model="puerto.pais" required >
-                      <option value="">Elija Opcion</option>
-                      <option ng-repeat="pais in paise" value="{{pais.id}}">{{pais.descripcion}}</option>
+                    <select class="form-control m-t" ng-model="puerto.pais" 
+                    ng-options="pais.id as pais.descripcion for pais in paise" required >
                     </select>
                   </div>
                 </div>                
