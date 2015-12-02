@@ -17,7 +17,12 @@
   "nav" : {
     "HEADER" : "Navegacion",
     "DASHBOARD" : "Panel de Control",
-    "EXPORT" : "Exportacion",
+    "export" : {
+      "EXPORT" : "Exportacion",
+      "PLAN" : "Planillas",
+      "PARAM" : "Parámetros"
+    },
+    "PLAN" : "Planillas",
     "TAXATION" : "Impuestos",
     "BILLING" : "Facturacion",
     "ADMINISTRATION" : "Administracion",

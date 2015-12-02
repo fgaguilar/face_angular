@@ -1091,7 +1091,7 @@ app.controller('ImprimirTodoCtrl', function ($scope,$stateParams){
     };
     $scope.imprimirFactura = function() {  
       $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + planId;
-      window.open($scope.url);  
+      window.open($scope.url);
     };
     $scope.imprimirdue = function() {  
       $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/due.rptdesign&id=" + planId;

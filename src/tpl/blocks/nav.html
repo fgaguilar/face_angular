@@ -11,78 +11,52 @@
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
       <i class="glyphicon glyphicon-log-out icon text-success"></i>
-      <span class="font-bold" translate="aside.nav.EXPORT">Export</span>
+      <span class="font-bold" translate="aside.nav.export.EXPORT">Export</span>
     </a>
     <ul class="nav nav-sub dk">
       <li class="nav-sub-header">
         <a href>
-          <span translate="aside.nav.EXPORT">Export</span>
+          <span translate="aside.nav.export.EXPORT">Export</span>
         </a>
       </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.export.planillaZincListado({tipoPlanilla:'ZINC'})">
-          <b class="label bg-info pull-right">Z</b>        
-          <span>Planilla ZINC</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.export.planillaPlomoListado({tipoPlanilla:'PLOMO'})">
-          <b class="label bg-info pull-right">P</b>
-          <span>Planilla PLOMO</span>
-        </a>
-      </li>
+      <li class="hidden-folded padder-lg m-t m-b-sm text-muted text-md font-bold">
+        <span translate="aside.nav.export.PARAM">Param</span>
+      </li>      
       <li ui-sref-active="active">
         <a ui-sref="app.export.parametros">
-          <span>Parametros Gerenales</span>
+          <span>Gerenal</span>
         </a>
       </li>
       <li ui-sref-active="active">
         <a ui-sref="app.export.parametros2">
-          <span>Parametros Cotizaciones</span>
+          <span>Cotizacion</span>
         </a>
       </li>
       <li ui-sref-active="active">
-        <!-- <a ui-sref="app.export.facturaComercial"> -->
-        <a ui-sref="app.export.planillaZincListadoGeneral">
-          <span>Factura Comercial</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.export.planillaZincListadoGeneral">
-          <span>Lista de Empaque</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-  <!--       <a ui-sref="app.export.informeEnsayo"> -->
-        <a ui-sref="app.export.planillaZincListadoGeneral">
-          <span>Regalia Minera</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <!-- <a ui-sref="app.export.formularioLiquidacion"> -->
-        <a ui-sref="app.export.planillaZincListadoGeneral">
-          <span>DUE</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <!-- <a ui-sref="app.export.reportePesos"> -->
-        <a ui-sref="app.dashboard-v1">
-          <span>Reporte de Pesos</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <!-- <a ui-sref="app.export.reportePesos"> -->
         <a ui-sref="app.export.listadoPaises">
           <span>Paises</span>
         </a>
       </li>      
       <li ui-sref-active="active">
-        <!-- <a ui-sref="app.export.reportePesos"> -->
         <a ui-sref="app.export.listadoPuertos">
           <span>Puertos</span>
         </a>
       </li>      
-
+      <li class="hidden-folded padder-lg m-t m-b-sm text-muted text-md font-bold">
+        <span translate="aside.nav.export.PLAN">Plan</span>
+      </li>          
+      <li ui-sref-active="active">
+        <a ui-sref="app.export.planillaZincListado({tipoPlanilla:'ZINC'})">
+          <b class="label bg-info pull-right">Z</b>        
+          <span>Zinc</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.export.planillaPlomoListado({tipoPlanilla:'PLOMO'})">
+          <b class="label bg-info pull-right">P</b>
+          <span>Plomo</span>
+        </a>
+      </li>
     </ul>
   </li>
   <!-- fin exportacion -->  
