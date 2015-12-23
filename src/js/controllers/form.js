@@ -264,10 +264,10 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
     };
   });
 
-app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,Plan,Puerto,Paise) {
+app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,$state,Plan,Puerto,Paise) {
   console.log('Ingreso a FormUnoCtrl');
   var planillaId = $stateParams.planId;
-
+  var tipoPlanilla = $stateParams.tipoPlanilla;
   $scope.puerto={};
   $scope.puerto2={};
   $scope.puertoP={};
@@ -339,7 +339,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
       $scope.planilla.baseAgSus=$scope.planilla.contenidoAgPesoot*$scope.planilla.baseAgCotizaciones;
       $scope.planilla.baseTotalSus=$scope.planilla.baseZnSus*1+$scope.planilla.baseAgSus*1;
       $scope.planilla.basePromedioSus=$scope.planilla.baseTotalSus*45/100;
-      $scope.planilla.baseDiferenciaSus=$scope.planilla.baseTotalSus-$scope.planilla.basePromedioSus;
+      //$scope.planilla.baseDiferenciaSus=$scope.planilla.baseTotalSus-$scope.planilla.basePromedioSus;
       $scope.planilla.impuestoZnSus=$scope.planilla.baseZnSus*$scope.planilla.impuestoZnAlicuota/100;
       $scope.planilla.impuestoAgSus=$scope.planilla.baseAgSus*$scope.planilla.impuestoAgAlicuota/100;
       $scope.planilla.impuestoTotalSusSus=$scope.planilla.impuestoZnSus*1+$scope.planilla.impuestoAgSus*1;
@@ -359,37 +359,41 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
     console.log("Ingreso a actualizar " + $scope.planilla.pesoKilosNetosSecosFactores);
     if ($scope.planilla.pesoKilosNetosSecosFactores.getFullYear) {
       $scope.anio=$scope.planilla.pesoKilosNetosSecosFactores.getFullYear();
-      console.log("Anio1 "+$scope.anio);
     }
     else {
       $scope.anio=$scope.planilla.pesoKilosNetosSecosFactores.substr(0, 4);
-      console.log("Anio2 "+$scope.anio);
     }
 
     if ($scope.planilla.pesoKilosNetosSecosFactores.getMonth) {
       $scope.mes=$scope.planilla.pesoKilosNetosSecosFactores.getMonth();
-      console.log("Mes1 "+$scope.mes);
     }
     else {
       $scope.mes=$scope.planilla.pesoKilosNetosSecosFactores.substr(5, 2);
-      console.log("Mes2 "+$scope.mes);
     }
 
     if ($scope.planilla.pesoKilosNetosSecosFactores.getDate) {
       $scope.dia=$scope.planilla.pesoKilosNetosSecosFactores.getDate();
-      console.log("Dia1 "+$scope.dia);
     }
     else {
       $scope.dia=$scope.planilla.pesoKilosNetosSecosFactores.substr(8, 2);
-      console.log("Dia2 "+$scope.dia);
     }
     $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
     $scope.planilla.pesoKilosNetosSecosFactores=$scope.miFecha;
     Plan.update({planillaId: $scope.planilla.id}, $scope.planilla, function() {
       $timeout(function() {
-        $location.path('/');
+        $scope.successTextAlert = "Planilla Actualizada";
+        $scope.showSuccessAlert = true;
+        $scope.switchBool = function (value) {
+          $scope[value] = !$scope[value];
+        };
       });
     });
+    if (tipoPlanilla=='ZINC'){
+      $state.go('app.export.planillaZincListado',{'tipoPlanilla':tipoPlanilla});
+    }
+    else {
+      $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':tipoPlanilla});
+    } 
   };
   console.groupEnd();  
 });
@@ -790,7 +794,29 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
   });
   $scope.grabar = function() {
     console.log("Ingreso a Guardar");
-    console.log($scope.factura.planilla_id);
+    console.log($scope.factura);
+    if ($scope.factura.fecha.getFullYear) {
+      $scope.anio=$scope.factura.fecha.getFullYear();
+    }
+    else {
+      $scope.anio=$scope.factura.fecha.substr(0, 4);
+    }
+
+    if ($scope.factura.fecha.getMonth) {
+      $scope.mes=$scope.factura.fecha.getMonth();
+    }
+    else {
+      $scope.mes=$scope.factura.fecha.substr(5, 2);
+    }
+
+    if ($scope.factura.fecha.getDate) {
+      $scope.dia=$scope.factura.fecha.getDate();
+    }
+    else {
+      $scope.dia=$scope.factura.fecha.substr(8, 2);
+    }
+    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
+    $scope.factura.fecha=$scope.miFecha;    
     Factura.save($scope.factura, function() {
       $timeout(function() {
         $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;

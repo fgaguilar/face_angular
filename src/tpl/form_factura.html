@@ -5,8 +5,16 @@
       <form action="" name="forma">
       <!-- 1a -->
         <div class="row">  
-          <div class="col-sm-5 texto-negrilla">Potosí, {{factura.fecha}}</div>
-          <div class="col-sm-5 texto-negrilla">Factura, {{factura.factura}}</div>
+            <label class="col-sm-1 control-label">Potosí </label>
+            <div class="col-sm-3" ng-controller="DatepickerDemoCtrl">
+              <div class="input-group w-md">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="factura.fecha" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>  </button>
+                </span>
+              </div>
+            </div>
+          <div class="col-sm-3 texto-negrilla">Factura, {{factura.factura}}</div>
         </div> 
       <!-- 2a -->
         <div class="row">
