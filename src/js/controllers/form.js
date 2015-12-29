@@ -721,7 +721,7 @@ console.log('Salio de get');
   };
 });
 
-app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$state,$timeout,$stateParams,Plan,Factura,Parametro,Facturac) {
+app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$state,$timeout,$stateParams,Plan,Factura,FacturaSin,Parametro,Facturac) {
   console.log("Ingreso a FacturaExportacionCtrl");
   var planillaId = $stateParams.planId;
   var ide = 0;
@@ -732,8 +732,22 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
   $scope.factura2=Facturac.get({'planillaId': planillaId}, function(datos2){
   	console.log("DATOS 2 !!!!!!!");
     console.log(datos2.length);
-    $scope.longitud=true;  
-    if (datos2.length==0){
+    console.log(datos2);
+
+    if (datos2.length!=0){
+      $scope.existe=1;
+      //$scope.longitud=true;
+      console.log(datos2[0].control);
+    if (datos2[0].control){
+      console.log("Ëxiste control");
+    }
+    else {
+      console.log("NO Ëxiste control");
+    }
+      $scope.factura=datos2[0];
+    }
+    else {
+      $scope.existe=0;   
       $scope.longitud=false;      
       $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos1){
         $scope.planillaC=datos1;
@@ -793,7 +807,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     }
   });
   $scope.grabar = function() {
-    console.log("Ingreso a Guardar");
+    console.log("Ingreso a Grabar");
     console.log($scope.factura);
     if ($scope.factura.fecha.getFullYear) {
       $scope.anio=$scope.factura.fecha.getFullYear();
@@ -817,7 +831,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     }
     $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
     $scope.factura.fecha=$scope.miFecha;    
-    Factura.save($scope.factura, function() {
+    FacturaSin.save($scope.factura, function() {
       $timeout(function() {
         $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
         window.open($scope.url);
@@ -829,6 +843,61 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
         }
       });
     });
+  };
+  $scope.validar = function() {
+    console.log("Ingreso a Validar");
+    console.log($scope.factura);
+    if ($scope.factura.fecha.getFullYear) {
+      $scope.anio=$scope.factura.fecha.getFullYear();
+    }
+    else {
+      $scope.anio=$scope.factura.fecha.substr(0, 4);
+    }
+
+    if ($scope.factura.fecha.getMonth) {
+      $scope.mes=$scope.factura.fecha.getMonth();
+    }
+    else {
+      $scope.mes=$scope.factura.fecha.substr(5, 2);
+    }
+
+    if ($scope.factura.fecha.getDate) {
+      $scope.dia=$scope.factura.fecha.getDate();
+    }
+    else {
+      $scope.dia=$scope.factura.fecha.substr(8, 2);
+    }
+    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
+    $scope.factura.fecha=$scope.miFecha;    
+    if ($scope.existe==0){
+      Factura.save($scope.factura, function() {
+        $timeout(function() {
+          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          window.open($scope.url);
+          if ($scope.tipoPlanilla=='ZINC'){
+            $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+          else {
+            $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+        });
+      });      
+    }
+    else {
+      Factura.update({facturaId: $scope.factura.id}, $scope.factura, function() {
+        $timeout(function() {
+          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          window.open($scope.url);
+          if ($scope.tipoPlanilla=='ZINC'){
+            $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+          else {
+            $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+        });
+      });
+    }
+
   };
 });
 

@@ -48,6 +48,18 @@ app.factory('Factura', ['$resource',
     });
   }]);
 
+app.factory('FacturaSin', ['$resource',
+  function($resource){
+    return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/facturasSin/:facturaId', {}, {
+      'get': {method:'GET', params:{facturaId:'@facturaId'}, isArray:false},
+      'save': {method:'POST'},
+      'query': {method:'GET', isArray:true},
+      'update': {method:'PUT'},
+      'remove': {method:'DELETE'},
+      'delete': {method:'DELETE'}
+    });
+  }]);
+
 app.factory('Facturac', ['$resource',
   function($resource){
     return $resource('http://mscwsus.minera.local:8081/face_laravel/public/index.php/api/factura/:planillaId', {}, {
