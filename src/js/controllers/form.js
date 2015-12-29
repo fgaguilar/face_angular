@@ -174,6 +174,10 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
 
     $scope.planilla={};
     $scope.planillaC={};
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Antes de grabar Planilla");
       Plan.save($scope.planilla, function() {
@@ -356,6 +360,10 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   }
 
   console.groupCollapsed("FormUnoCtrl");
+  $scope.cancelar = function(){
+    console.log("Ingreso a Cancelar");
+    $state.go('app.dashboard-v1');
+  };  
   $scope.grabar = function() {
     console.log("Ingreso a actualizar " + $scope.planilla.pesoKilosNetosSecosFactores);
     if ($scope.planilla.pesoKilosNetosSecosFactores.getFullYear) {
@@ -507,6 +515,10 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
       }
     });
   });
+  $scope.cancelar = function(){
+    console.log("Ingreso a Cancelar");
+    $state.go('app.dashboard-v1');
+  };
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
         $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + $scope.planilla2.id;
@@ -610,7 +622,11 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
     $scope.planillaC.sumaValorBS=$scope.planillaC.sumaValorUSD*$scope.planillaC.tipoCambio;
     $scope.planillaC.sumaRMBS=$scope.planillaC.sumaRMUSD*$scope.planillaC.tipoCambio;
   });
- console.log('Salio de get');
+  console.log('Salio de get');
+  $scope.cancelar = function(){
+    console.log("Ingreso a Cancelar");
+    $state.go('app.dashboard-v1');
+  }; 
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
         $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + $scope.planilla2.id;
@@ -714,7 +730,11 @@ app.controller('M03Ctrl',function ($scope,$location,$timeout,$stateParams,Plan) 
     $scope.planillaC.sumaValorBS=$scope.planillaC.sumaValorUSD*$scope.planillaC.tipoCambio;
     $scope.planillaC.sumaRMBS=$scope.planillaC.sumaRMUSD*$scope.planillaC.tipoCambio;
   });
-console.log('Salio de get');
+  console.log('Salio de get');
+  $scope.cancelar = function(){
+    console.log("Ingreso a Cancelar");
+    $state.go('app.dashboard-v1');
+  };  
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
         $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + $scope.planilla2.id;
@@ -808,6 +828,10 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
       });//fin Plan.get
     }
   });
+  $scope.cancelar = function(){
+    console.log("Ingreso a Cancelar");
+    $state.go('app.dashboard-v1');
+  };
   $scope.grabar = function() {
     console.log("Ingreso a Grabar");
     console.log($scope.factura);
@@ -936,6 +960,10 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
     $scope.parametro2=datos;
     $scope.fecha=datos.updated_at;
   });  
+  $scope.cancelar = function(){
+    console.log("Ingreso a Cancelar");
+    $state.go('app.dashboard-v1');
+  };
   $scope.grabar = function() {
     console.log("Ingreso a Actualizar");
     console.log($scope.parametro1.id);
@@ -1079,6 +1107,10 @@ app.controller('PaisesNewCtrl',function ($scope,$location,$timeout,$stateParams,
     console.log("Ingreso a PaisesNewCtrl");
     $scope.paise={};
     $scope.paiseC={};
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Antes de grabar Pais");
       Paise.save($scope.paise, function() {
@@ -1104,6 +1136,10 @@ app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$statePara
   $scope.planilla2=Paise.get({'paiseId': paise}, function(datos){
     $scope.paise=datos;
     $scope.fecha=datos.updated_at;
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
       console.log($scope.paise.id);
@@ -1131,6 +1167,10 @@ app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams
     $scope.paise2=Paise.query(function(datos){
       $scope.paise=datos;
     });    
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Antes de grabar Puertos");
       console.log($scope.puerto);
@@ -1162,6 +1202,10 @@ app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$statePar
     $scope.paise2=Paise.query(function(datos){
       $scope.paise=datos;
     });     
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
       console.log($scope.puerto.id);
@@ -1183,6 +1227,10 @@ app.controller('PuertosUpdateCtrl',function ($scope,$location,$timeout,$statePar
 app.controller('ImprimirTodoCtrl', function ($scope,$stateParams){
     var planId=$stateParams.planId;
     console.log('Ingreso a ImprimirTodoCtrl!!!!!');
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.imprimirPlan = function() {  
       $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + planId;
       window.open($scope.url);  
@@ -1230,6 +1278,10 @@ app.controller('DosificacionesNewCtrl',function ($scope,$location,$timeout,$stat
     console.log("Ingreso a PaisesNewCtrl");
     $scope.paise={};
     $scope.paiseC={};
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Antes de grabar Pais");
       Paise.save($scope.paise, function() {
@@ -1255,6 +1307,10 @@ app.controller('DosificacionesUpdateCtrl',function ($scope,$location,$timeout,$s
   $scope.planilla2=Dosificacion.get({'dosificacionId': dosificacion}, function(datos){
     $scope.dosificacion=datos;
     $scope.fecha=datos.updated_at;
+    $scope.cancelar = function(){
+      console.log("Ingreso a Cancelar");
+      $state.go('app.dashboard-v1');
+    };    
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
       console.log($scope.dosificacion.id);
