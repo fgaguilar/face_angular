@@ -736,16 +736,17 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
 
     if (datos2.length!=0){
       $scope.existe=1;
-      //$scope.longitud=true;
       console.log(datos2[0].control);
-    if (datos2[0].control){
-      console.log("Ëxiste control");
-    }
-    else {
-      console.log("NO Ëxiste control");
-    }
-      $scope.factura=datos2[0];
-    }
+      if (datos2[0].control){
+        console.log("Ëxiste control");
+        $scope.longitud=true;
+      }
+      else {
+        console.log("NO Ëxiste control");
+        $scope.longitud=false;
+      }
+        $scope.factura=datos2[0];
+      }
     else {
       $scope.existe=0;   
       $scope.longitud=false;      
@@ -817,7 +818,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     }
 
     if ($scope.factura.fecha.getMonth) {
-      $scope.mes=$scope.factura.fecha.getMonth();
+      $scope.mes=$scope.factura.fecha.getMonth()+1;
     }
     else {
       $scope.mes=$scope.factura.fecha.substr(5, 2);
@@ -829,7 +830,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     else {
       $scope.dia=$scope.factura.fecha.substr(8, 2);
     }
-    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
+    $scope.miFecha = new Date($scope.anio,$scope.mes-1,$scope.dia);
     $scope.factura.fecha=$scope.miFecha;    
     FacturaSin.save($scope.factura, function() {
       $timeout(function() {
@@ -855,9 +856,11 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     }
 
     if ($scope.factura.fecha.getMonth) {
-      $scope.mes=$scope.factura.fecha.getMonth();
+      console.log("getMonth");         
+      $scope.mes=$scope.factura.fecha.getMonth()+1;
     }
     else {
+      console.log("substr");   
       $scope.mes=$scope.factura.fecha.substr(5, 2);
     }
 
@@ -867,8 +870,8 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     else {
       $scope.dia=$scope.factura.fecha.substr(8, 2);
     }
-    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
-    $scope.factura.fecha=$scope.miFecha;    
+    $scope.miFecha = new Date($scope.anio,$scope.mes-1,$scope.dia);
+    $scope.factura.fecha=$scope.miFecha;   
     if ($scope.existe==0){
       Factura.save($scope.factura, function() {
         $timeout(function() {
