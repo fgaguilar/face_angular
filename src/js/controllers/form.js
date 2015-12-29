@@ -745,8 +745,8 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
         console.log("NO Ëxiste control");
         $scope.longitud=false;
       }
-        $scope.factura=datos2[0];
-      }
+      $scope.factura=datos2[0];
+    }
     else {
       $scope.existe=0;   
       $scope.longitud=false;      
@@ -913,53 +913,36 @@ app.controller('ParametrosCtrl',function ($scope,$location,$timeout,$stateParams
   $scope.planilla2=Parametro.get({'parametroId': 1}, function(datos){
     $scope.parametro1=datos;
     $scope.fecha=datos.updated_at;
-    $scope.grabar1 = function(tipo) {
-      console.log("Ingreso a Actualizar");
-      console.log(tipo);
-      console.log($scope.parametro1.id);
-      Parametro.update({parametroId: 1}, $scope.parametro1, function() {
-          $timeout(function() {
-            $scope.successTextAlert1 = "Parametros Guardados";
-            $scope.showSuccessAlert1 = true;
-            $scope.switchBool = function (value) {
-              $scope[value] = !$scope[value];
-            };
-            if (tipo==1){
-              $state.go('app.export.parametros',parametro);
-            }
-            else {
-              $state.go('app.export.parametros',parametro2); 
-            }
-            //$location.path('/');
-          });
-      });
-    };
+
   });  
   $scope.planilla2=Parametro.get({'parametroId': 2}, function(datos){
     $scope.parametro2=datos;
     $scope.fecha=datos.updated_at;
-    $scope.grabar2 = function(tipo) {
-      console.log("Ingreso a Actualizar");
-      console.log(tipo);
-      console.log($scope.parametro2.id);
-      Parametro.update({parametroId: 2}, $scope.parametro2, function() {
-          $timeout(function() {
-            $scope.successTextAlert2 = "Parametros Guardados";
-            $scope.showSuccessAlert2 = true;
-            $scope.switchBool = function (value) {
-              $scope[value] = !$scope[value];
-            };
-            if (tipo==2){
-              $state.go('app.export.parametros',parametro);
-            }
-            else {
-              $state.go('app.export.parametros',parametro2); 
-            }
-            //$location.path('/');
-          });
+  });  
+  $scope.grabar = function() {
+    console.log("Ingreso a Actualizar");
+    console.log($scope.parametro1.id);
+    console.log($scope.parametro2.id);    
+    Parametro.update({parametroId: 1}, $scope.parametro1, function() {
+      $timeout(function() {
+        $scope.successTextAlert2 = "Parametros Guardados";
+        $scope.showSuccessAlert2 = true;
+        $scope.switchBool = function (value) {
+          $scope[value] = !$scope[value];
+        };
+      });  
+    });
+    Parametro.update({parametroId: 2}, $scope.parametro2, function() {
+      $timeout(function() {
+        $scope.successTextAlert2 = "Parametros Guardados";
+        $scope.showSuccessAlert2 = true;
+        $scope.switchBool = function (value) {
+          $scope[value] = !$scope[value];
+        };
+        $state.go('app.dashboard-v1');
       });
-    };
-  });
+    });     
+  };
 });
 
    app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$stateParams', 'mensaje', function($scope, $modalInstance, $stateParams, mensaje) {
