@@ -832,19 +832,35 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
       $scope.dia=$scope.factura.fecha.substr(8, 2);
     }
     $scope.miFecha = new Date($scope.anio,$scope.mes-1,$scope.dia);
-    $scope.factura.fecha=$scope.miFecha;    
-    FacturaSin.save($scope.factura, function() {
-      $timeout(function() {
-        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
-        window.open($scope.url);
-        if ($scope.tipoPlanilla=='ZINC'){
-          $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
-        }
-        else {
-          $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':$scope.tipoPlanilla});
-        }
+    $scope.factura.fecha=$scope.miFecha; 
+    if ($scope.existe==0){   
+      FacturaSin.save($scope.factura, function() {
+        $timeout(function() {
+          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          window.open($scope.url);
+          if ($scope.tipoPlanilla=='ZINC'){
+            $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+          else {
+            $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+        });
       });
-    });
+    }
+    else {
+      FacturaSin.update({facturaId: $scope.factura.id}, $scope.factura, function() {
+        $timeout(function() {
+          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          window.open($scope.url);
+          if ($scope.tipoPlanilla=='ZINC'){
+            $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+          else {
+            $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':$scope.tipoPlanilla});
+          }
+        });
+      });      
+    }
   };
   $scope.validar = function() {
     console.log("Ingreso a Validar");
