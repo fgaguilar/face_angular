@@ -222,6 +222,7 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
       $scope.planilla.contenidoAgExternoFactores=datos.externo;
       $scope.planilla.pesoMermaFactores=datos.tipoCambioANB;
       $scope.planilla.contenidoZnTipoDeCambioFactores=datos.tipoCambioOficial;   
+      $scope.planilla.contenidoAgInternoFactores=datos.fleteInterno;
       if (tipoPlanilla=='ZINC') {
         $scope.planilla.pesoLoteFactores='EXMSC-Z';
       }
