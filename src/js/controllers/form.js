@@ -315,6 +315,8 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
     console.log($scope.planilla);
     console.log("DATOS");
     console.log($scope.planilla.planilla);
+    console.log($scope.planilla.puertoDestino);
+    console.log($scope.planilla.paisDestino);
     if ($scope.planilla.planilla=='ZINC'){
       console.log("Entro ZINC");
       $scope.tipoProducto='Zn';    
@@ -344,7 +346,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
       $scope.planilla.baseAgSus=$scope.planilla.contenidoAgPesoot*$scope.planilla.baseAgCotizaciones;
       $scope.planilla.baseTotalSus=$scope.planilla.baseZnSus*1+$scope.planilla.baseAgSus*1;
       $scope.planilla.basePromedioSus=$scope.planilla.baseTotalSus*45/100;
-      //$scope.planilla.baseDiferenciaSus=$scope.planilla.baseTotalSus-$scope.planilla.basePromedioSus;
+      $scope.planilla.baseDiferenciaSus=$scope.planilla.baseTotalSus-$scope.planilla.basePromedioSus;
       $scope.planilla.impuestoZnSus=$scope.planilla.baseZnSus*$scope.planilla.impuestoZnAlicuota/100;
       $scope.planilla.impuestoAgSus=$scope.planilla.baseAgSus*$scope.planilla.impuestoAgAlicuota/100;
       $scope.planilla.impuestoTotalSusSus=$scope.planilla.impuestoZnSus*1+$scope.planilla.impuestoAgSus*1;
