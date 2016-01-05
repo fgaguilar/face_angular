@@ -273,19 +273,6 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   console.log('Ingreso a FormUnoCtrl');
   var planillaId = $stateParams.planId;
   var tipoPlanilla = $stateParams.tipoPlanilla;
-  $scope.puerto={};
-  $scope.puerto2={};
-  $scope.puertoP={};
-  $scope.puerto2=Puerto.query(function(datos){
-    $scope.puerto=datos;
-  });
-
-  $scope.pais={};
-  $scope.pais2={};
-  $scope.paisP={};
-  $scope.pais2=Paise.query(function(datos){
-    $scope.paise=datos;
-  });  
 
   $scope.mostrarPais = function(item){
     console.log("MostrarPais");
@@ -307,10 +294,26 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   $scope.planillaC={};
   $scope.planilla2={};
   console.log('Antes de get');
+  console.log(planillaId);
   $scope.planilla2=Plan.get({'planillaId': planillaId}, function(datos){
     console.log($scope);
     $scope.planilla=datos;
     $scope.planilla.updated_by=$cookies.uName;
+
+    $scope.puerto={};
+    $scope.puerto2={};
+    $scope.puertoP={};
+    $scope.puerto2=Puerto.query(function(datos){
+      $scope.puerto=datos;
+    });
+
+    $scope.pais={};
+    $scope.pais2={};
+    $scope.paisP={};
+    $scope.pais2=Paise.query(function(datos){
+      $scope.paise=datos;
+    });  
+
     console.log("DATOS");
     console.log($scope.planilla);
     console.log("DATOS");
@@ -357,6 +360,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
       return "";
     };     
   });
+  
   var isDate = function(date) {
       return ((new Date(date)).toString() !== "Invalid Date") ? true : false;         
   }
@@ -406,7 +410,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
       $state.go('app.export.planillaPlomoListado',{'tipoPlanilla':tipoPlanilla});
     } 
   };
-  console.groupEnd();  
+  console.groupEnd(); 
 });
 
 app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Plancalculo) {
