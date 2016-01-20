@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 app.run(function($locale){
     $locale.NUMBER_FORMATS.GROUP_SEP = ",";
@@ -88,7 +88,7 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
   console.log('Salio de get');
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
-        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id=" + $scope.planilla2.id;
+        $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id=" + $scope.planilla2.id;
         window.open($scope.url);  
   };
 
@@ -527,7 +527,7 @@ app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParam
   };
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
-        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + $scope.planilla2.id;
+        $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/plan_de_calculos.rptdesign&id=" + $scope.planilla2.id;
         window.open($scope.url);  
   };
 });
@@ -635,7 +635,7 @@ app.controller('RegaliaMineraCtrl',function ($scope,$location,$timeout,$statePar
   }; 
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
-        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + $scope.planilla2.id;
+        $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/regalia_minera.rptdesign&id=" + $scope.planilla2.id;
         window.open($scope.url);  
   };
 });
@@ -743,7 +743,7 @@ app.controller('M03Ctrl',function ($scope,$location,$timeout,$stateParams,Plan) 
   };  
   $scope.imprimir = function() {  
     console.log($scope.planilla2);
-        $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + $scope.planilla2.id;
+        $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/m-03.rptdesign&id=" + $scope.planilla2.id;
         window.open($scope.url);  
   };
 });
@@ -866,7 +866,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     if ($scope.existe==0){   
       FacturaSin.save($scope.factura, function() {
         $timeout(function() {
-          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
           window.open($scope.url);
           if ($scope.tipoPlanilla=='ZINC'){
             $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
@@ -880,7 +880,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     else {
       FacturaSin.update({facturaId: $scope.factura.id}, $scope.factura, function() {
         $timeout(function() {
-          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
           window.open($scope.url);
           if ($scope.tipoPlanilla=='ZINC'){
             $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
@@ -922,7 +922,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     if ($scope.existe==0){
       Factura.save($scope.factura, function() {
         $timeout(function() {
-          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
           window.open($scope.url);
           if ($scope.tipoPlanilla=='ZINC'){
             $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
@@ -936,7 +936,7 @@ app.controller('FacturaExportacionCtrl',function ($scope,$location,$cookies,$sta
     else {
       Factura.update({facturaId: $scope.factura.id}, $scope.factura, function() {
         $timeout(function() {
-          $scope.url="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
+          $scope.url="http://mscfacturacion.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id=" + $scope.factura.planilla_id;
           window.open($scope.url);
           if ($scope.tipoPlanilla=='ZINC'){
             $state.go('app.export.planillaZincListado',{'tipoPlanilla':$scope.tipoPlanilla});
