@@ -2,13 +2,20 @@
   <div class="panel panel-default">
     <div class="panel-heading font-bold">Planilla de Calculo de la RM de {{planilla.planilla}}</div>
     <div class="panel-heading font-bold">I .-DATOS DE CABECERA</div>
+      <!-- modal -->
+      <div ng-controller="ModalDemoCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+          <div ng-include="'tpl/modalParametros.html'"></div>
+          </script>
+      </div>
+      <!-- /modal -->     
     <form action="" name="forma">   
       <div class="row">
         <div class="form-group">
           <label class="col-sm-2 control-label">&nbsp;&nbsp;Nro. de Factura</label>
           <div class="col-sm-2">
             <div class="input-group m-b">
-              <input type="text" class="form-control text-right input-sm" ng-model="planilla.impuestoFacturaFactores" required>
+              <input type="text" class="form-control text-right input-sm" disabled="disabled" ng-model="planilla.impuestoFacturaFactores" required>
               <span class="input-group-addon">No</span>
             </div>
           </div>

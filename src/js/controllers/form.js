@@ -413,7 +413,7 @@ app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$tim
   console.groupEnd(); 
 });
 
-app.controller('PlanCalculoCtrl',function ($scope,$location,$timeout,$stateParams,Plan,Plancalculo) {
+app.controller('PlanCalculoCtrl',function ($scope,$state,$location,$timeout,$stateParams,Plan,Plancalculo) {
   console.log('Ingreso a PlanCalculoCtrl');
   var planillaId = $stateParams.planId;
   $scope.planillaC={};
