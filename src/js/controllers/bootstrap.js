@@ -234,8 +234,8 @@
         return addresses;
       });
     };
-  }])
-  ; 
+  }]); 
+
   app.controller('DatepickerDemoCtrl', ['$scope', function($scope) {
     $scope.today = function() {
       $scope.dt = new Date();
@@ -327,10 +327,29 @@
         delete $cookies["fName"];
         delete $cookies["lName"];
         delete $cookies["uName"];
+        delete $cookies["roles"];
         console.log('============ remove cookies ==============');
         console.log($cookies.uName);
         console.log($cookies.fName);
         console.log($cookies.lName);
+        console.log($cookies.roles);
       });
+    }
+  }]);
+
+  app.controller('navController2', ['$scope', '$state', '$http', '$cookies', function ($scope, $state, $http, $cookies) {
+    console.log('Ingreso a navController2');
+    console.log("======= navController2: $cookies.currentUser ========");
+    console.log($cookies.fName);
+    console.log($cookies.lName);
+    console.log($cookies.roles);
+    $scope.roles=$cookies.roles;
+    if ($scope.roles=='admin') {
+      $scope.mostrarGeneral=true;
+      $scope.mostrarCotizacion=true;
+      $scope.mostrarPaises=true;
+      $scope.mostrarPuertos=true;
+      $scope.mostrarZinc=true;
+      $scope.mostrarPlomo=true;
     }
   }]);

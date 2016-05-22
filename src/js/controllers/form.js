@@ -1109,8 +1109,9 @@ app.controller('ListPuertoCtrl',function ($scope,Puerto) {
   });
 });
 
-app.controller('PaisesNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise) {
+app.controller('PaisesNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Paise,resA) {
     console.log("Ingreso a PaisesNewCtrl");
+    console.log(resA.value);
     $scope.paise={};
     $scope.paiseC={};
     $scope.cancelar = function(){
@@ -1164,8 +1165,9 @@ app.controller('PaisesUpdateCtrl',function ($scope,$location,$timeout,$statePara
   });  
 });
 
-app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto,Paise) {
+app.controller('PuertosNewCtrl',function ($scope,$location,$timeout,$stateParams,$state,Puerto,Paise,resB) {
     console.log("Ingreso a PuertosNewCtrl");
+    console.log(resB.value);
     $scope.puerto={};
     $scope.puertoC={};
     $scope.paise={};

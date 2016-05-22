@@ -31,10 +31,12 @@ app.controller('SigninFormController', ['$scope','$cookies','$state','$http',fun
       $cookies.fName = user.firstName;
       $cookies.lName = user.lastName;
       $cookies.uName = user.username;
+      $cookies.roles = user.roles;
       console.log("======= SigninFormController:$cookies.currentUser ========");
       console.log($cookies.fName);
       console.log($cookies.lName);
       console.log($cookies.uName);
+      console.log($cookies.roles);
       $state.go('app.dashboard-v1');
     }).error(function(data, status, headers, config) {
       $scope.authError = 'Usuario o Password Incorrectos';

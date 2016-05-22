@@ -1,5 +1,5 @@
 <!-- list -->
-<ul class="nav">
+<ul class="nav" ng-controller="navController2">
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.HEADER">Navigation</span>
   </li>
@@ -22,22 +22,22 @@
       <li class="hidden-folded padder-lg m-t m-b-sm text-muted text-md font-bold">
         <span translate="aside.nav.export.PARAM">Param</span>
       </li>      
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-show="mostrarGeneral">
         <a ui-sref="app.export.parametros">
           <span>General</span>
         </a>
       </li>
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-show="mostrarCotizacion">
         <a ui-sref="app.export.parametros2">
           <span>Cotizacion</span>
         </a>
       </li>
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-show="mostrarPaises">
         <a ui-sref="app.export.listadoPaises">
           <span>Paises</span>
         </a>
       </li>      
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-show="mostrarPuertos">
         <a ui-sref="app.export.listadoPuertos">
           <span>Puertos</span>
         </a>
@@ -45,13 +45,13 @@
       <li class="hidden-folded padder-lg m-t m-b-sm text-muted text-md font-bold">
         <span translate="aside.nav.export.PLAN">Plan</span>
       </li>          
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-show="mostrarZinc">
         <a ui-sref="app.export.planillaZincListado({tipoPlanilla:'ZINC'})">
           <b class="label bg-info pull-right">Z</b>        
           <span>Zinc</span>
         </a>
       </li>
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-show="mostrarPlomo">
         <a ui-sref="app.export.planillaPlomoListado({tipoPlanilla:'PLOMO'})">
           <b class="label bg-info pull-right">P</b>
           <span>Plomo</span>

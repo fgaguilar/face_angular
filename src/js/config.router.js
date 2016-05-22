@@ -14,7 +14,7 @@ angular.module('app')
     ]
   )
   .config(
-    [          '$stateProvider', '$urlRouterProvider',
+    [          '$stateProvider', '$urlRouterProvider', 
       function ($stateProvider,   $urlRouterProvider) {
           
           $urlRouterProvider
@@ -70,6 +70,13 @@ angular.module('app')
                   url: '/paises',
                   controller: 'PaisesNewCtrl',
                   templateUrl: 'tpl/form_paises.html',
+                  resolve: {
+                    resA : function(){
+                      return {
+                        'value' : 'A'
+                      }
+                    }
+                  }
               }) 
               .state('app.export.paisesUpdate', {
                   url: '/paises/:paiseId',
@@ -86,6 +93,13 @@ angular.module('app')
                   url: '/puertos',
                   controller: 'PuertosNewCtrl',
                   templateUrl: 'tpl/form_puertos.html',
+                  resolve: {
+                    resB : function(resA){
+                      return {
+                        'value' : resA.value+'B'
+                      }
+                    }
+                  }
               }) 
               .state('app.export.puertosUpdate', {
                   url: '/puertos/:puertoId',
@@ -272,10 +286,12 @@ var checkLoggedin = function($q, $state, $timeout, $http, $location, $rootScope,
         delete $cookies["fName"];
         delete $cookies["lName"];
         delete $cookies["uName"];
+        delete $cookies["roles"];
         console.log('============ remove cookies ==============');
         console.log($cookies.uName);
         console.log($cookies.fName);
         console.log($cookies.lName);
+        console.log($cookies.roles);
       });
     };
     $rootScope.errorMessage = null;
