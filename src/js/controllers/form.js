@@ -94,16 +94,65 @@ app.controller('listaEmpaqueCtrl',function ($scope,$stateParams,Plan) {
 
 });
 
-app.controller('ListZincCtrlGral',function ($scope,$stateParams,PlanTipo) {
+app.controller('ListZincCtrlGral',function ($scope,$stateParams,$cookies,PlanTipo) {
   console.log("Ingreso a ListZincCtrlGral");
   $scope.planilla={};
   $scope.planilla2={};
   $scope.planilla2=PlanTipo.get(function(datos){
     $scope.planilla=datos;
   });
+  console.log($cookies.fName);
+  console.log($cookies.lName);
+  console.log($cookies.roles);  
+  $scope.roles=$cookies.roles;
+  if ($scope.roles=='admin') {
+    $scope.mostrarNuevo=true;
+    $scope.mostrarModificar=true;
+    $scope.mostrarEliminar=true;
+    $scope.mostrarImprimirTodo=true;
+    $scope.mostrarFactura=true;
+    $scope.mostrarImprimir=true;
+    $scope.mostrarVerificacion2=true;
+    $scope.mostrarRegalias=true;
+    $scope.mostrarImprimirRegalias=true;
+    $scope.mostrarListaEmpaque=true;
+    $scope.mostrarImprimirListaEmpaque=true;
+    $scope.mostrarImprimirDUE=true;
+    $scope.mostrarM03=true;
+  }
+  if ($scope.roles=='operador1') {
+    $scope.mostrarNuevo=true;
+    $scope.mostrarModificar=true;
+    $scope.mostrarEliminar=false;
+    $scope.mostrarImprimirTodo=true;
+    $scope.mostrarFactura=false;
+    $scope.mostrarImprimir=true;
+    $scope.mostrarVerificacion2=false;
+    $scope.mostrarRegalias=false;
+    $scope.mostrarImprimirRegalias=true;
+    $scope.mostrarListaEmpaque=false;
+    $scope.mostrarImprimirListaEmpaque=true;
+    $scope.mostrarImprimirDUE=true;
+    $scope.mostrarM03=false;
+  }
+  if ($scope.roles=='operador2') {
+    $scope.mostrarNuevo=false;
+    $scope.mostrarModificar=false;
+    $scope.mostrarEliminar=false;
+    $scope.mostrarImprimirTodo=false;
+    $scope.mostrarFactura=false;
+    $scope.mostrarImprimir=false;
+    $scope.mostrarVerificacion2=false;
+    $scope.mostrarRegalias=false;
+    $scope.mostrarImprimirRegalias=false;
+    $scope.mostrarListaEmpaque=false;
+    $scope.mostrarImprimirListaEmpaque=false;
+    $scope.mostrarImprimirDUE=false;
+    $scope.mostrarM03=false;
+  } 
 });
 
-app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
+app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo,$cookies,Factura) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
   $scope.planilla={};
@@ -112,9 +161,58 @@ app.controller('ListZincCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
     $scope.planilla=datos;
     $scope.tipoPlanilla=tipoPlanilla;
   });
+  console.log($cookies.fName);
+  console.log($cookies.lName);
+  console.log($cookies.roles);  
+  $scope.roles=$cookies.roles;
+  if ($scope.roles=='admin') {
+    $scope.mostrarNuevo=true;
+    $scope.mostrarModificar=true;
+    $scope.mostrarEliminar=true;
+    $scope.mostrarImprimirTodo=true;
+    $scope.mostrarFactura=true;
+    $scope.mostrarImprimir=true;
+    $scope.mostrarVerificacion2=true;
+    $scope.mostrarRegalias=true;
+    $scope.mostrarImprimirRegalias=true;
+    $scope.mostrarListaEmpaque=true;
+    $scope.mostrarImprimirListaEmpaque=true;
+    $scope.mostrarImprimirDUE=true;
+    $scope.mostrarM03=true;
+  }
+  if ($scope.roles=='operador1') {
+    $scope.mostrarNuevo=true;
+    $scope.mostrarModificar=true;
+    $scope.mostrarEliminar=false;
+    $scope.mostrarImprimirTodo=true;
+    $scope.mostrarFactura=false;
+    $scope.mostrarImprimir=true;
+    $scope.mostrarVerificacion2=false;
+    $scope.mostrarRegalias=false;
+    $scope.mostrarImprimirRegalias=true;
+    $scope.mostrarListaEmpaque=false;
+    $scope.mostrarImprimirListaEmpaque=true;
+    $scope.mostrarImprimirDUE=true;
+    $scope.mostrarM03=false;
+  }
+  if ($scope.roles=='operador2') {
+    $scope.mostrarNuevo=false;
+    $scope.mostrarModificar=false;
+    $scope.mostrarEliminar=false;
+    $scope.mostrarImprimirTodo=false;
+    $scope.mostrarFactura=false;
+    $scope.mostrarImprimir=false;
+    $scope.mostrarVerificacion2=false;
+    $scope.mostrarRegalias=false;
+    $scope.mostrarImprimirRegalias=false;
+    $scope.mostrarListaEmpaque=false;
+    $scope.mostrarImprimirListaEmpaque=false;
+    $scope.mostrarImprimirDUE=false;
+    $scope.mostrarM03=false;
+  } 
 });
 
-app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
+app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo,$cookies,Factura) {
   console.log("Ingreso a ListZincCtrl");
   var tipoPlanilla = $stateParams.tipoPlanilla;
   $scope.planilla={};
@@ -123,6 +221,55 @@ app.controller('ListPlomoCtrl',function ($scope,$stateParams,PlanTipo,Factura) {
     $scope.planilla=datos;
     $scope.tipoPlanilla=tipoPlanilla;
   });
+  console.log($cookies.fName);
+  console.log($cookies.lName);
+  console.log($cookies.roles);    
+  $scope.roles=$cookies.roles;
+  if ($scope.roles=='admin') {
+    $scope.mostrarNuevo=true;
+    $scope.mostrarModificar=true;
+    $scope.mostrarEliminar=true;
+    $scope.mostrarImprimirTodo=true;
+    $scope.mostrarFactura=true;
+    $scope.mostrarImprimir=true;
+    $scope.mostrarVerificacion2=true;
+    $scope.mostrarRegalias=true;
+    $scope.mostrarImprimirRegalias=true;
+    $scope.mostrarListaEmpaque=true;
+    $scope.mostrarImprimirListaEmpaque=true;
+    $scope.mostrarImprimirDUE=true;
+    $scope.mostrarM03=true;
+  }
+  if ($scope.roles=='operador1') {
+    $scope.mostrarNuevo=true;
+    $scope.mostrarModificar=true;
+    $scope.mostrarEliminar=false;
+    $scope.mostrarImprimirTodo=true;
+    $scope.mostrarFactura=false;
+    $scope.mostrarImprimir=true;
+    $scope.mostrarVerificacion2=false;
+    $scope.mostrarRegalias=false;
+    $scope.mostrarImprimirRegalias=true;
+    $scope.mostrarListaEmpaque=false;
+    $scope.mostrarImprimirListaEmpaque=true;
+    $scope.mostrarImprimirDUE=true;
+    $scope.mostrarM03=false;
+  }
+  if ($scope.roles=='operador2') {
+    $scope.mostrarNuevo=false;
+    $scope.mostrarModificar=false;
+    $scope.mostrarEliminar=false;
+    $scope.mostrarImprimirTodo=false;
+    $scope.mostrarFactura=false;
+    $scope.mostrarImprimir=false;
+    $scope.mostrarVerificacion2=false;
+    $scope.mostrarRegalias=false;
+    $scope.mostrarImprimirRegalias=false;
+    $scope.mostrarListaEmpaque=false;
+    $scope.mostrarImprimirListaEmpaque=false;
+    $scope.mostrarImprimirDUE=false;
+    $scope.mostrarM03=false;
+  }    
 });
 
 app.controller('CreateCtrl', function($scope,$location,$timeout, Plan) {
@@ -269,10 +416,37 @@ app.controller('FormVacioCtrl',function ($scope,$rootScope,$cookies,$location,$t
     };
   });
 
-app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,$state,Plan,Puerto,Paise) {
+app.controller('FormUnoCtrl',function ($scope,$rootScope,$cookies,$location,$timeout,$stateParams,$state,Plan,Puerto,Paise,Facturac) {
   console.log('Ingreso a FormUnoCtrl');
   var planillaId = $stateParams.planId;
   var tipoPlanilla = $stateParams.tipoPlanilla;
+
+
+  $scope.factura2={};
+  $scope.factura2=Facturac.get({'planillaId': planillaId}, function(datos2){
+    console.log("DATOS 2 !!!!!!!");
+    console.log(datos2.length);
+    console.log(datos2);
+
+    if (datos2.length!=0){
+      $scope.existe=1;
+      console.log(datos2[0].control);
+      if (datos2[0].control){
+        console.log("Ëxiste control");
+        $scope.longitud=true;
+      }
+      else {
+        console.log("NO Ëxiste control");
+        $scope.longitud=false;
+      }
+      $scope.factura=datos2[0];
+    }
+    else {
+      $scope.existe=0;   
+      $scope.longitud=false; 
+    }
+  });
+
 
   $scope.mostrarPais = function(item){
     console.log("MostrarPais");
@@ -1300,7 +1474,7 @@ app.controller('DosificacionesNewCtrl',function ($scope,$location,$timeout,$stat
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };      
-            $state.go('app.export.paisesNew');    
+            $state.go('app.export.paisesNew');
         });
       });
     };
@@ -1322,6 +1496,55 @@ app.controller('DosificacionesUpdateCtrl',function ($scope,$location,$timeout,$s
     $scope.grabar = function() {
       console.log("Ingreso a Actualizar");
       console.log($scope.dosificacion.id);
+      console.log($scope.dosificacion.inicio);
+      console.log($scope.dosificacion.vencimiento);
+
+    if ($scope.dosificacion.inicio.getFullYear) {
+      $scope.anio=$scope.dosificacion.inicio.getFullYear();
+    }
+    else {
+      $scope.anio=$scope.dosificacion.inicio.substr(0, 4);
+    }
+
+    if ($scope.dosificacion.inicio.getMonth) {
+      $scope.mes=$scope.dosificacion.inicio.getMonth();
+    }
+    else {
+      $scope.mes=$scope.dosificacion.inicio.substr(5, 2);
+    }
+
+    if ($scope.dosificacion.inicio.getDate) {
+      $scope.dia=$scope.dosificacion.inicio.getDate();
+    }
+    else {
+      $scope.dia=$scope.dosificacion.inicio.substr(8, 2);
+    }
+    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
+    $scope.dosificacion.inicio=$scope.miFecha;
+
+    if ($scope.dosificacion.vencimiento.getFullYear) {
+      $scope.anio=$scope.dosificacion.vencimiento.getFullYear();
+    }
+    else {
+      $scope.anio=$scope.dosificacion.vencimiento.substr(0, 4);
+    }
+
+    if ($scope.dosificacion.vencimiento.getMonth) {
+      $scope.mes=$scope.dosificacion.vencimiento.getMonth();
+    }
+    else {
+      $scope.mes=$scope.dosificacion.vencimiento.substr(5, 2);
+    }
+
+    if ($scope.dosificacion.vencimiento.getDate) {
+      $scope.dia=$scope.dosificacion.vencimiento.getDate();
+    }
+    else {
+      $scope.dia=$scope.dosificacion.vencimiento.substr(8, 2);
+    }
+    $scope.miFecha = new Date($scope.anio,$scope.mes,$scope.dia);
+    $scope.dosificacion.vencimiento=$scope.miFecha;    
+
       Dosificacion.update({dosificacionId: dosificacion}, $scope.dosificacion, function() {
           $timeout(function() {
             $scope.successTextAlert = "Dosificacion Actualizado";
@@ -1329,7 +1552,8 @@ app.controller('DosificacionesUpdateCtrl',function ($scope,$location,$timeout,$s
             $scope.switchBool = function (value) {
               $scope[value] = !$scope[value];
             };
-            $state.go('app.billing.dosificacionesUpdate');
+            $state.go('app.dashboard-v1');
+            
           });
       });
     };

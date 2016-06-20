@@ -11,7 +11,7 @@
       <th>Creación</th>
       <th>Factura</th>      
       <th>      
-        <a class="btn btn-bg btn-primary" ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">Nuevo</a>
+        <a class="btn btn-bg btn-primary" ng-show="mostrarNuevo" ui-sref="app.export.planillaZinc({tipoPlanilla:tipoPlanilla})">Nuevo</a>
       </th>
     </tr>
     
@@ -31,23 +31,47 @@
           Acción <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a ui-sref="app.export.planillaZincUno({tipoPlanilla:tipoPlanilla,planId:plane.id})">Modificar</a></li>
-          <li><a href>Eliminar</a></li>
-          <li><a ui-sref="app.export.imprimirTodo({planId:plane.id})">Imprimir Todo</a></li>
+          <li ng-show="mostrarModificar">
+            <a ui-sref="app.export.planillaZincUno({tipoPlanilla:tipoPlanilla,planId:plane.id})">Modificar</a>
+          </li>
+          <li ng-show="mostrarEliminar">
+            <a href>Eliminar</a>
+          </li>
+          <li ng-show="mostrarImprimirTodo">
+            <a ui-sref="app.export.imprimirTodo({planId:plane.id})">Imprimir Todo</a>
+          </li>
           <li class="divider"></li>
-          <li><a ui-sref="app.billing.facturaExportacion({planId:plane.id})">Factura</a></li>
-          <li><a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id={{plane.id}}" target="_blank">Imprimir</a></li>
+          <li ng-show="mostrarFactura">
+            <a ui-sref="app.billing.facturaExportacion({planId:plane.id})">Factura</a>
+          </li>
+          <li ng-show="mostrarImprimir">
+            <a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/new_report.rptdesign&id={{plane.id}}" target="_blank">Imprimir</a>
+          </li>
           <li class="divider"></li>
-          <li><a ui-sref="app.taxation.verificacionCalculo({planId:plane.id})">Verificación</a></li>
+          <li ng-show="mostrarVerificacion2">
+            <a ui-sref="app.taxation.verificacionCalculo({planId:plane.id})">Verificación</a>
+          </li>
           <li class="divider"></li>
-          <li><a ui-sref="app.taxation.pagoRegalias({planId:plane.id})">Regalias</a></li>
-          <li><a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regaliaminera.rptdesign&id={{plane.id}}" target="_blank">Imprimir Regalias</a></li>
+          <li ng-show="mostrarRegalias">
+            <a ui-sref="app.taxation.pagoRegalias({planId:plane.id})">Regalias</a>
+          </li>
+          <li ng-show="mostrarImprimirRegalias">
+            <a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/regaliaminera.rptdesign&id={{plane.id}}" target="_blank">Imprimir Regalias</a>
+          </li>
           <li class="divider"></li>
-          <li><a ui-sref="app.export.listaEmpaque({planId:plane.id})">Lista Empaque</a></li>
-          <li><a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id={{plane.id}}" target="_blank">Imprimir Lista Empaque</a></li>
+          <li ng-show="mostrarListaEmpaque">
+            <a ui-sref="app.export.listaEmpaque({planId:plane.id})">Lista Empaque</a>
+          </li>
+          <li ng-show="mostrarImprimirListaEmpaque">
+            <a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/lista_de_empaque.rptdesign&id={{plane.id}}" target="_blank">Imprimir Lista Empaque</a>
+          </li>
           <li class="divider"></li>
-          <li><a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/due.rptdesign&id={{plane.id}}" target="_blank">Imprimir DUE</a></li>
-          <li><a ui-sref="app.taxation.m03({planId:plane.id})">M-03</a></li>
+          <li ng-show="mostrarImprimirDUE">
+            <a href="http://mscwsus.minera.local:8080/birt/frameset?__report=reportes/due.rptdesign&id={{plane.id}}" target="_blank">Imprimir DUE</a>
+          </li>
+          <li ng-show="mostrarM03">
+            <a ui-sref="app.taxation.m03({planId:plane.id})">M-03</a>
+          </li>
         </ul>
       </div>
       </td>

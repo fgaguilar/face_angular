@@ -1,5 +1,5 @@
 <div class="wrapper-md">
-  <div class="panel panel-default">
+  <div class="panel panel-default" ng-hide="longitud">
     <div class="panel-heading font-bold">Planilla de Calculo de la RM de {{planilla.planilla}}</div>
     <div class="panel-heading font-bold">I .-DATOS DE CABECERA</div>
       <!-- modal -->
@@ -505,4 +505,5 @@
       </div>
     </form>
   </div>
+  <div class="panel-heading font-bold" ng-show="longitud">La Factura de Exportación ya fue validada y cuenta con Codigo de Control por consiguiente NO ES POSIBLE MODIFICAR LA PLANILLA</div>
 </div>

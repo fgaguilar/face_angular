@@ -351,5 +351,60 @@
       $scope.mostrarPuertos=true;
       $scope.mostrarZinc=true;
       $scope.mostrarPlomo=true;
+      $scope.mostrarVerificacion=true;
+      $scope.mostrarPagoRegalias=true;
+      $scope.mostrarAnticipoPago=true;
+      $scope.mostrarDatosParametricos=true;
+      $scope.mostrarDoscificaciones=true;
+      $scope.mostarFacturaExportacion=true;
+      $scope.mostrarFacturacionLocal=true;
+      $scope.mostrarPagoReporteVentas=true;
+      $scope.mostrarLibroVentas=true;
+      $scope.mostrarParametrizacion=true;
+      $scope.mostrarUsuarios=true;
+      $scope.mostrarPermisoUsuarios=true;
+      $scope.mostrarReporteUsuarios=true;
     }
+    if ($scope.roles=='operador1') {
+      $scope.mostrarGeneral=false;
+      $scope.mostrarCotizacion=false;
+      $scope.mostrarPaises=false;
+      $scope.mostrarPuertos=false;
+      $scope.mostrarZinc=true;
+      $scope.mostrarPlomo=true;
+      $scope.mostrarVerificacion=false;
+      $scope.mostrarPagoRegalias=false;
+      $scope.mostrarAnticipoPago=false;
+      $scope.mostrarDatosParametricos=false;
+      $scope.mostrarDoscificaciones=false;
+      $scope.mostarFacturaExportacion=false;
+      $scope.mostrarFacturacionLocal=false;
+      $scope.mostrarPagoReporteVentas=true;
+      $scope.mostrarLibroVentas=false;
+      $scope.mostrarParametrizacion=false;
+      $scope.mostrarUsuarios=false;
+      $scope.mostrarPermisoUsuarios=false;
+      $scope.mostrarReporteUsuarios=false;
+    } 
+    if ($scope.roles=='operador2') {
+      $scope.mostrarGeneral=false;
+      $scope.mostrarCotizacion=false;
+      $scope.mostrarPaises=false;
+      $scope.mostrarPuertos=false;
+      $scope.mostrarZinc=false;
+      $scope.mostrarPlomo=false;
+      $scope.mostrarVerificacion=false;
+      $scope.mostrarPagoRegalias=false;
+      $scope.mostrarAnticipoPago=false;
+      $scope.mostrarDatosParametricos=false;
+      $scope.mostrarDoscificaciones=true;
+      $scope.mostarFacturaExportacion=false;
+      $scope.mostrarFacturacionLocal=false;
+      $scope.mostrarPagoReporteVentas=true;
+      $scope.mostrarLibroVentas=false;
+      $scope.mostrarParametrizacion=false;
+      $scope.mostrarUsuarios=false;
+      $scope.mostrarPermisoUsuarios=false;
+      $scope.mostrarReporteUsuarios=false;
+    }        
   }]);
